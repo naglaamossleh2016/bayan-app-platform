@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>التطبيقات | منصة بيان</title>
+
+    <!--
+      applications.html — Documentation (English)
+      ------------------------------------------
+      Purpose:
+        - Admin table for applications (server-rendered).
+        - Filters are a GET form (q/status/sort) handled by backend.
+        - Pagination is server-rendered (links).
+        - Add/Edit/Delete are Bootstrap modals with normal POST forms.
+        - No JS is required to render rows.
+
+      Integration notes:
+        - Replace placeholders like [q], [status], [sort], [AppId] with server values.
+        - Render table rows in a server loop (PHP foreach / Razor foreach).
+        - In pagination links, preserve filters: q/status/sort.
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg border-bottom sticky-top">
+      <div class="container-fluid px-3">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+          href="index.html"
+        >
+          <span class="ap-logo-wrap">
+            <img class="ap-logo-img" src="assets/img/logo.png" alt="Logo" />
+          </span>
+          منصة بيان لإدارة التطبيقات
+        </a>
+
+        <!-- Mobile toggler -> Offcanvas (RIGHT) -->
+        <button
+          class="navbar-toggler d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#apOffcanvas"
+          aria-controls="apOffcanvas"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Desktop menu -->
+        <div class="d-none d-lg-flex align-items-center gap-3 ms-auto">
+          <ul class="navbar-nav flex-row gap-2">
+            <li class="nav-item">
+              <a class="nav-link active" href="applications.html">التطبيقات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="change-password.html"
+                >تغيير كلمة المرور</a
+              >
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <span class="fw-bold text-white">
+              مرحبًا، <span id="currentUserName" class="opacity-75">User</span>
+            </span>
+
+            <!-- Demo logout (Static) -->
+            <a href="#" id="logoutBtn" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-box-arrow-right ms-1"></i> خروج
+            </a>
+
+            <!-- Backend logout (بديل) -->
+            <!--
+            <form method="post" action="/logout" class="d-inline">
+              <button class="btn btn-outline-secondary btn-sm" type="submit">
+                <i class="bi bi-box-arrow-right ms-1"></i> خروج
+              </button>
+            </form>
+            -->
+          </div>
+        </div>
+
+        <!-- Offcanvas (Mobile / Tablet) -->
+        <div
+          class="offcanvas offcanvas-end d-lg-none"
+          tabindex="-1"
+          id="apOffcanvas"
+          aria-labelledby="apOffcanvasLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="apOffcanvasLabel">
+              القائمة
+            </h5>
+            <button
+              type="button"
+              class="btn-close ms-0"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="offcanvas-body">
+            <ul class="navbar-nav mb-3">
+              <li class="nav-item">
+                <a class="nav-link active" href="applications.html"
+                  >التطبيقات</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="design-catalog.html"
+                  >كتالوج التصميم</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="change-password.html"
+                  >تغيير كلمة المرور</a
+                >
+              </li>
+            </ul>
+
+            <hr />
+
+            <div
+              class="d-flex align-items-center justify-content-between gap-2"
+            >
+              <span class="fw-bold">
+                مرحبًا،
+                <span id="currentUserNameMobile" class="opacity-75">User</span>
+              </span>
+
+              <!-- Demo logout -->
+              <a
+                href="#"
+                id="logoutBtnMobile"
+                class="btn btn-outline-secondary btn-sm"
+              >
+                <i class="bi bi-box-arrow-right ms-1"></i> خروج
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container-fluid my-4 px-3 px-lg-4">
+      <div class="row g-3">
+        <!-- Sidebar -->
+        <div class="col-12 col-lg-2">
+          <div class="ap-sidebar card ap-card p-2">
+            <div class="d-flex align-items-center gap-2 mb-2 px-1">
+              <div class="ap-logo-wrap ap-logo-sm">
+                <img class="ap-logo-img" src="assets/img/logo.png" alt="Logo" />
+              </div>
+              <div>
+                <div class="fw-bold">لوحة التحكم</div>
+                <div class="small ap-muted">لإدارة التطبيقات</div>
+              </div>
+            </div>
+
+            <hr class="my-2" />
+
+            <nav class="nav nav-pills flex-column gap-1">
+              <a class="nav-link" href="index.html">الرئيسية</a>
+              <a class="nav-link active" href="applications.html">التطبيقات</a>
+              <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
+              <a class="nav-link" href="change-password.html"
+                >تغيير كلمة المرور</a
+              >
+            </nav>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="col-12 col-lg-10">
+          <div class="card ap-card p-4">
+            <div
+              class="d-flex align-items-start justify-content-between gap-2 flex-wrap"
+            >
+              <div>
+                <h1 class="h4 fw-bold mb-1">التطبيقات</h1>
+              </div>
+
+              <button
+                class="btn btn-primary fw-bold"
+                data-bs-toggle="modal"
+                data-bs-target="#addAppModal"
+              >
+                <i class="bi bi-plus-lg ms-1"></i> إضافة تطبيق
+              </button>
+            </div>
+
+            <!-- Filters (GET) -->
+            <form class="row g-2 mt-3" method="get" action="/apps">
+              <div class="col-12 col-md-6">
+                <input
+                  name="q"
+                  class="form-control"
+                  type="search"
+                  placeholder="ابحث بالاسم..."
+                  value="[q]"
+                />
+              </div>
+
+              <div class="col-6 col-md-3">
+                <select name="status" class="form-select">
+                  <option value="">كل الحالات</option>
+                  <option value="Published">Published</option>
+                  <option value="UnPublished">UnPublished</option>
+                  <option value="Deprecated">Deprecated</option>
+                </select>
+              </div>
+
+              <div class="col-6 col-md-3">
+                <select name="sort" class="form-select">
+                  <option value="updatedDesc">الأحدث تحديثًا</option>
+                  <option value="updatedAsc">الأقدم تحديثًا</option>
+                  <option value="nameAsc">الاسم A→Z</option>
+                </select>
+              </div>
+
+              <div class="col-12 d-flex gap-2">
+                <button class="btn btn-primary fw-bold" type="submit">
+                  بحث
+                </button>
+                <a class="btn btn-outline-secondary" href="/apps">مسح</a>
+              </div>
+            </form>
+
+            <!-- Table -->
+            <div class="table-responsive mt-3">
+              <table class="table align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th style="min-width: 260px">الاسم</th>
+                    <th style="min-width: 220px">الوصف</th>
+                    <th style="min-width: 140px">المبرمج</th>
+                    <th style="min-width: 110px">الحالة</th>
+                    <th style="min-width: 150px">آخر تحديث</th>
+                    <th style="min-width: 220px">إجراءات</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- Example row (server loop) -->
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div>
+                          <div class="fw-bold">Task Manager</div>
+                          <div
+                            class="small ap-muted text-truncate"
+                            style="max-width: 260px"
+                          >
+                            https://example.com
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td class="text-secondary">أداة إدارة مهام</td>
+                    <td class="text-secondary">أحمد</td>
+                    <td>
+                      <span class="badge ap-badge-published">Published</span>
+                    </td>
+                    <td class="text-secondary">01 Dec 2025</td>
+
+                    <td class="text-nowrap">
+                      <div class="d-flex gap-2 flex-wrap">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editAppModal"
+                        >
+                          <i class="bi bi-pencil-square ms-1"></i> تعديل
+                        </button>
+
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger"
+                          data-bs-toggle="modal"
+                          data-bs-target="#deleteConfirmModal"
+                        >
+                          <i class="bi bi-trash3 ms-1"></i> حذف
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div>
+                          <div class="fw-bold">تطبيق عدل</div>
+                          <div
+                            class="small ap-muted text-truncate"
+                            style="max-width: 260px"
+                          >
+                            https://example.com
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-secondary">عدل للتحقيقات القانونية</td>
+                    <td class="text-secondary">نجلاء</td>
+                    <td>
+                      <span class="badge ap-badge-unpublished"
+                        >UnPublished</span
+                      >
+                    </td>
+                    <td class="text-secondary">01 Dec 2025</td>
+                    <td class="text-nowrap">
+                      <div class="d-flex gap-2 flex-wrap">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editAppModal"
+                        >
+                          <i class="bi bi-pencil-square ms-1"></i> تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger"
+                          data-bs-toggle="modal"
+                          data-bs-target="#deleteConfirmModal"
+                        >
+                          <i class="bi bi-trash3 ms-1"></i> حذف
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-2">
+                        <div>
+                          <div class="fw-bold">تطبيق سكن</div>
+                          <div
+                            class="small ap-muted text-truncate"
+                            style="max-width: 260px"
+                          >
+                            https://example.com
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-secondary">للسكن الجامعي</td>
+                    <td class="text-secondary">نجلاء</td>
+                    <td>
+                      <span class="badge ap-badge-deprecated">deprecated </span>
+                    </td>
+                    <td class="text-secondary">01 Dec 2025</td>
+                    <td class="text-nowrap">
+                      <div class="d-flex gap-2 flex-wrap">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editAppModal"
+                        >
+                          <i class="bi bi-pencil-square ms-1"></i> تعديل
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger"
+                          data-bs-toggle="modal"
+                          data-bs-target="#deleteConfirmModal"
+                        >
+                          <i class="bi bi-trash3 ms-1"></i> حذف
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination (server-rendered links) -->
+            <div
+              class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-3"
+            >
+              <div class="small text-secondary">
+                عرض <span class="fw-bold">1</span> إلى
+                <span class="fw-bold">3</span> من
+                <span class="fw-bold">3</span> تطبيق
+              </div>
+
+              <nav aria-label="Pagination">
+                <ul class="pagination mb-0">
+                  <!-- Prev -->
+                  <li class="page-item [PrevDisabled]">
+                    <a
+                      class="page-link"
+                      href="/apps?page=[PrevPage]&q=[q]&status=[status]&sort=[sort]"
+                      aria-label="Previous"
+                    >
+                      السابق
+                    </a>
+                  </li>
+
+                  <!-- Pages (render in loop) -->
+                  <li class="page-item [Page1Active] pe-1 ps-1">
+                    <a
+                      class="page-link"
+                      href="/apps?page=1&q=[q]&status=[status]&sort=[sort]"
+                      >1</a
+                    >
+                  </li>
+                  <li class="page-item [Page2Active] pe-1 ps-1">
+                    <a
+                      class="page-link"
+                      href="/apps?page=2&q=[q]&status=[status]&sort=[sort]"
+                      >2</a
+                    >
+                  </li>
+                  <li class="page-item [Page3Active] pe-1 ps-1">
+                    <a
+                      class="page-link"
+                      href="/apps?page=3&q=[q]&status=[status]&sort=[sort]"
+                      >3</a
+                    >
+                  </li>
+
+                  <li class="page-item disabled pe-1 ps-1">
+                    <span class="page-link">…</span>
+                  </li>
+
+                  <li class="page-item [LastActive] pe-1 ps-1">
+                    <a
+                      class="page-link"
+                      href="/apps?page=[LastPage]&q=[q]&status=[status]&sort=[sort]"
+                      >[LastPage]</a
+                    >
+                  </li>
+
+                  <!-- Next -->
+                  <li class="page-item [NextDisabled]">
+                    <a
+                      class="page-link"
+                      href="/apps?page=[NextPage]&q=[q]&status=[status]&sort=[sort]"
+                      aria-label="Next"
+                    >
+                      التالي
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <!-- /Pagination -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Add App Modal (POST) -->
+    <div class="modal fade" id="addAppModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <form
+            method="post"
+            action="/apps/create"
+            enctype="multipart/form-data"
+          >
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold">إضافة تطبيق جديد</h5>
+              <button
+                type="button"
+                class="btn-close ms-0"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">اسم التطبيق</label>
+                  <input
+                    name="name"
+                    class="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">المبرمج</label>
+                  <input name="owner" class="form-control" type="text" />
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold">وصف التطبيق</label>
+                  <input name="description" class="form-control" type="text" />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">الحالة</label>
+                  <select name="status" class="form-select">
+                    <option>Draft</option>
+                    <option>Published</option>
+                    <option>UnPublished</option>
+                    <option>Deprecated</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">رابط التطبيق</label>
+                  <input
+                    name="url"
+                    class="form-control"
+                    type="url"
+                    placeholder="https://example.com"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold"
+                    >شعار التطبيق (اختياري)</label
+                  >
+                  <input
+                    name="logo"
+                    class="form-control"
+                    type="file"
+                    accept="image/*"
+                  />
+                  <div class="form-text">
+                    سيتم رفع الصورة على السيرفر وربطها بالتطبيق.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                إلغاء
+              </button>
+              <button type="submit" class="btn btn-primary fw-bold">حفظ</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit App Modal -->
+    <div class="modal fade" id="editAppModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <form method="post" action="/apps/update">
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold">تعديل التطبيق</h5>
+              <button
+                type="button"
+                class="btn-close ms-0"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <input type="hidden" name="id" value="[AppId]" />
+
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">اسم التطبيق</label>
+                  <input
+                    class="form-control"
+                    name="name"
+                    value="[AppName]"
+                    required
+                  />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">المالك</label>
+                  <input class="form-control" name="owner" value="[Owner]" />
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold">الوصف</label>
+                  <input
+                    class="form-control"
+                    name="description"
+                    value="[Description]"
+                  />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">الحالة</label>
+                  <select class="form-select" name="status">
+                    <option>[Status]</option>
+                    <option>Draft</option>
+                    <option>Published</option>
+                    <option>UnPublished</option>
+                    <option>Deprecated</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">رابط التطبيق</label>
+                  <input
+                    class="form-control"
+                    name="url"
+                    type="url"
+                    value="[Url]"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold"
+                    >شعار التطبيق (اختياري)</label
+                  >
+                  <input
+                    class="form-control"
+                    name="logo"
+                    type="file"
+                    accept="image/*"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                إلغاء
+              </button>
+              <button type="submit" class="btn btn-primary fw-bold">
+                حفظ التعديلات
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirm Modal -->
+    <div
+      class="modal fade"
+      id="deleteConfirmModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">تأكيد الحذف</h5>
+            <button
+              type="button"
+              class="btn-close ms-0"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <p class="mb-0">
+              هل متأكد من عملية الحذف؟ لا يمكن التراجع عن هذا الإجراء.
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              إلغاء
+            </button>
+
+            <form method="post" action="/apps/[AppId]/delete" class="d-inline">
+              <button type="submit" class="btn btn-danger fw-bold">
+                <i class="bi bi-trash3 ms-1"></i> نعم، احذف
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-top mt-4">
+      <div class="container-fluid px-3 px-lg-4 py-3">
+        <div class="small text-secondary text-center">
+          جميع الحقوق محفوظة لمركز التطبيقات الالكترونية بجامعه قنا لسنه 2025
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

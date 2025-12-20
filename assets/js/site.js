@@ -1,0 +1,150 @@
+/**
+ * Demo Auth (Quick Login) + Password Toggle
+ * ----------------------------------------
+ * For UI demo only.
+ */
+
+(function () {
+  const isLoginPage = window.location.pathname
+    .toLowerCase()
+    .includes("login.html");
+
+  // ===== Helpers =====
+  function showAlert(msg) {
+    const alertBox = document.getElementById("loginAlert");
+    if (!alertBox) return;
+    alertBox.textContent = msg;
+    alertBox.classList.remove("d-none");
+  }
+
+  function hideAlert() {
+    const alertBox = document.getElementById("loginAlert");
+    if (!alertBox) return;
+    alertBox.textContent = "";
+    alertBox.classList.add("d-none");
+  }
+
+  function setSession(username) {
+    localStorage.setItem("ap_isLoggedIn", "1");
+    localStorage.setItem("ap_username", username);
+  }
+
+  function clearSession() {
+    localStorage.removeItem("ap_isLoggedIn");
+    localStorage.removeItem("ap_username");
+  }
+
+  function isLoggedIn() {
+    return localStorage.getItem("ap_isLoggedIn") === "1";
+  }
+
+  // ===== 1) Protect internal pages (Demo) =====
+  if (!isLoginPage) {
+    // If user opens any page without being logged in -> redirect to login
+    if (!isLoggedIn()) {
+      window.location.href = "login.html";
+      return;
+    }
+  }
+  document.getElementById("logoutBtn")?.addEventListener("click", function (e) {
+    e.preventDefault();
+    localStorage.removeItem("ap_isLoggedIn");
+    localStorage.removeItem("ap_username");
+    window.location.href = "login.html";
+  });
+
+  // ===== 2) Fill user name in navbar if you add a span id="currentUserName" =====
+  const nameSlot = document.getElementById("currentUserName");
+  if (nameSlot) {
+    nameSlot.textContent = localStorage.getItem("ap_username") || "User";
+  }
+
+  // ===== 3) Login page logic =====
+  if (isLoginPage) {
+    const form = document.getElementById("loginForm");
+    const usernameEl = document.getElementById("username");
+    const passwordEl = document.getElementById("password");
+
+    // Password eye toggle
+    const toggleBtn = document.getElementById("togglePasswordBtn");
+    const toggleIcon = document.getElementById("togglePasswordIcon");
+
+    if (toggleBtn && passwordEl && toggleIcon) {
+      toggleBtn.addEventListener("click", function () {
+        const isHidden = passwordEl.type === "password";
+        passwordEl.type = isHidden ? "text" : "password";
+        toggleIcon.className = isHidden ? "bi bi-eye-slash" : "bi bi-eye";
+        toggleBtn.setAttribute(
+          "aria-label",
+          isHidden ? "إخفاء كلمة المرور" : "إظهار كلمة المرور"
+        );
+        toggleBtn.title = isHidden ? "إخفاء كلمة المرور" : "إظهار كلمة المرور";
+      });
+    }
+
+    // Quick login (demo users)
+    const demoUsers = [{ username: "admin", password: "admin123" }];
+
+    if (form && usernameEl && passwordEl) {
+      form.addEventListener("submit", function (e) {
+        // Demo mode: prevent real POST
+        e.preventDefault();
+        hideAlert();
+
+        const u = (usernameEl.value || "").trim();
+        const p = (passwordEl.value || "").trim();
+
+        if (!u || !p) {
+          showAlert("من فضلك أدخل اسم المستخدم وكلمة المرور.");
+          return;
+        }
+
+        const ok = demoUsers.some((x) => x.username === u && x.password === p);
+        if (!ok) {
+          showAlert("اسم المستخدم أو كلمة المرور غير صحيحين.");
+          return;
+        }
+
+        setSession(u);
+        window.location.href = "applications.html";
+      });
+
+      // Hide error when typing
+      [usernameEl, passwordEl].forEach((el) =>
+        el.addEventListener("input", hideAlert)
+      );
+    }
+  }
+
+  // ===== 4) Optional: Logout button demo =====
+  // If your navbar has <form action="/logout">, for demo you can convert it to a button with id="logoutBtn"
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      clearSession();
+      window.location.href = "login.html";
+    });
+  }
+})();
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 992) {
+    // lg breakpoint
+    const el = document.getElementById("apOffcanvas");
+    if (!el) return;
+    const instance = bootstrap.Offcanvas.getInstance(el);
+    instance?.hide();
+  }
+});
+document.querySelectorAll("[data-toggle-pass]").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const sel = btn.getAttribute("data-toggle-pass");
+    const input = document.querySelector(sel);
+    if (!input) return;
+
+    const icon = btn.querySelector("i");
+    const isHidden = input.type === "password";
+    input.type = isHidden ? "text" : "password";
+    if (icon) icon.className = isHidden ? "bi bi-eye-slash" : "bi bi-eye";
+  });
+});

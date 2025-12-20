@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>كتالوج التصميم |منصة بيان</title>
+
+    <!--
+    design-catalog.html — 
+    --------------------------------------------
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg border-bottom sticky-top">
+      <div class="container-fluid px-3">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+          href="index.html"
+        >
+          <span class="ap-logo-wrap">
+            <img class="ap-logo-img" src="assets/img/logo.png" alt="Logo" />
+          </span>
+          منصة بيان لإدارة التطبيقات
+        </a>
+
+        <!-- Mobile toggler -> Offcanvas (RIGHT) -->
+        <button
+          class="navbar-toggler d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#apOffcanvas"
+          aria-controls="apOffcanvas"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Desktop menu -->
+        <div class="d-none d-lg-flex align-items-center gap-3 ms-auto">
+          <ul class="navbar-nav flex-row gap-2">
+            <li class="nav-item">
+              <a class="nav-link" href="applications.html">التطبيقات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="change-password.html"
+                >تغيير كلمة المرور</a
+              >
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <span class="fw-bold text-white">
+              مرحبًا، <span id="currentUserName" class="opacity-75">User</span>
+            </span>
+
+            <!-- Backend logout -->
+            <!-- <form method="post" action="/logout" class="d-inline">
+          <button class="btn btn-outline-secondary btn-sm" type="submit">
+            <i class="bi bi-box-arrow-right ms-1"></i> خروج
+          </button>
+        </form> -->
+
+            <!-- Demo logout (لو شغالة static) استخدمي ده بدل الفورم -->
+
+            <a href="#" id="logoutBtn" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-box-arrow-right ms-1"></i> خروج
+            </a>
+          </div>
+        </div>
+
+        <!-- Offcanvas (Mobile / Tablet) -->
+        <div
+          class="offcanvas offcanvas-end d-lg-none"
+          tabindex="-1"
+          id="apOffcanvas"
+          aria-labelledby="apOffcanvasLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="apOffcanvasLabel">
+              القائمة
+            </h5>
+            <button
+              type="button"
+              class="btn-close ms-0"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="offcanvas-body">
+            <ul class="navbar-nav mb-3">
+              <li class="nav-item">
+                <a class="nav-link" href="applications.html">التطبيقات</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="design-catalog.html"
+                  >كتالوج التصميم</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="change-password.html"
+                  >تغيير كلمة المرور</a
+                >
+              </li>
+            </ul>
+
+            <hr />
+
+            <div
+              class="d-flex align-items-center justify-content-between gap-2"
+            >
+              <span class="fw-bold">
+                مرحبًا،
+                <span id="currentUserNameMobile" class="opacity-75">User</span>
+              </span>
+
+              <!-- Backend logout -->
+              <!-- <form method="post" action="/logout" class="d-inline">
+            <button class="btn btn-outline-secondary btn-sm" type="submit">
+              <i class="bi bi-box-arrow-right ms-1"></i> خروج
+            </button>
+          </form> -->
+
+              <!-- Demo logout (بديل الفورم) -->
+
+              <a
+                href="#"
+                id="logoutBtnMobile"
+                class="btn btn-outline-secondary btn-sm"
+              >
+                <i class="bi bi-box-arrow-right ms-1"></i> خروج
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container-fluid my-4 px-3 px-lg-4">
+      <div class="row g-3">
+        <div class="col-12 col-lg-2">
+          <div class="ap-sidebar card ap-card p-2">
+            <div class="d-flex align-items-center gap-2 mb-2 px-1">
+              <div class="ap-logo-wrap ap-logo-sm">
+                <img class="ap-logo-img" src="assets/img/logo.png" alt="Logo" />
+              </div>
+              <div>
+                <div class="fw-bold">لوحة التحكم</div>
+                <div class="small ap-muted">لإدارة التطبيقات</div>
+              </div>
+            </div>
+
+            <hr class="my-2" />
+
+            <nav class="nav nav-pills flex-column gap-1">
+              <a class="nav-link" href="index.html">الرئيسية</a>
+              <a class="nav-link" href="applications.html">التطبيقات</a>
+              <a class="nav-link active" href="design-catalog.html"
+                >كتالوج التصميم</a
+              >
+            </nav>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-10">
+          <div class="card ap-card p-4">
+            <h1 class="h4 fw-bold mb-1">كتالوج التصميم</h1>
+            <p class="text-secondary mb-0" style="line-height: 1.9">
+              مرجع ثابت للمطورين والمصممين لضمان اتساق الواجهات.
+            </p>
+          </div>
+
+          <div class="card ap-card p-4 mt-3">
+            <h2 class="h5 fw-bold mb-2">Foundations</h2>
+            <ul class="text-secondary mb-0" style="line-height: 1.9">
+              <li>Colors: Primary/Neutral/Success/Warning/Danger</li>
+              <li>Typography: sizes, weights, RTL rules</li>
+              <li>Spacing: 8px grid</li>
+            </ul>
+          </div>
+
+          <div class="card ap-card p-4 mt-3">
+            <h2 class="h5 fw-bold mb-2">Components</h2>
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <div class="card border-0 bg-light p-3 h-100">
+                  <div class="fw-bold mb-1">Buttons</div>
+                  <div class="text-secondary small" style="line-height: 1.8">
+                    Primary/Secondary + hover/disabled/loading.
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card border-0 bg-light p-3 h-100">
+                  <div class="fw-bold mb-1">Forms</div>
+                  <div class="text-secondary small" style="line-height: 1.8">
+                    Inputs + validation messages + error states.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card ap-card p-4 mt-3">
+            <h2 class="h5 fw-bold mb-2">Patterns</h2>
+            <div class="text-secondary" style="line-height: 1.9">
+              Empty states, pagination, errors, confirmations…
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="border-top mt-4">
+      <div class="container-fluid px-3 px-lg-4 py-3">
+        <div class="small text-secondary text-center">
+          جميع الحقوق محفوظة لمركز التطبيقات الالكترونية بجامعه قنا لسنه 2025
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

@@ -1,0 +1,335 @@
+/*
+  Bayan Platform - Single Theme (User Spec)
+  ----------------------------------------
+  Requirements:
+    - Navbar:        #19324c
+    - Table THEAD:   #f0f0f0
+    - Primary Btn:   #deac31 (white text)
+
+  Notes:
+    - Works with Bootstrap 5.3 RTL
+    - Keeps logo-slot helpers and soft card styling
+*/
+
+:root {
+  --ap-navbar: #19324c;
+  --ap-primary: #deac31;
+  --ap-primary-hover: #c9961f;
+  --ap-primary-active: #b6861b;
+
+  --ap-bg: #f6f8fd;
+  --ap-surface: #ffffff;
+  --ap-ink: #0f172a;
+  --ap-muted: #64748b;
+
+  --ap-border: rgba(15, 23, 42, 0.1);
+  --ap-shadow: 0 12px 30px rgba(2, 6, 23, 0.08);
+
+  /* Bootstrap overrides */
+  --bs-primary: var(--ap-primary);
+  --bs-primary-rgb: 222, 172, 49;
+
+  --bs-link-color: #2b6cb0;
+  --bs-link-hover-color: #1f4f86;
+}
+
+html,
+body {
+  height: 100%;
+}
+/* Fonts: Cairo for headings, IBM Plex Sans Arabic for body */
+body {
+  font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI",
+    Arial, sans-serif;
+  line-height: 1.85;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+/* Optional: make headings a bit bolder */
+h1,
+h2,
+h3 {
+  font-weight: 800;
+}
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+body {
+  background: var(--ap-bg);
+  color: var(--ap-ink);
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+
+/* Navbar */
+.navbar {
+  background: var(--ap-navbar) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-text {
+  color: #ffffff !important;
+}
+.navbar .nav-link {
+  opacity: 0.92;
+  font-weight: 700;
+}
+.navbar .nav-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+.navbar .navbar-toggler-icon {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+
+/* Cards */
+.ap-card {
+  background: var(--ap-surface);
+  box-shadow: var(--ap-shadow);
+  border: 1px solid var(--ap-border);
+}
+
+/* Logo slots (Login + Internal pages) */
+.ap-logo-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 12px 26px rgba(25, 50, 76, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.ap-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+.ap-logo-wrap.ap-logo-lg {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+}
+.ap-logo-wrap.ap-logo-sm {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+}
+
+/* Sidebar */
+.ap-sidebar .nav-link {
+  border-radius: 12px;
+  font-weight: 800;
+  color: var(--ap-ink);
+  padding: 0.5rem 0.65rem;
+}
+.ap-sidebar .nav-link:hover {
+  background: rgba(25, 50, 76, 0.06);
+  color: #19324c;
+}
+.ap-sidebar .nav-link.active {
+  background: #6687c552;
+  color: #19324c;
+  border: 1px solid #a5b5d2;
+}
+
+/* Primary button: Gold + white text */
+.btn-primary {
+  --bs-btn-bg: var(--ap-primary);
+  --bs-btn-border-color: var(--ap-primary);
+  --bs-btn-color: #ffffff;
+
+  --bs-btn-hover-bg: var(--ap-primary-hover);
+  --bs-btn-hover-border-color: var(--ap-primary-hover);
+  --bs-btn-hover-color: #ffffff;
+
+  --bs-btn-active-bg: var(--ap-primary-active);
+  --bs-btn-active-border-color: var(--ap-primary-active);
+  --bs-btn-active-color: #ffffff;
+
+  --bs-btn-disabled-bg: rgba(222, 172, 49, 0.55);
+  --bs-btn-disabled-border-color: rgba(222, 172, 49, 0.55);
+  --bs-btn-disabled-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Outline primary: navbar color as ink */
+.btn-outline-primary {
+  --bs-btn-color: #19324c;
+  --bs-btn-border-color: rgba(25, 50, 76, 0.35);
+  --bs-btn-hover-bg: rgba(222, 172, 49, 0.14);
+  --bs-btn-hover-border-color: rgba(222, 172, 49, 0.6);
+  --bs-btn-active-bg: rgba(222, 172, 49, 0.18);
+  --bs-btn-active-border-color: rgba(222, 172, 49, 0.7);
+}
+
+/* Forms focus */
+.form-control:focus,
+.form-select:focus {
+  border-color: rgba(222, 172, 49, 0.65);
+  box-shadow: 0 0 0 0.2rem rgba(222, 172, 49, 0.2);
+}
+
+/* Tables */
+.table-responsive {
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: #fff;
+}
+/* THEAD color */
+.table thead,
+.table thead th {
+  background: #f0f0f0 !important;
+  color: #111827 !important;
+}
+/* Bootstrap table-light compatibility */
+.table-light {
+  --bs-table-bg: #f0f0f0;
+  --bs-table-color: #111827;
+}
+
+/* Login background (matches navbar + gold accents) */
+.ap-auth-bg {
+  min-height: 100vh;
+  background:
+    /* Yellow top glow */ radial-gradient(
+      900px 520px at 78% 18%,
+      rgba(222, 172, 49, 0.26),
+      transparent 62%
+    ),
+    /* Yellow bottom glow (NEW) */
+      radial-gradient(
+        950px 540px at 25% 88%,
+        rgba(222, 172, 49, 0.22),
+        transparent 64%
+      ),
+    /* Navy/blue glow */
+      radial-gradient(
+        760px 420px at 16% 22%,
+        rgba(25, 50, 76, 0.22),
+        transparent 60%
+      ),
+    /* Base gradient */ linear-gradient(160deg, #071226, #0b1f36 55%, #071226);
+}
+
+.ap-auth-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.75);
+}
+
+.ap-muted {
+  color: var(--ap-muted) !important;
+}
+.modal-header {
+  background-color: #f0f0f0 !important;
+
+  justify-content: space-between;
+}
+.modal-header .btn-close {
+  background-color: var(--ap-ink) !important;
+  color: var(--ap-bg) !important;
+}
+footer {
+  background-color: #112335 !important;
+  color: #a2a7a7;
+}
+/* ===== Status Badges (Table) ===== */
+.table .badge {
+  font-weight: 800;
+  padding: 0.45em 0.7em;
+  border-radius: 999px; /* pill */
+  border: 1px solid rgba(15, 23, 42, 0.18);
+}
+
+/* Published (Live) */
+.badge.ap-badge-published {
+  background: #4eb2641f !important; /* navy tint */
+  color: green !important;
+  border-color: rgba(25, 50, 76, 0.28) !important;
+}
+
+/* Draft */
+.badge.ap-badge-unpublished {
+  background: rgba(222, 172, 49, 0.2) !important; /* gold tint */
+  color: #6b4f00 !important;
+  border-color: rgba(222, 172, 49, 0.4) !important;
+}
+
+/* Deprecated */
+.badge.ap-badge-deprecated {
+  background: rgba(220, 53, 69, 0.12) !important; /* red tint */
+  color: #b42318 !important;
+  border-color: rgba(220, 53, 69, 0.25) !important;
+}
+/* Mobile menu (Offcanvas) matches navbar color */
+.offcanvas {
+  background: #19324c;
+  color: #fff;
+}
+.offcanvas .nav-link {
+  color: #fff !important;
+  opacity: 0.92;
+  font-weight: 700;
+}
+.offcanvas .nav-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.offcanvas .btn-close {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+.offcanvas hr {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.offcanvas-header {
+  justify-content: space-between;
+}
+/* Pagination theme */
+.page-link {
+  border-radius: 12px;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #19324c;
+}
+.page-link:hover {
+  color: #19324c;
+  background: rgba(222, 172, 49, 0.12);
+  border-color: rgba(222, 172, 49, 0.35);
+}
+.page-item.active .page-link {
+  background: #deac31;
+  border-color: #deac31;
+  color: #fff;
+  font-weight: 800;
+}
+.page-item.disabled .page-link {
+  opacity: 0.6;
+}
