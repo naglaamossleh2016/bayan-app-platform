@@ -119,13 +119,18 @@ main {
   height: 40px;
   border-radius: 14px;
   overflow: hidden;
-  background: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 6px 6px rgba(25, 50, 76, 0.05);
   box-shadow: 0 12px 26px rgba(25, 50, 76, 0.18);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+}
+.app-logo-warp-inner {
+  width: 60px;
+  height: 60px;
+  background: #f0f0f0;
+  border: 1px solid rgba(226, 232, 240, 0.95);
 }
 .ap-logo-img {
   width: 100%;
@@ -134,8 +139,8 @@ main {
   padding: 6px;
 }
 .ap-logo-wrap.ap-logo-lg {
-  width: 54px;
-  height: 54px;
+  width: 130px;
+  height: 100px;
   border-radius: 18px;
 }
 .ap-logo-wrap.ap-logo-sm {
