@@ -4,22 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>التطبيقات | منصة بيان</title>
-
-    <!--
-      applications.html — Documentation (English)
-      ------------------------------------------
-      Purpose:
-        - Admin table for applications (server-rendered).
-        - Filters are a GET form (q/status/sort) handled by backend.
-        - Pagination is server-rendered (links).
-        - Add/Edit/Delete are Bootstrap modals with normal POST forms.
-        - No JS is required to render rows.
-
-      Integration notes:
-        - Replace placeholders like [q], [status], [sort], [AppId] with server values.
-        - Render table rows in a server loop (PHP foreach / Razor foreach).
-        - In pagination links, preserve filters: q/status/sort.
-    -->
+    <link rel="icon" type="icon" href="assets/img/favicon.ico" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,6 +21,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
       rel="stylesheet"
     />
+
     <link href="assets/css/style.css" rel="stylesheet" />
   </head>
 
@@ -60,7 +46,7 @@
           data-bs-toggle="offcanvas"
           data-bs-target="#apOffcanvas"
           aria-controls="apOffcanvas"
-          aria-label="Toggle navigation"
+          aria-label="فتح القائمة"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -69,11 +55,18 @@
         <div class="d-none d-lg-flex align-items-center gap-3 ms-auto">
           <ul class="navbar-nav flex-row gap-2">
             <li class="nav-item">
-              <a class="nav-link active" href="applications.html">التطبيقات</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="applications.html"
+                >التطبيقات</a
+              >
             </li>
+
             <li class="nav-item">
               <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" href="change-password.html"
                 >تغيير كلمة المرور</a
@@ -86,23 +79,13 @@
               مرحبًا، <span id="currentUserName" class="opacity-75">User</span>
             </span>
 
-            <!-- Demo logout (Static) -->
             <a href="#" id="logoutBtn" class="btn btn-outline-secondary btn-sm">
               <i class="bi bi-box-arrow-right ms-1"></i> خروج
             </a>
-
-            <!-- Backend logout (بديل) -->
-            <!--
-            <form method="post" action="/logout" class="d-inline">
-              <button class="btn btn-outline-secondary btn-sm" type="submit">
-                <i class="bi bi-box-arrow-right ms-1"></i> خروج
-              </button>
-            </form>
-            -->
           </div>
         </div>
 
-        <!-- Offcanvas (Mobile / Tablet) -->
+        <!-- Offcanvas (Mobile / Tablet) : روابط فقط -->
         <div
           class="offcanvas offcanvas-end d-lg-none"
           tabindex="-1"
@@ -117,22 +100,35 @@
               type="button"
               class="btn-close ms-0"
               data-bs-dismiss="offcanvas"
-              aria-label="Close"
+              aria-label="إغلاق"
             ></button>
           </div>
 
           <div class="offcanvas-body">
-            <ul class="navbar-nav mb-3">
+            <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" href="applications.html"
+                <a class="nav-link" href="index.html">الرئيسية</a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="applications.html"
                   >التطبيقات</a
                 >
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="roles.html">الأدوار</a>
+              </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="design-catalog.html"
                   >كتالوج التصميم</a
                 >
               </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="change-password.html"
                   >تغيير كلمة المرور</a
@@ -150,7 +146,6 @@
                 <span id="currentUserNameMobile" class="opacity-75">User</span>
               </span>
 
-              <!-- Demo logout -->
               <a
                 href="#"
                 id="logoutBtnMobile"
@@ -161,13 +156,14 @@
             </div>
           </div>
         </div>
+        <!-- /Offcanvas -->
       </div>
     </nav>
 
     <main class="container-fluid my-4 px-3 px-lg-4">
       <div class="row g-3">
-        <!-- Sidebar -->
-        <div class="col-12 col-lg-2">
+        <!-- Sidebar (Desktop only) -->
+        <div class="col-12 col-lg-2 d-none d-lg-block">
           <div class="ap-sidebar card ap-card p-2">
             <div class="d-flex align-items-center gap-2 mb-2 px-1">
               <div>
@@ -181,6 +177,7 @@
             <nav class="nav nav-pills flex-column gap-1">
               <a class="nav-link" href="index.html">الرئيسية</a>
               <a class="nav-link active" href="applications.html">التطبيقات</a>
+              <a class="nav-link" href="roles.html">الأدوار</a>
               <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
             </nav>
           </div>
@@ -241,53 +238,85 @@
               </div>
             </form>
 
-            <!-- Table -->
-            <div class="table-responsive mt-3">
+            <!-- Table (Apps) -->
+            <div class="table-responsive mt-3 ap-table-stack">
               <table class="table align-middle mb-0">
                 <thead class="table-light">
                   <tr>
-                    <th style="min-width: 260px">الاسم</th>
+                    <th style="min-width: 320px">الاسم</th>
                     <th style="min-width: 220px">الوصف</th>
-                    <th style="min-width: 140px">المبرمج</th>
-                    <th style="min-width: 110px">الحالة</th>
-                    <th style="min-width: 150px">آخر تحديث</th>
+                    <th style="min-width: 100px">المبرمج</th>
+                    <th style="min-width: 90px">الحالة</th>
+                    <th style="min-width: 120px">آخر تحديث</th>
                     <th style="min-width: 220px">إجراءات</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  <!-- Example row (server loop) -->
-                  <tr>
-                    <td>
+                  <!-- access_mode = app -->
+                  <tr data-access-mode="app">
+                    <td data-label="الاسم">
                       <div class="d-flex align-items-center gap-2">
+                        <span
+                          class="ap-app-avatar"
+                          data-app-name="Task Manager"
+                          data-logo="assets/img/logo.png"
+                          aria-label="Task Manager"
+                        >
+                          <span
+                            class="ap-app-avatar-initials"
+                            aria-hidden="true"
+                          ></span>
+                        </span>
+
                         <div>
                           <div class="fw-bold">Task Manager</div>
                           <div
                             class="small ap-muted text-truncate"
-                            style="max-width: 260px"
+                            style="max-width: 280px"
                           >
                             https://example.com
+                          </div>
+
+                          <div class="small mt-1">
+                            <span
+                              class="badge ap-badge-mode ap-badge-mode-app d-none"
+                            >
+                              صلاحيات داخل التطبيق
+                            </span>
+                            <span
+                              class="badge ap-badge-mode ap-badge-mode-platform d-none"
+                            >
+                              المنصة تدير الصفحات
+                            </span>
                           </div>
                         </div>
                       </div>
                     </td>
 
-                    <td class="text-secondary">أداة إدارة مهام</td>
-                    <td class="text-secondary">أحمد</td>
-                    <td>
+                    <td data-label="الوصف" class="text-secondary">
+                      أداة إدارة مهام
+                    </td>
+                    <td data-label="المبرمج" class="text-secondary">أحمد</td>
+                    <td data-label="الحالة">
                       <span class="badge ap-badge-published">Published</span>
                     </td>
-                    <td class="text-secondary">01 Dec 2025</td>
+                    <td data-label="آخر تحديث" class="text-secondary">
+                      01 Dec 2025
+                    </td>
 
-                    <td class="text-nowrap">
-                      <div class="d-flex gap-2 flex-wrap">
+                    <td data-label="إجراءات" class="text-nowrap">
+                      <div class="d-flex gap-2 flex-wrap ap-actions">
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-secondary"
                           data-bs-toggle="modal"
                           data-bs-target="#editAppModal"
+                          aria-label="تعديل"
+                          title="تعديل"
                         >
-                          <i class="bi bi-pencil-square ms-1"></i> تعديل
+                          <i class="bi bi-pencil-square ms-1"></i>
+                          <span class="ap-btn-text">تعديل</span>
                         </button>
 
                         <button
@@ -295,94 +324,206 @@
                           class="btn btn-sm btn-outline-danger"
                           data-bs-toggle="modal"
                           data-bs-target="#deleteConfirmModal"
+                          aria-label="حذف"
+                          title="حذف"
                         >
-                          <i class="bi bi-trash3 ms-1"></i> حذف
+                          <i class="bi bi-trash3 ms-1"></i>
+                          <span class="ap-btn-text">حذف</span>
                         </button>
+
+                        <a
+                          class="btn btn-sm btn-outline-primary ap-action-pages"
+                          href="app-pages.html?appId=1"
+                          aria-label="روابط التطبيق"
+                          title="روابط التطبيق"
+                        >
+                          <i class="bi bi-link-45deg ms-1"></i>
+                          <span class="ap-btn-text">روابط التطبيق</span>
+                        </a>
                       </div>
                     </td>
                   </tr>
 
-                  <tr>
-                    <td>
+                  <!-- access_mode = platform -->
+                  <tr data-access-mode="platform">
+                    <td data-label="الاسم">
                       <div class="d-flex align-items-center gap-2">
+                        <span
+                          class="ap-app-avatar"
+                          data-app-name="تطبيق عدل"
+                          data-logo=""
+                          aria-label="تطبيق عدل"
+                        >
+                          <span
+                            class="ap-app-avatar-initials"
+                            aria-hidden="true"
+                          ></span>
+                        </span>
+
                         <div>
                           <div class="fw-bold">تطبيق عدل</div>
                           <div
                             class="small ap-muted text-truncate"
-                            style="max-width: 260px"
+                            style="max-width: 280px"
                           >
                             https://example.com
+                          </div>
+
+                          <div class="small mt-1">
+                            <span
+                              class="badge ap-badge-mode ap-badge-mode-app d-none"
+                            >
+                              صلاحيات داخل التطبيق
+                            </span>
+                            <span
+                              class="badge ap-badge-mode ap-badge-mode-platform d-none"
+                            >
+                              المنصة تدير الصفحات
+                            </span>
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td class="text-secondary">عدل للتحقيقات القانونية</td>
-                    <td class="text-secondary">نجلاء</td>
-                    <td>
+
+                    <td data-label="الوصف" class="text-secondary">
+                      عدل للتحقيقات القانونية
+                    </td>
+                    <td data-label="المبرمج" class="text-secondary">نجلاء</td>
+                    <td data-label="الحالة">
                       <span class="badge ap-badge-unpublished"
                         >UnPublished</span
                       >
                     </td>
-                    <td class="text-secondary">01 Dec 2025</td>
-                    <td class="text-nowrap">
-                      <div class="d-flex gap-2 flex-wrap">
+                    <td data-label="آخر تحديث" class="text-secondary">
+                      01 Dec 2025
+                    </td>
+
+                    <td data-label="إجراءات" class="text-nowrap">
+                      <div class="d-flex gap-2 flex-wrap ap-actions">
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-secondary"
                           data-bs-toggle="modal"
                           data-bs-target="#editAppModal"
+                          aria-label="تعديل"
+                          title="تعديل"
                         >
-                          <i class="bi bi-pencil-square ms-1"></i> تعديل
+                          <i class="bi bi-pencil-square ms-1"></i>
+                          <span class="ap-btn-text">تعديل</span>
                         </button>
+
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-danger"
                           data-bs-toggle="modal"
                           data-bs-target="#deleteConfirmModal"
+                          aria-label="حذف"
+                          title="حذف"
                         >
-                          <i class="bi bi-trash3 ms-1"></i> حذف
+                          <i class="bi bi-trash3 ms-1"></i>
+                          <span class="ap-btn-text">حذف</span>
                         </button>
+
+                        <a
+                          class="btn btn-sm btn-outline-primary ap-action-pages"
+                          href="app-pages.html?appId=1"
+                          aria-label="روابط التطبيق"
+                          title="روابط التطبيق"
+                        >
+                          <i class="bi bi-link-45deg ms-1"></i>
+                          <span class="ap-btn-text">روابط التطبيق</span>
+                        </a>
                       </div>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
+
+                  <!-- access_mode = app -->
+                  <tr data-access-mode="app">
+                    <td data-label="الاسم">
                       <div class="d-flex align-items-center gap-2">
+                        <span
+                          class="ap-app-avatar"
+                          data-app-name="تطبيق سكن"
+                          data-logo=""
+                          aria-label="تطبيق سكن"
+                        >
+                          <span
+                            class="ap-app-avatar-initials"
+                            aria-hidden="true"
+                          ></span>
+                        </span>
+
                         <div>
                           <div class="fw-bold">تطبيق سكن</div>
                           <div
                             class="small ap-muted text-truncate"
-                            style="max-width: 260px"
+                            style="max-width: 280px"
                           >
                             https://example.com
+                          </div>
+
+                          <div class="small mt-1">
+                            <span
+                              class="badge ap-badge-mode ap-badge-mode-app d-none"
+                            >
+                              صلاحيات داخل التطبيق
+                            </span>
+                            <span
+                              class="badge ap-badge-mode ap-badge-mode-platform d-none"
+                            >
+                              المنصة تدير الصفحات
+                            </span>
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td class="text-secondary">للسكن الجامعي</td>
-                    <td class="text-secondary">نجلاء</td>
-                    <td>
-                      <span class="badge ap-badge-deprecated">deprecated </span>
+
+                    <td data-label="الوصف" class="text-secondary">
+                      للسكن الجامعي
                     </td>
-                    <td class="text-secondary">01 Dec 2025</td>
-                    <td class="text-nowrap">
-                      <div class="d-flex gap-2 flex-wrap">
+                    <td data-label="المبرمج" class="text-secondary">نجلاء</td>
+                    <td data-label="الحالة">
+                      <span class="badge ap-badge-deprecated">deprecated</span>
+                    </td>
+                    <td data-label="آخر تحديث" class="text-secondary">
+                      01 Dec 2025
+                    </td>
+
+                    <td data-label="إجراءات" class="text-nowrap">
+                      <div class="d-flex gap-2 flex-wrap ap-actions">
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-secondary"
                           data-bs-toggle="modal"
                           data-bs-target="#editAppModal"
+                          aria-label="تعديل"
+                          title="تعديل"
                         >
-                          <i class="bi bi-pencil-square ms-1"></i> تعديل
+                          <i class="bi bi-pencil-square ms-1"></i>
+                          <span class="ap-btn-text">تعديل</span>
                         </button>
+
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-danger"
                           data-bs-toggle="modal"
                           data-bs-target="#deleteConfirmModal"
+                          aria-label="حذف"
+                          title="حذف"
                         >
-                          <i class="bi bi-trash3 ms-1"></i> حذف
+                          <i class="bi bi-trash3 ms-1"></i>
+                          <span class="ap-btn-text">حذف</span>
                         </button>
+
+                        <a
+                          class="btn btn-sm btn-outline-primary ap-action-pages"
+                          href="app-pages.html?appId=1"
+                          aria-label="روابط التطبيق"
+                          title="روابط التطبيق"
+                        >
+                          <i class="bi bi-link-45deg ms-1"></i>
+                          <span class="ap-btn-text">روابط التطبيق</span>
+                        </a>
                       </div>
                     </td>
                   </tr>
@@ -390,7 +531,7 @@
               </table>
             </div>
 
-            <!-- Pagination (server-rendered links) -->
+            <!-- Pagination -->
             <div
               class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-3"
             >
@@ -402,8 +543,7 @@
 
               <nav aria-label="Pagination">
                 <ul class="pagination mb-0">
-                  <!-- Prev -->
-                  <li class="page-item [PrevDisabled]">
+                  <li class="page-item disabled">
                     <a
                       class="page-link"
                       href="/apps?page=[PrevPage]&q=[q]&status=[status]&sort=[sort]"
@@ -413,25 +553,25 @@
                     </a>
                   </li>
 
-                  <!-- Pages (render in loop) -->
-                  <li class="page-item [Page1Active] pe-1 ps-1">
+                  <li class="page-item active pe-1 ps-1">
                     <a
                       class="page-link"
                       href="/apps?page=1&q=[q]&status=[status]&sort=[sort]"
                       >1</a
                     >
                   </li>
-                  <li class="page-item [Page2Active] pe-1 ps-1">
+
+                  <li class="page-item pe-1 ps-1">
                     <a
                       class="page-link"
                       href="/apps?page=2&q=[q]&status=[status]&sort=[sort]"
                       >2</a
                     >
                   </li>
-                  <li class="page-item [Page3Active] pe-1 ps-1">
+                  <li class="page-item pe-1 ps-1">
                     <a
                       class="page-link"
-                      href="/apps?page=3&q=[q]&status=[status]&sort=[sort]"
+                      href="/apps?page=2&q=[q]&status=[status]&sort=[sort]"
                       >3</a
                     >
                   </li>
@@ -440,16 +580,7 @@
                     <span class="page-link">…</span>
                   </li>
 
-                  <li class="page-item [LastActive] pe-1 ps-1">
-                    <a
-                      class="page-link"
-                      href="/apps?page=[LastPage]&q=[q]&status=[status]&sort=[sort]"
-                      >[LastPage]</a
-                    >
-                  </li>
-
-                  <!-- Next -->
-                  <li class="page-item [NextDisabled]">
+                  <li class="page-item">
                     <a
                       class="page-link"
                       href="/apps?page=[NextPage]&q=[q]&status=[status]&sort=[sort]"
@@ -467,7 +598,7 @@
       </div>
     </main>
 
-    <!-- Add App Modal (POST) -->
+    <!-- Add App Modal -->
     <div class="modal fade" id="addAppModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -528,6 +659,54 @@
                   />
                 </div>
 
+                <!-- Access Mode UI -->
+                <div class="col-12">
+                  <label class="form-label fw-semibold">إدارة الصلاحيات</label>
+
+                  <div class="row g-2">
+                    <div class="col-12 col-md-6">
+                      <input
+                        class="btn-check"
+                        type="radio"
+                        name="accessMode"
+                        id="addModeApp"
+                        value="app"
+                        checked
+                      />
+                      <label class="ap-mode-card" for="addModeApp">
+                        <div class="d-flex align-items-center gap-2">
+                          <i class="bi bi-shield-lock"></i>
+                          <div class="fw-bold">داخل التطبيق</div>
+                        </div>
+                        <div class="small text-secondary mt-1">
+                          المنصة تتحكم في دخول التطبيق فقط، والصلاحيات داخل
+                          التطبيق.
+                        </div>
+                      </label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                      <input
+                        class="btn-check"
+                        type="radio"
+                        name="accessMode"
+                        id="addModePlatform"
+                        value="platform"
+                      />
+                      <label class="ap-mode-card" for="addModePlatform">
+                        <div class="d-flex align-items-center gap-2">
+                          <i class="bi bi-diagram-3"></i>
+                          <div class="fw-bold">المنصة تدير الصفحات</div>
+                        </div>
+                        <div class="small text-secondary mt-1">
+                          بعد حفظ التطبيق ستضيف روابط الصفحات من زر "روابط
+                          التطبيق".
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="col-12">
                   <label class="form-label fw-semibold"
                     >شعار التطبيق (اختياري)</label
@@ -564,7 +743,11 @@
     <div class="modal fade" id="editAppModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-          <form method="post" action="/apps/update">
+          <form
+            method="post"
+            action="/apps/update"
+            enctype="multipart/form-data"
+          >
             <div class="modal-header">
               <h5 class="modal-title fw-bold">تعديل التطبيق</h5>
               <button
@@ -622,6 +805,47 @@
                     type="url"
                     value="[Url]"
                   />
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold">إدارة الصلاحيات</label>
+
+                  <div class="row g-2">
+                    <div class="col-12 col-md-6">
+                      <input
+                        class="btn-check"
+                        type="radio"
+                        name="accessMode"
+                        id="editModeApp"
+                        value="app"
+                        checked
+                      />
+                      <label class="ap-mode-card" for="editModeApp">
+                        <div class="d-flex align-items-center gap-2">
+                          <i class="bi bi-shield-lock"></i>
+                          <div class="fw-bold">داخل التطبيق</div>
+                        </div>
+                      </label>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                      <input
+                        class="btn-check"
+                        type="radio"
+                        name="accessMode"
+                        id="editModePlatform"
+                        value="platform"
+                      />
+                      <label class="ap-mode-card" for="editModePlatform">
+                        <div class="d-flex align-items-center gap-2">
+                          <i class="bi bi-diagram-3"></i>
+                          <div class="fw-bold">
+                            المنصة تدير الصفحات (الصلاحيات)
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="col-12">

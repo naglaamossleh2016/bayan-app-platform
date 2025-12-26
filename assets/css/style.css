@@ -1,7 +1,9 @@
 /*
-  Bayan Platform - Single Theme (Refactor)
-  ---------------------------------------
+  Bayan Platform - Single Theme (Refactor v3)
+  ------------------------------------------
   - Bootstrap 5.3 RTL friendly
+  - Fixed: action buttons text hidden on desktop
+  - Clean sections + merged media queries
 */
 
 /* =========================
@@ -32,6 +34,16 @@
   --ap-footer-bg: #112335;
   --ap-footer-ink: #a2a7a7;
 
+  /* Avatar */
+  --ap-avatar-size: 40px;
+  --ap-avatar-ink: var(--ap-navbar);
+  --ap-avatar-bg: rgba(222, 172, 49, 0.18);
+  --ap-avatar-ring: rgba(15, 23, 42, 0.12);
+  --ap-avatar-shadow: 0 10px 22px rgba(2, 6, 23, 0.12);
+
+  /* Pills / badges */
+  --ap-pill-radius: 999px;
+
   /* Bootstrap overrides */
   --bs-primary: var(--ap-primary);
   --bs-primary-rgb: 222, 172, 49;
@@ -58,21 +70,24 @@ body {
   font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI",
     Arial, sans-serif;
   line-height: 1.85;
-  padding-top: 72px; /* عدليه حسب ارتفاع navbar عندك (مثلاً 70-90) */
+
+  /* adjust based on navbar height */
+  padding-top: 72px;
 }
 
 main {
   flex: 1;
 }
 
-/* Headings: Cairo */
+/* Headings + brand + buttons */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-.navbar-brand {
+.navbar-brand,
+.btn {
   font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   letter-spacing: 0;
 }
@@ -136,9 +151,7 @@ h6 {
 }
 
 /* =========================
-   5) Logo slots
-   - Fixed typo: app-logo-warp-inner -> ap-logo-wrap-inner
-   (Kept original selector too for backward compatibility)
+   5) Logo
 ========================= */
 .ap-logo-wrap {
   width: 40px;
@@ -149,11 +162,10 @@ h6 {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-
-  /* kept the “last one wins” shadow as a single line */
   box-shadow: 0 12px 26px rgba(25, 50, 76, 0.18);
 }
 
+/* backward compatibility */
 .ap-logo-wrap-inner,
 .app-logo-warp-inner {
   width: 60px;
@@ -197,18 +209,14 @@ h6 {
 }
 
 .ap-sidebar .nav-link.active {
-  background: #6687c552;
+  background: rgba(102, 135, 197, 0.32);
   color: var(--ap-navbar);
   border: 1px solid #a5b5d2;
 }
 
 /* =========================
-   7) Buttons (Bootstrap)
+   7) Buttons
 ========================= */
-/* Primary button: Gold + white text */
-.btn {
-  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-}
 .btn-primary {
   --bs-btn-bg: var(--ap-primary);
   --bs-btn-border-color: var(--ap-primary);
@@ -227,7 +235,6 @@ h6 {
   --bs-btn-disabled-color: rgba(255, 255, 255, 0.85);
 }
 
-/* Outline primary: navbar color as ink */
 .btn-outline-primary {
   --bs-btn-color: var(--ap-navbar);
   --bs-btn-border-color: rgba(25, 50, 76, 0.35);
@@ -236,8 +243,11 @@ h6 {
   --bs-btn-active-bg: rgba(222, 172, 49, 0.18);
   --bs-btn-active-border-color: rgba(222, 172, 49, 0.7);
 }
-.btn:hover {
-  color: #19324c;
+
+/* keep outlines readable */
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover {
+  color: var(--ap-navbar);
 }
 
 /* =========================
@@ -250,7 +260,7 @@ h6 {
 }
 
 /* =========================
-   9) Tables
+   9) Tables + badges
 ========================= */
 .table-responsive {
   border-radius: 14px;
@@ -258,50 +268,68 @@ h6 {
   background: #fff;
 }
 
-/* THEAD color */
+/* THEAD */
 .table thead,
 .table thead th {
   background: var(--ap-thead-bg) !important;
   color: var(--ap-thead-ink) !important;
 }
 
-/* Bootstrap table-light compatibility */
+/* table-light compatibility */
 .table-light {
   --bs-table-bg: var(--ap-thead-bg);
   --bs-table-color: var(--ap-thead-ink);
 }
 
-/* Status badges (Table) */
+/* Base badges */
 .table .badge {
   font-weight: 800;
   padding: 0.45em 0.7em;
-  border-radius: 999px;
+  border-radius: var(--ap-pill-radius);
   border: 1px solid rgba(15, 23, 42, 0.18);
 }
 
-/* Published (Live) */
-.badge.ap-badge-published {
+/* Status badges */
+.badge.ap-badge-published,
+.badge.ap-badge-enabled {
   background: rgba(78, 178, 100, 0.12) !important;
   color: green !important;
   border-color: rgba(25, 50, 76, 0.28) !important;
 }
 
-/* Draft */
-.badge.ap-badge-unpublished {
+.badge.ap-badge-unpublished,
+.badge.ap-badge-disabled {
   background: rgba(222, 172, 49, 0.2) !important;
   color: #6b4f00 !important;
   border-color: rgba(222, 172, 49, 0.4) !important;
 }
 
-/* Deprecated */
 .badge.ap-badge-deprecated {
   background: rgba(220, 53, 69, 0.12) !important;
   color: #b42318 !important;
   border-color: rgba(220, 53, 69, 0.25) !important;
 }
 
+/* Access mode badge (Table) */
+.ap-badge-mode {
+  font-weight: 800;
+  border-radius: var(--ap-pill-radius);
+  padding: 0.35em 0.65em;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.ap-badge-mode-app {
+  background: rgba(25, 50, 76, 0.08);
+  color: var(--ap-navbar);
+}
+
+.ap-badge-mode-platform {
+  background: rgba(222, 172, 49, 0.18);
+  color: #6b4f00;
+}
+
 /* =========================
-   10) Auth / Login
+   10) Auth
 ========================= */
 .ap-auth-bg {
   min-height: 100vh;
@@ -343,7 +371,7 @@ h6 {
 }
 
 /* =========================
-   12) Offcanvas (Mobile menu)
+   12) Offcanvas
 ========================= */
 .offcanvas {
   background: var(--ap-navbar);
@@ -354,12 +382,21 @@ h6 {
   color: #fff !important;
   opacity: 0.92;
   font-weight: 700;
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
 }
 
 .offcanvas .nav-link:hover {
   opacity: 1;
   text-decoration: underline;
   text-underline-offset: 6px;
+}
+
+.offcanvas .nav-link.active {
+  background: rgba(222, 172, 49, 0.18);
+  border: 1px solid rgba(222, 172, 49, 0.35);
+  opacity: 1;
+  text-decoration: none !important;
 }
 
 .offcanvas .btn-close {
@@ -407,8 +444,364 @@ footer {
   background-color: var(--ap-footer-bg) !important;
   color: var(--ap-footer-ink);
 }
+
+/* =========================
+   15) App Avatar
+========================= */
+.ap-app-avatar {
+  width: var(--ap-avatar-size);
+  height: var(--ap-avatar-size);
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  border-radius: var(--ap-pill-radius);
+  background: radial-gradient(
+      120% 120% at 30% 25%,
+      rgba(255, 255, 255, 0.85),
+      transparent 55%
+    ),
+    var(--ap-avatar-bg);
+  border: 1px solid var(--ap-avatar-ring);
+  box-shadow: var(--ap-avatar-shadow);
+}
+
+.ap-app-avatar.has-image {
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.ap-app-avatar-img {
+  width: var(--ap-avatar-size);
+  height: var(--ap-avatar-size);
+  object-fit: contain;
+  display: block;
+  background: transparent;
+  padding: 0;
+}
+
+.ap-app-avatar-initials {
+  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  line-height: 1;
+  letter-spacing: 0.6px;
+  color: var(--ap-avatar-ink) !important;
+  display: grid;
+  place-items: center;
+}
+
+.ap-app-avatar.has-image .ap-app-avatar-initials {
+  display: none;
+}
+
+/* =========================
+   16) Access Mode UI
+========================= */
+.ap-mode-card {
+  display: block;
+  padding: 0.85rem 0.9rem;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+  height: 100%;
+}
+
+.ap-mode-card i {
+  font-size: 1.1rem;
+  color: var(--ap-navbar);
+}
+
+.btn-check:checked + .ap-mode-card {
+  border-color: rgba(25, 50, 76, 0.35);
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.08);
+  background: rgba(25, 50, 76, 0.03);
+}
+
+.ap-links-box,
+.ap-mode-help {
+  padding: 0.9rem;
+  border-radius: 14px;
+  border: 1px dashed rgba(25, 50, 76, 0.28);
+  background: rgba(222, 172, 49, 0.08);
+}
+
+/* =========================
+   17) Helpers
+========================= */
+.ap-section {
+  scroll-margin-top: 92px;
+}
+
+.ap-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: var(--ap-pill-radius);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.ap-swatch {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.ap-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+}
+
+/* Page header utilities */
+.ap-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ap-breadcrumb-lite {
+  font-size: 0.9rem;
+  color: var(--ap-muted);
+}
+
+.ap-breadcrumb-lite a {
+  color: var(--ap-navbar);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.ap-breadcrumb-lite a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.ap-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ap-inline-form {
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  padding: 0.9rem;
+}
+
+.ap-divider {
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
+  margin: 1rem 0;
+}
+
+/* =========================
+   Actions: show text on desktop
+========================= */
+.ap-btn-text {
+  display: inline;
+}
+
+/* Hide action text ONLY on small screens */
 @media (max-width: 576px) {
   .navbar-brand {
-    font-size: 1.1rem !important;
+    font-size: 1rem;
+  }
+  .ap-actions .ap-btn-text {
+    display: none;
+  }
+
+  .ap-actions .btn,
+  .ap-actions .btn.btn-sm {
+    padding: 0.35rem 0.55rem;
+  }
+
+  /* Remove icon margin when text hidden */
+  .ap-actions .btn i {
+    margin: 0 !important;
+  }
+}
+
+/* =========================
+   Responsive table -> Cards (Apps table only)
+   Apply up to LG (mobile + tablet)
+========================= */
+@media (max-width: 991.98px) {
+  .ap-table-stack {
+    border: 0;
+    background: transparent;
+  }
+
+  .ap-table-stack thead {
+    display: none;
+  }
+
+  .ap-table-stack tbody tr {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--ap-border);
+    border-radius: 14px;
+    box-shadow: var(--ap-shadow);
+    padding: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .ap-table-stack tbody td {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.6rem;
+    align-items: start;
+    padding: 0.45rem 0;
+    border: 0;
+    white-space: normal !important;
+  }
+
+  .ap-table-stack tbody td::before {
+    content: attr(data-label);
+    font-weight: 800;
+    color: var(--ap-muted);
+    line-height: 1.4;
+  }
+
+  /* Name cell: full width (no label) */
+  .ap-table-stack tbody td[data-label="الاسم"] {
+    display: block;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    margin-bottom: 0.75rem;
+  }
+  .ap-table-stack tbody td[data-label="الاسم"]::before {
+    display: none;
+  }
+
+  /* Actions cell: full width (no label) */
+  .ap-table-stack tbody td[data-label="إجراءات"] {
+    display: block;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    margin-top: 0.75rem;
+  }
+  .ap-table-stack tbody td[data-label="إجراءات"]::before {
+    display: none;
+  }
+
+  .ap-table-stack tbody td[data-label="إجراءات"] .ap-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* URL inside name */
+  .ap-table-stack .text-truncate {
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
+}
+
+/* =========================
+   Desktop FIX (Critical)
+   - ensure action buttons text ALWAYS visible >= 577px
+========================= */
+@media (min-width: 577px) {
+  /* لو كان فيه أي rule قديم بيعمل font-size:0 للأزرار، ده بيكسره */
+  .table td.text-nowrap .btn,
+  .table td.text-nowrap .btn.btn-sm {
+    font-size: 0.875rem !important; /* bootstrap btn-sm baseline */
+  }
+}
+/* =========================
+   Pages table responsive -> Cards (Pages page only)
+========================= */
+@media (max-width: 991.98px) {
+  .ap-pages-stack {
+    border: 0;
+    background: transparent;
+  }
+
+  .ap-pages-stack thead {
+    display: none;
+  }
+
+  .ap-pages-stack tbody tr {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--ap-border);
+    border-radius: 14px;
+    box-shadow: var(--ap-shadow);
+    padding: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .ap-pages-stack tbody td {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.6rem;
+    align-items: start;
+    padding: 0.45rem 0;
+    border: 0;
+    white-space: normal !important;
+  }
+
+  .ap-pages-stack tbody td::before {
+    content: attr(data-label);
+    font-weight: 800;
+    color: var(--ap-muted);
+    line-height: 1.4;
+  }
+
+  /* Actions cell: full width (no label) */
+  .ap-pages-stack tbody td[data-label="إجراءات"] {
+    display: block;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    margin-top: 0.75rem;
+  }
+  .ap-pages-stack tbody td[data-label="إجراءات"]::before {
+    display: none;
+  }
+
+  .ap-pages-stack tbody td[data-label="إجراءات"] .ap-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* =========================
+   Actions text visibility (global)
+   - show text on desktop
+   - hide text only on small screens
+========================= */
+.ap-btn-text {
+  display: inline;
+}
+
+@media (max-width: 576px) {
+  .ap-actions .ap-btn-text {
+    display: none;
+  }
+
+  .ap-actions .btn,
+  .ap-actions .btn.btn-sm {
+    padding: 0.35rem 0.55rem;
+  }
+
+  .ap-actions .btn i {
+    margin: 0 !important;
   }
 }

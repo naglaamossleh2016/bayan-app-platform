@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>الأدوار | منصة بيان</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <link href="assets/css/style.css" rel="stylesheet" />
+
+    <!-- Page tweaks (move to style.css لو تحبي) -->
+    <style>
+      /* badges (لو موجودة عندك في style.css احذفيهم من هنا) */
+      .badge.ap-badge-enabled {
+        background: rgba(78, 178, 100, 0.12) !important;
+        color: green !important;
+        border-color: rgba(25, 50, 76, 0.28) !important;
+      }
+      .badge.ap-badge-disabled {
+        background: rgba(222, 172, 49, 0.2) !important;
+        color: #6b4f00 !important;
+        border-color: rgba(222, 172, 49, 0.4) !important;
+      }
+
+      /* Mobile: منع scroll بسبب min-width + تحويل أزرار الإجراءات لأيقونات فقط */
+      @media (max-width: 576px) {
+        .table-responsive > .table {
+          width: 100%;
+          min-width: 0 !important;
+          table-layout: fixed;
+        }
+
+        .table th,
+        .table td {
+          min-width: 0 !important;
+          white-space: normal !important;
+          overflow-wrap: anywhere;
+          word-break: break-word;
+        }
+
+        .table td.text-nowrap {
+          white-space: normal !important;
+        }
+
+        /* icons only */
+        .ap-btn-text {
+          display: none !important;
+        }
+
+        .table .btn.btn-sm {
+          width: 38px;
+          height: 38px;
+          padding: 0;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .table .btn.btn-sm i {
+          margin: 0 !important;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar (Desktop + Offcanvas Mobile) -->
+    <nav class="navbar navbar-expand-lg border-bottom fixed-top">
+      <div class="container-fluid px-3">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+          href="index.html"
+        >
+          <span class="ap-logo-wrap app-logo-warp-inner">
+            <img class="ap-logo-img" src="assets/img/logo.png" alt="Logo" />
+          </span>
+          منصة بيان لإدارة التطبيقات
+        </a>
+
+        <!-- Mobile toggler -> Offcanvas (RIGHT) -->
+        <button
+          class="navbar-toggler d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#apOffcanvas"
+          aria-controls="apOffcanvas"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Desktop menu -->
+        <div class="d-none d-lg-flex align-items-center gap-3 ms-auto">
+          <ul class="navbar-nav flex-row gap-2">
+            <li class="nav-item">
+              <a class="nav-link" href="applications.html">التطبيقات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="change-password.html"
+                >تغيير كلمة المرور</a
+              >
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <span class="fw-bold text-white">
+              مرحبًا، <span id="currentUserName" class="opacity-75">User</span>
+            </span>
+
+            <a href="#" id="logoutBtn" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-box-arrow-right ms-1"></i> خروج
+            </a>
+          </div>
+        </div>
+
+        <!-- Offcanvas (Mobile / Tablet) -->
+        <div
+          class="offcanvas offcanvas-end d-lg-none"
+          tabindex="-1"
+          id="apOffcanvas"
+          aria-labelledby="apOffcanvasLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="apOffcanvasLabel">
+              القائمة
+            </h5>
+            <button
+              type="button"
+              class="btn-close ms-0"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="offcanvas-body">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">الرئيسية</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="applications.html">التطبيقات</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="roles.html"
+                  >الأدوار</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="design-catalog.html"
+                  >كتالوج التصميم</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="change-password.html"
+                  >تغيير كلمة المرور</a
+                >
+              </li>
+            </ul>
+              <hr />
+
+            <div
+              class="d-flex align-items-center justify-content-between gap-2"
+            >
+              <span class="fw-bold">
+                مرحبًا،
+                <span id="currentUserNameMobile" class="opacity-75">User</span>
+              </span>
+
+              <!-- Backend logout -->
+              <!-- <form method="post" action="/logout" class="d-inline">
+            <button class="btn btn-outline-secondary btn-sm" type="submit">
+              <i class="bi bi-box-arrow-right ms-1"></i> خروج
+            </button>
+          </form> -->
+
+              <!-- Demo logout (بديل الفورم) -->
+
+              <a
+                href="#"
+                id="logoutBtnMobile"
+                class="btn btn-outline-secondary btn-sm"
+              >
+                <i class="bi bi-box-arrow-right ms-1"></i> خروج
+              </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container-fluid my-4 px-3 px-lg-4">
+      <div class="row g-3">
+        <!-- Sidebar -->
+        <div class="col-12 col-lg-2 d-none d-lg-block">
+          <div class="ap-sidebar card ap-card p-2">
+            <div class="d-flex align-items-center gap-2 mb-2 px-1">
+              <div>
+                <div class="fw-bold">لوحة التحكم بيان</div>
+                <div class="small ap-muted">إدارة المستخدمين والصلاحيات</div>
+              </div>
+            </div>
+
+            <hr class="my-2" />
+
+            <nav class="nav nav-pills flex-column gap-1">
+              <a class="nav-link" href="index.html">الرئيسية</a>
+              <a class="nav-link" href="applications.html">التطبيقات</a>
+              <a class="nav-link active" href="roles.html">الأدوار</a>
+              <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="col-12 col-lg-10">
+          <div class="card ap-card p-4">
+            <div
+              class="d-flex align-items-start justify-content-between gap-2 flex-wrap"
+            >
+              <div>
+                <h1 class="h4 fw-bold mb-1">الأدوار</h1>
+                <div class="small ap-muted">
+                  إنشاء وإدارة أدوار المستخدمين (اسم + كود + حالة).
+                </div>
+              </div>
+
+              <button
+                class="btn btn-primary fw-bold"
+                data-bs-toggle="modal"
+                data-bs-target="#addRoleModal"
+              >
+                <i class="bi bi-plus-lg ms-1"></i> إضافة دور
+              </button>
+            </div>
+
+            <!-- Filters (GET) -->
+            <form class="row g-2 mt-3" method="get" action="/roles">
+              <div class="col-12 col-md-6">
+                <input
+                  name="q"
+                  class="form-control"
+                  type="search"
+                  placeholder="ابحث باسم الدور أو الكود..."
+                />
+              </div>
+
+              <div class="col-6 col-md-3">
+                <select name="status" class="form-select">
+                  <option value="">كل الحالات</option>
+                  <option value="active">نشط</option>
+                  <option value="inactive">غير نشط</option>
+                </select>
+              </div>
+
+              <div class="col-6 col-md-3">
+                <select name="sort" class="form-select">
+                  <option value="nameAsc">الاسم A→Z</option>
+                  <option value="nameDesc">الاسم Z→A</option>
+                  <option value="updatedDesc">الأحدث تحديثًا</option>
+                  <option value="updatedAsc">الأقدم تحديثًا</option>
+                </select>
+              </div>
+
+              <div class="col-12 d-flex gap-2">
+                <button class="btn btn-primary fw-bold" type="submit">
+                  بحث
+                </button>
+                <a class="btn btn-outline-secondary" href="/roles">مسح</a>
+              </div>
+            </form>
+
+            <!-- Table -->
+            <div class="table-responsive mt-3">
+              <table class="table align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th style="min-width: 260px">اسم الدور</th>
+                    <th style="min-width: 220px">كود الدور</th>
+                    <th style="min-width: 140px">الحالة</th>
+                    <th style="min-width: 260px">إجراءات</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- Example row (server loop) -->
+                  <tr data-role-id="1">
+                    <td>
+                      <div class="fw-bold">مدير النظام</div>
+                      <div class="small ap-muted">صلاحيات كاملة على المنصة</div>
+                    </td>
+
+                    <td class="text-secondary">
+                      <span class="fw-bold">ADMIN</span>
+                    </td>
+
+                    <td>
+                      <span class="badge ap-badge-enabled">نشط</span>
+                    </td>
+
+                    <td class="text-nowrap">
+                      <div class="d-flex gap-2 flex-wrap">
+                        <!-- Edit -->
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                          data-bs-toggle="tooltip"
+                          data-bs-title="تعديل"
+                          aria-label="تعديل"
+                          data-bs-placement="top"
+                          data-bs-trigger="hover focus"
+                          data-bs-container="body"
+                          data-bs-target="#editRoleModal"
+                          data-bs-toggle2="modal"
+                          onclick="new bootstrap.Modal(document.getElementById('editRoleModal')).show();"
+                        >
+                          <i class="bi bi-pencil-square ms-1"></i>
+                          <span class="ap-btn-text">تعديل</span>
+                        </button>
+
+                        <!-- Toggle status -->
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="tooltip"
+                          data-bs-title="تعطيل"
+                          aria-label="تعطيل"
+                          data-bs-placement="top"
+                          data-bs-trigger="hover focus"
+                          data-bs-container="body"
+                        >
+                          <i class="bi bi-toggle2-on ms-1"></i>
+                          <span class="ap-btn-text">تعطيل</span>
+                        </button>
+
+                        <!-- Delete (always last) -->
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger"
+                          data-bs-toggle="tooltip"
+                          data-bs-title="حذف"
+                          aria-label="حذف"
+                          data-bs-placement="top"
+                          data-bs-trigger="hover focus"
+                          data-bs-container="body"
+                          onclick="new bootstrap.Modal(document.getElementById('deleteRoleModal')).show();"
+                        >
+                          <i class="bi bi-trash3 ms-1"></i>
+                          <span class="ap-btn-text">حذف</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr data-role-id="2">
+                    <td>
+                      <div class="fw-bold">مشرف</div>
+                      <div class="small ap-muted">متابعة وإدارة جزئية</div>
+                    </td>
+
+                    <td class="text-secondary">
+                      <span class="fw-bold">SUPERVISOR</span>
+                    </td>
+
+                    <td>
+                      <span class="badge ap-badge-disabled">غير نشط</span>
+                    </td>
+
+                    <td class="text-nowrap">
+                      <div class="d-flex gap-2 flex-wrap">
+                        <!-- Edit -->
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                          data-bs-toggle="tooltip"
+                          data-bs-title="تعديل"
+                          aria-label="تعديل"
+                          data-bs-placement="top"
+                          data-bs-trigger="hover focus"
+                          data-bs-container="body"
+                          onclick="new bootstrap.Modal(document.getElementById('editRoleModal')).show();"
+                        >
+                          <i class="bi bi-pencil-square ms-1"></i>
+                          <span class="ap-btn-text">تعديل</span>
+                        </button>
+
+                        <!-- Toggle status -->
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="tooltip"
+                          data-bs-title="تفعيل"
+                          aria-label="تفعيل"
+                          data-bs-placement="top"
+                          data-bs-trigger="hover focus"
+                          data-bs-container="body"
+                        >
+                          <i class="bi bi-toggle2-off ms-1"></i>
+                          <span class="ap-btn-text">تفعيل</span>
+                        </button>
+
+                        <!-- Delete (always last) -->
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-danger"
+                          data-bs-toggle="tooltip"
+                          data-bs-title="حذف"
+                          aria-label="حذف"
+                          data-bs-placement="top"
+                          data-bs-trigger="hover focus"
+                          data-bs-container="body"
+                          onclick="new bootstrap.Modal(document.getElementById('deleteRoleModal')).show();"
+                        >
+                          <i class="bi bi-trash3 ms-1"></i>
+                          <span class="ap-btn-text">حذف</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination (server-rendered) -->
+            <div
+              class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-3"
+            >
+              <div class="small text-secondary">
+                عرض <span class="fw-bold">1</span> إلى
+                <span class="fw-bold">2</span> من
+                <span class="fw-bold">2</span> دور
+              </div>
+
+              <nav aria-label="Pagination">
+                <ul class="pagination mb-0">
+                  <li class="page-item disabled">
+                    <span class="page-link">السابق</span>
+                  </li>
+                  <li class="page-item active pe-1 ps-1">
+                    <a class="page-link" href="/roles?page=1">1</a>
+                  </li>
+                  <li class="page-item disabled">
+                    <span class="page-link">التالي</span>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <!-- /Pagination -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Add Role Modal -->
+    <div class="modal fade" id="addRoleModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <form method="post" action="/roles/create">
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold">إضافة دور جديد</h5>
+              <button
+                type="button"
+                class="btn-close ms-0"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">اسم الدور</label>
+                  <input
+                    name="roleName"
+                    class="form-control"
+                    type="text"
+                    placeholder="مثال: مشرف"
+                    required
+                  />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">كود الدور</label>
+                  <input
+                    name="roleCode"
+                    class="form-control"
+                    type="text"
+                    placeholder="مثال: SUPERVISOR"
+                    required
+                  />
+                  <div class="form-text">
+                    إدخال يدوي (يفضل أحرف إنجليزية كبيرة + _).
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold">وصف (اختياري)</label>
+                  <input
+                    name="roleDesc"
+                    class="form-control"
+                    type="text"
+                    placeholder="وصف مختصر عن الدور..."
+                  />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">الحالة</label>
+                  <select name="status" class="form-select" required>
+                    <option value="active" selected>نشط</option>
+                    <option value="inactive">غير نشط</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                إلغاء
+              </button>
+              <button type="submit" class="btn btn-primary fw-bold">حفظ</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Role Modal -->
+    <div class="modal fade" id="editRoleModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <form method="post" action="/roles/update">
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold">تعديل الدور</h5>
+              <button
+                type="button"
+                class="btn-close ms-0"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <input type="hidden" name="id" value="[RoleId]" />
+
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">اسم الدور</label>
+                  <input
+                    name="roleName"
+                    class="form-control"
+                    type="text"
+                    value="[RoleName]"
+                    required
+                  />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">كود الدور</label>
+                  <input
+                    name="roleCode"
+                    class="form-control"
+                    type="text"
+                    value="[RoleCode]"
+                    required
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-semibold">وصف (اختياري)</label>
+                  <input
+                    name="roleDesc"
+                    class="form-control"
+                    type="text"
+                    value="[RoleDesc]"
+                  />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">الحالة</label>
+                  <select name="status" class="form-select" required>
+                    <option value="[Status]">[Status]</option>
+                    <option value="active">نشط</option>
+                    <option value="inactive">غير نشط</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                إلغاء
+              </button>
+              <button type="submit" class="btn btn-primary fw-bold">
+                حفظ التعديلات
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Role Modal -->
+    <div
+      class="modal fade"
+      id="deleteRoleModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold">تأكيد الحذف</h5>
+            <button
+              type="button"
+              class="btn-close ms-0"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <p class="mb-0">
+              هل متأكد من حذف هذا الدور؟ لا يمكن التراجع عن هذا الإجراء.
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              إلغاء
+            </button>
+
+            <form
+              method="post"
+              action="/roles/[RoleId]/delete"
+              class="d-inline"
+            >
+              <button type="submit" class="btn btn-danger fw-bold">
+                <i class="bi bi-trash3 ms-1"></i> نعم، احذف
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-top mt-4">
+      <div class="container-fluid px-3 px-lg-4 py-3">
+        <div class="small text-secondary text-center">
+          جميع الحقوق محفوظة لمركز التطبيقات الالكترونية بجامعه قنا لسنه 2025
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+
+    <script>
+      // Enable Bootstrap tooltips
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .querySelectorAll('[data-bs-toggle="tooltip"]')
+          .forEach((el) => {
+            new bootstrap.Tooltip(el);
+          });
+      });
+    </script>
+  </body>
+</html>

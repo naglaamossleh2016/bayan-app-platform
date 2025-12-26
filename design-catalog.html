@@ -6,6 +6,8 @@
     <title>كتالوج التصميم | منصة بيان</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" type="icon" href="assets/img/favicon.ico" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap"
@@ -25,33 +27,6 @@
     <link href="assets/css/style.css" rel="stylesheet" />
 
     <!-- Catalog-only tiny helpers (optional, safe) -->
-    <style>
-      .ap-section {
-        scroll-margin-top: 92px;
-      }
-      .ap-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.65rem;
-        border-radius: 999px;
-        border: 1px solid rgba(15, 23, 42, 0.12);
-        background: #fff;
-        font-weight: 800;
-        font-size: 0.85rem;
-      }
-      .ap-swatch {
-        width: 44px;
-        height: 44px;
-        border-radius: 14px;
-        border: 1px solid rgba(15, 23, 42, 0.12);
-      }
-      .ap-code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", "Courier New", monospace;
-        font-size: 0.85rem;
-      }
-    </style>
   </head>
 
   <body>
@@ -131,13 +106,23 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav mb-3">
               <li class="nav-item">
+                <a class="nav-link" href="index.html">الرئيسية</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="applications.html">التطبيقات</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="design-catalog.html"
+                <a class="nav-link" href="roles.html">الأدوار</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="design-catalog.html"
                   >كتالوج التصميم</a
                 >
               </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="change-password.html"
                   >تغيير كلمة المرور</a
@@ -172,7 +157,7 @@
       <div class="row g-3">
         <!-- Sidebar الأساسية -->
         <!-- Sidebar الأساسية -->
-        <div class="col-12 col-lg-2">
+        <div class="col-12 col-lg-2 d-none d-lg-block">
           <div class="ap-sidebar card ap-card p-2 sticky-top" style="top: 92px">
             <div class="d-flex align-items-center gap-2 mb-2 px-1">
               <div>
@@ -186,18 +171,16 @@
             <nav class="nav nav-pills flex-column gap-1">
               <a class="nav-link" href="index.html">الرئيسية</a>
               <a class="nav-link" href="applications.html">التطبيقات</a>
+              <a class="nav-link" href="roles.html">الأدوار</a>
               <a class="nav-link active" href="design-catalog.html"
                 >كتالوج التصميم</a
-              >
-              <a class="nav-link" href="change-password.html"
-                >تغيير كلمة المرور</a
               >
             </nav>
           </div>
         </div>
 
         <!-- Sidebar كتالوج التصميم (TOC) -->
-        <div class="col-12 col-lg-2">
+        <div class="col-12 col-lg-2 d-none d-lg-block">
           <div class="ap-sidebar card ap-card p-2 sticky-top" style="top: 92px">
             <div
               class="d-flex align-items-center justify-content-between gap-2 px-1 mb-2"

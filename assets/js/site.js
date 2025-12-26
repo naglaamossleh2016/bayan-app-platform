@@ -148,3 +148,66 @@ document.querySelectorAll("[data-toggle-pass]").forEach((btn) => {
     if (icon) icon.className = isHidden ? "bi bi-eye-slash" : "bi bi-eye";
   });
 });
+// <!-- UI logic (Avatar + badges + show/hide pages actions + edit modal helper) -->
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ===== Avatar (initials + image) =====
+  function getInitials(name) {
+    if (!name) return "؟";
+    const cleaned = String(name).trim().replace(/\s+/g, " ");
+    if (!cleaned) return "؟";
+    const parts = cleaned.split(" ").filter(Boolean);
+    if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+    return parts[0].slice(0, 2).toUpperCase();
+  }
+
+  document.querySelectorAll(".ap-app-avatar").forEach((wrap) => {
+    const name = wrap.getAttribute("data-app-name") || "";
+    const initialsEl = wrap.querySelector(".ap-app-avatar-initials");
+    if (initialsEl) initialsEl.textContent = getInitials(name);
+
+    const logo = (wrap.getAttribute("data-logo") || "").trim();
+    if (!logo || logo.includes("[") || logo.includes("LogoUrl")) return;
+
+    const img = new Image();
+    img.className = "ap-app-avatar-img";
+    img.alt = name ? `${name} Logo` : "App Logo";
+    img.src = logo;
+
+    img.onload = () => {
+      wrap.classList.add("has-image");
+      wrap.prepend(img);
+    };
+    img.onerror = () => wrap.classList.remove("has-image");
+  });
+
+  // ===== Table: show/hide pages button + badges =====
+  document.querySelectorAll("tr[data-access-mode]").forEach((tr) => {
+    const mode = tr.getAttribute("data-access-mode"); // app | platform
+
+    const pagesBtn = tr.querySelector(".ap-action-pages");
+    if (pagesBtn) pagesBtn.classList.toggle("d-none", mode !== "platform");
+
+    const bApp = tr.querySelector(".ap-badge-mode-app");
+    const bPlat = tr.querySelector(".ap-badge-mode-platform");
+    if (bApp) bApp.classList.toggle("d-none", mode !== "app");
+    if (bPlat) bPlat.classList.toggle("d-none", mode !== "platform");
+  });
+
+  // ===== Edit modal: show/hide "Manage links" helper =====
+  const editModal = document.getElementById("editAppModal");
+  const editWrap = document.getElementById("editPagesActionWrap");
+  function syncEditWrap() {
+    if (!editModal || !editWrap) return;
+    const checked = editModal.querySelector('input[name="accessMode"]:checked');
+    const v = checked ? checked.value : "app";
+    editWrap.classList.toggle("d-none", v !== "platform");
+  }
+  if (editModal && editWrap) {
+    editModal.querySelectorAll('input[name="accessMode"]').forEach((r) => {
+      r.addEventListener("change", syncEditWrap);
+    });
+    editModal.addEventListener("shown.bs.modal", syncEditWrap);
+    syncEditWrap();
+  }
+});
