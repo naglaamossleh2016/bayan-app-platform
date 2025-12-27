@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>صلاحيات الأدوار | منصة بيان</title>
+    <link rel="icon" type="icon" href="assets/img/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg border-bottom fixed-top">
+      <div class="container-fluid px-3">
+        <a
+          class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+          href="index.html"
+        >
+          <span class="ap-logo-wrap app-logo-warp-inner">
+            <img class="ap-logo-img" src="assets/img/logo.png" alt="Logo" />
+          </span>
+          منصة بيان لإدارة التطبيقات
+        </a>
+
+        <button
+          class="navbar-toggler d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#apOffcanvas"
+          aria-controls="apOffcanvas"
+          aria-label="فتح القائمة"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="d-none d-lg-flex align-items-center gap-3 ms-auto">
+          <ul class="navbar-nav flex-row gap-2">
+            <li class="nav-item">
+              <a class="nav-link" href="applications.html">التطبيقات</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="change-password.html"
+                >تغيير كلمة المرور</a
+              >
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2">
+            <span class="fw-bold text-white">
+              مرحبًا، <span class="opacity-75">User</span>
+            </span>
+            <a href="login.html" class="btn btn-outline-secondary btn-sm">
+              <i class="bi bi-box-arrow-right ms-1"></i> خروج
+            </a>
+          </div>
+        </div>
+
+        <!-- Offcanvas (Mobile) -->
+        <div
+          class="offcanvas offcanvas-end d-lg-none"
+          tabindex="-1"
+          id="apOffcanvas"
+          aria-labelledby="apOffcanvasLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold" id="apOffcanvasLabel">
+              القائمة
+            </h5>
+            <button
+              type="button"
+              class="btn-close ms-0"
+              data-bs-dismiss="offcanvas"
+              aria-label="إغلاق"
+            ></button>
+          </div>
+
+          <div class="offcanvas-body">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">الرئيسية</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="applications.html">التطبيقات</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="roles.html">الأدوار</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="role-permissions.html"
+                  >صلاحيات الأدوار</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="users.html">المستخدمين</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="design-catalog.html"
+                  >كتالوج التصميم</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="change-password.html"
+                  >تغيير كلمة المرور</a
+                >
+              </li>
+            </ul>
+
+            <hr />
+
+            <div
+              class="d-flex align-items-center justify-content-between gap-2"
+            >
+              <span class="fw-bold">
+                مرحبًا،
+                <span id="currentUserNameMobile" class="opacity-75">User</span>
+              </span>
+
+              <a
+                href="#"
+                id="logoutBtnMobile"
+                class="btn btn-outline-secondary btn-sm"
+              >
+                <i class="bi bi-box-arrow-right ms-1"></i> خروج
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container-fluid my-4 px-3 px-lg-4">
+      <div class="row g-3">
+        <!-- Sidebar (Desktop only) -->
+        <div class="col-12 col-lg-2 d-none d-lg-block">
+          <div class="ap-sidebar card ap-card p-2">
+            <div class="d-flex align-items-center gap-2 mb-2 px-1">
+              <div>
+                <div class="fw-bold">لوحة التحكم بيان</div>
+                <div class="small ap-muted">إدارة الصلاحيات</div>
+              </div>
+            </div>
+
+            <hr class="my-2" />
+
+            <nav class="nav nav-pills flex-column gap-1">
+              <a class="nav-link" href="index.html">الرئيسية</a>
+              <a class="nav-link" href="applications.html">التطبيقات</a>
+              <a class="nav-link" href="roles.html">الأدوار</a>
+              <a class="nav-link active" href="#">صلاحيات الأدوار</a>
+              <a class="nav-link" href="users.html">المستخدمين</a>
+              <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="col-12 col-lg-10">
+          <div class="card ap-card p-4">
+            <div
+              class="d-flex align-items-start justify-content-between gap-2 flex-wrap"
+            >
+              <div>
+                <h1 class="h4 fw-bold mb-1">صلاحيات الأدوار</h1>
+                <div class="small ap-muted">
+                  اختار دور، ثم حدد صلاحيات المنصة وصلاحيات التطبيقات، ثم احفظ.
+                </div>
+              </div>
+            </div>
+
+            <div class="ap-divider"></div>
+
+            <!-- Role selector -->
+            <form method="get" action="#">
+              <div class="row g-2">
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">اختر الدور</label>
+                  <select class="form-select" name="role_id">
+                    <option value="1" selected>مدير النظام (ADMIN)</option>
+                    <option value="2">مشرف (SUPERVISOR)</option>
+                    <option value="3">مستخدم (USER)</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">حالة الدور</label>
+                  <div class="form-control bg-white">
+                    <span class="badge ap-badge-enabled">نشط</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-outline-secondary" type="submit">
+                  عرض الصلاحيات
+                </button>
+              </div>
+            </form>
+
+            <div class="ap-divider"></div>
+
+            <!-- Permissions form -->
+            <form method="post" action="#">
+              <input type="hidden" name="role_id" value="1" />
+
+              <div class="ap-tabs-wrap">
+                <input
+                  class="ap-tab-radio"
+                  type="radio"
+                  name="permTab"
+                  id="tabPlatform"
+                  checked
+                />
+                <label class="ap-tab-label" for="tabPlatform">
+                  <i class="bi bi-shield-lock"></i>
+                  صلاحيات المنصة
+                </label>
+
+                <input
+                  class="ap-tab-radio"
+                  type="radio"
+                  name="permTab"
+                  id="tabApps"
+                />
+                <label class="ap-tab-label" for="tabApps">
+                  <i class="bi bi-grid-1x2"></i>
+                  صلاحيات التطبيقات
+                </label>
+
+                <div class="ap-tab-panels">
+                  <!-- =========================
+                       صلاحيات المنصة (كاملة)
+                  ========================== -->
+                  <section id="panelPlatform" class="ap-tab-panel">
+                    <div class="alert alert-light border mb-3">
+                      <div class="fw-bold mb-1">ملاحظة للمبرمج</div>
+                      <div class="small ap-muted mb-0">
+                        كل checkbox هنا قيمته <b>permission key</b> (مثال:
+                        <code>apps.create</code>) — اربطها بجدول الصلاحيات .
+                      </div>
+                    </div>
+
+                    <!-- Group: Sidebar / Navigation -->
+                    <div class="ap-inline-form mb-3 ap-perm-group" id="grpNav">
+                      <div class="ap-group-head">
+                        <div class="fw-bold">
+                          <i class="bi bi-layout-sidebar ms-1"></i> عناصر
+                          القائمة (Sidebar)
+                        </div>
+                        <div class="ap-group-actions">
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary btn-sm ap-select-all"
+                            data-target="#grpNav"
+                          >
+                            <i class="bi bi-check2-square ms-1"></i> تحديد الكل
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary btn-sm ap-clear-all"
+                            data-target="#grpNav"
+                          >
+                            <i class="bi bi-x-square ms-1"></i> إلغاء الكل
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="row g-2">
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="nav.dashboard"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">الرئيسية</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="nav.apps"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">التطبيقات</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="nav.roles"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">الأدوار</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="nav.users"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">المستخدمين</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="nav.catalog"
+                            />
+                            <span>
+                              <span class="fw-semibold">كتالوج التصميم</span>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Group: Applications -->
+                    <div class="ap-inline-form mb-3 ap-perm-group" id="grpApps">
+                      <div class="ap-group-head">
+                        <div class="fw-bold">
+                          <i class="bi bi-grid-3x3-gap ms-1"></i> صلاحيات
+                          التطبيقات (CRUD)
+                        </div>
+                        <div class="ap-group-actions">
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary btn-sm ap-select-all"
+                            data-target="#grpApps"
+                          >
+                            <i class="bi bi-check2-square ms-1"></i> تحديد الكل
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary btn-sm ap-clear-all"
+                            data-target="#grpApps"
+                          >
+                            <i class="bi bi-x-square ms-1"></i> إلغاء الكل
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="row g-2">
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="apps.view"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">عرض التطبيقات</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="apps.create"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">إنشاء تطبيق</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="apps.update"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">تعديل تطبيق</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="apps.delete"
+                            />
+                            <span>
+                              <span class="fw-semibold">حذف تطبيق</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="apps.manage_pages"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold"
+                                >إدارة روابط/صفحات التطبيقات</span
+                              >
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Group: Roles -->
+                    <div
+                      class="ap-inline-form mb-3 ap-perm-group"
+                      id="grpRoles"
+                    >
+                      <div class="ap-group-head">
+                        <div class="fw-bold">
+                          <i class="bi bi-person-badge ms-1"></i> صلاحيات
+                          الأدوار (Roles)
+                        </div>
+                        <div class="ap-group-actions">
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary btn-sm ap-select-all"
+                            data-target="#grpRoles"
+                          >
+                            <i class="bi bi-check2-square ms-1"></i> تحديد الكل
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary btn-sm ap-clear-all"
+                            data-target="#grpRoles"
+                          >
+                            <i class="bi bi-x-square ms-1"></i> إلغاء الكل
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="row g-2">
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="roles.view"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">عرض الأدوار</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="roles.create"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">إنشاء دور</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="roles.update"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">تعديل دور</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="roles.delete"
+                            />
+                            <span>
+                              <span class="fw-semibold">حذف دور</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="roles.permissions"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold"
+                                >إدارة صلاحيات الأدوار</span
+                              >
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Group: Users -->
+                    <div
+                      class="ap-inline-form mb-0 ap-perm-group"
+                      id="grpUsers"
+                    >
+                      <div class="ap-group-head">
+                        <div class="fw-bold">
+                          <i class="bi bi-people ms-1"></i> صلاحيات المستخدمين
+                          (Users)
+                        </div>
+                        <div class="ap-group-actions">
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary btn-sm ap-select-all"
+                            data-target="#grpUsers"
+                          >
+                            <i class="bi bi-check2-square ms-1"></i> تحديد الكل
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary btn-sm ap-clear-all"
+                            data-target="#grpUsers"
+                          >
+                            <i class="bi bi-x-square ms-1"></i> إلغاء الكل
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="row g-2">
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="users.view"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">عرض المستخدمين</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="users.create"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">إنشاء مستخدم</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="users.update"
+                              checked
+                            />
+                            <span>
+                              <span class="fw-semibold">تعديل مستخدم</span>
+                            </span>
+                          </label>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                          <label class="d-flex align-items-start gap-2">
+                            <input
+                              class="form-check-input mt-1 ap-perm"
+                              type="checkbox"
+                              name="platform_perms[]"
+                              value="users.delete"
+                            />
+                            <span>
+                              <span class="fw-semibold">حذف مستخدم</span>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  <!-- =========================
+                       صلاحيات التطبيقات (details) + تحديد/إلغاء شغال
+                  ========================== -->
+                  <section id="panelApps" class="ap-tab-panel">
+                    <div class="alert alert-light border mb-3">
+                      <div class="fw-bold mb-1">طريقة العمل</div>
+                      <div class="small ap-muted mb-0">
+                        (1) حدد السماح للتطبيق<br />
+                        (2) افتح التطبيق من السهم واخترّ الصفحات<br />
+                        (3) استخدم "تحديد الكل/إلغاء الكل" داخل التطبيق لو عايزة
+                        بسرعة
+                      </div>
+                    </div>
+
+                    <div class="ap-app-accordion">
+                      <!-- App 1 (platform-managed) - default CLOSED -->
+                      <details class="ap-app" data-app-id="2">
+                        <summary>
+                          <div class="ap-app-title">
+                            <input
+                              class="form-check-input m-0 ap-app-access"
+                              type="checkbox"
+                              name="app_access[]"
+                              value="2"
+                              checked
+                            />
+                            <span class="fw-bold">تطبيق عدل</span>
+                            <span class="ap-chip">المنصة تدير الصفحات</span>
+                          </div>
+
+                          <div class="ap-app-meta">
+                            <span class="badge ap-badge-unpublished"
+                              >UnPublished</span
+                            >
+                            <span class="ap-app-chevron">
+                              عرض الصفحات <i class="bi bi-chevron-down"></i>
+                            </span>
+                          </div>
+                        </summary>
+
+                        <div
+                          class="ap-app-body ap-app-pages-group"
+                          id="app2Pages"
+                        >
+                          <div class="ap-group-head">
+                            <div class="fw-bold">صفحات التطبيق</div>
+                            <div class="ap-group-actions">
+                              <button
+                                type="button"
+                                class="btn btn-outline-primary btn-sm ap-select-all"
+                                data-target="#app2Pages"
+                              >
+                                <i class="bi bi-check2-square ms-1"></i> تحديد
+                                الكل
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-outline-primary btn-sm ap-clear-all"
+                                data-target="#app2Pages"
+                              >
+                                <i class="bi bi-x-square ms-1"></i> إلغاء الكل
+                              </button>
+                            </div>
+                          </div>
+
+                          <div class="row g-2">
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="201"
+                                  checked
+                                />
+                                <span>
+                                  <span class="fw-semibold">المستخدمين</span>
+                                  <span class="small ap-muted d-block"
+                                    >/users</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="203"
+                                  checked
+                                />
+                                <span>
+                                  <span class="fw-semibold">الأدوار</span>
+                                  <span class="small ap-muted d-block"
+                                    >/roles</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="204"
+                                />
+                                <span>
+                                  <span class="fw-semibold">التقارير</span>
+                                  <span class="small ap-muted d-block"
+                                    >/reports</span
+                                  >
+                                  <span class="badge ap-badge-disabled mt-1"
+                                    >الصفحة غير مفعّلة</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="205"
+                                  checked
+                                />
+                                <span>
+                                  <span class="fw-semibold">الإعدادات</span>
+                                  <span class="small ap-muted d-block"
+                                    >/settings</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </details>
+
+                      <!-- App 2 (platform-managed) - default CLOSED -->
+                      <details class="ap-app" data-app-id="5">
+                        <summary>
+                          <div class="ap-app-title">
+                            <input
+                              class="form-check-input m-0 ap-app-access"
+                              type="checkbox"
+                              name="app_access[]"
+                              value="5"
+                              checked
+                            />
+                            <span class="fw-bold">شؤون الطلاب</span>
+                            <span class="ap-chip">المنصة تدير الصفحات</span>
+                          </div>
+
+                          <div class="ap-app-meta">
+                            <span class="badge ap-badge-published"
+                              >Published</span
+                            >
+                            <span class="ap-app-chevron">
+                              عرض الصفحات <i class="bi bi-chevron-down"></i>
+                            </span>
+                          </div>
+                        </summary>
+
+                        <div
+                          class="ap-app-body ap-app-pages-group"
+                          id="app5Pages"
+                        >
+                          <div class="ap-group-head">
+                            <div class="fw-bold">صفحات التطبيق</div>
+                            <div class="ap-group-actions">
+                              <button
+                                type="button"
+                                class="btn btn-outline-primary btn-sm ap-select-all"
+                                data-target="#app5Pages"
+                              >
+                                <i class="bi bi-check2-square ms-1"></i> تحديد
+                                الكل
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-outline-primary btn-sm ap-clear-all"
+                                data-target="#app5Pages"
+                              >
+                                <i class="bi bi-x-square ms-1"></i> إلغاء الكل
+                              </button>
+                            </div>
+                          </div>
+
+                          <div class="row g-2">
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="501"
+                                  checked
+                                />
+                                <span>
+                                  <span class="fw-semibold">الملف الشخصي</span>
+                                  <span class="small ap-muted d-block"
+                                    >/profile</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="502"
+                                  checked
+                                />
+                                <span>
+                                  <span class="fw-semibold"
+                                    >الجدول الدراسي</span
+                                  >
+                                  <span class="small ap-muted d-block"
+                                    >/schedule</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="503"
+                                />
+                                <span>
+                                  <span class="fw-semibold">النتائج</span>
+                                  <span class="small ap-muted d-block"
+                                    >/grades</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="504"
+                                  checked
+                                />
+                                <span>
+                                  <span class="fw-semibold">الرسوم</span>
+                                  <span class="small ap-muted d-block"
+                                    >/payments</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="505"
+                                />
+                                <span>
+                                  <span class="fw-semibold">النتائج</span>
+                                  <span class="small ap-muted d-block"
+                                    >/results</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </details>
+
+                      <!-- App 3 (platform-managed) - default CLOSED -->
+                      <details class="ap-app" data-app-id="7">
+                        <summary>
+                          <div class="ap-app-title">
+                            <input
+                              class="form-check-input m-0 ap-app-access"
+                              type="checkbox"
+                              name="app_access[]"
+                              value="7"
+                            />
+                            <span class="fw-bold">نظام التدريب</span>
+                            <span class="ap-chip">المنصة تدير الصفحات</span>
+                          </div>
+
+                          <div class="ap-app-meta">
+                            <span class="badge ap-badge-deprecated">Draft</span>
+                            <span class="ap-app-chevron">
+                              عرض الصفحات <i class="bi bi-chevron-down"></i>
+                            </span>
+                          </div>
+                        </summary>
+
+                        <div
+                          class="ap-app-body ap-app-pages-group"
+                          id="app7Pages"
+                        >
+                          <div class="ap-group-head">
+                            <div class="fw-bold">صفحات التطبيق</div>
+                            <div class="ap-group-actions">
+                              <button
+                                type="button"
+                                class="btn btn-outline-primary btn-sm ap-select-all"
+                                data-target="#app7Pages"
+                              >
+                                <i class="bi bi-check2-square ms-1"></i> تحديد
+                                الكل
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-outline-primary btn-sm ap-clear-all"
+                                data-target="#app7Pages"
+                              >
+                                <i class="bi bi-x-square ms-1"></i> إلغاء الكل
+                              </button>
+                            </div>
+                          </div>
+
+                          <div class="row g-2">
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="701"
+                                />
+                                <span>
+                                  <span class="fw-semibold">طلبات التدريب</span>
+                                  <span class="small ap-muted d-block"
+                                    >/requests</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="702"
+                                />
+                                <span>
+                                  <span class="fw-semibold">الحضور</span>
+                                  <span class="small ap-muted d-block"
+                                    >/attendance</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="703"
+                                />
+                                <span>
+                                  <span class="fw-semibold">التقييمات</span>
+                                  <span class="small ap-muted d-block"
+                                    >/evaluations</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+
+                            <div class="col-12 col-md-3">
+                              <label class="d-flex align-items-start gap-2">
+                                <input
+                                  class="form-check-input mt-1 ap-page"
+                                  type="checkbox"
+                                  name="page_perms[]"
+                                  value="704"
+                                />
+                                <span>
+                                  <span class="fw-semibold">التقارير</span>
+                                  <span class="small ap-muted d-block"
+                                    >/reports</span
+                                  >
+                                </span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </details>
+
+                      <!-- App (inside-app permissions) -->
+                      <div class="ap-inline-form mt-3">
+                        <div
+                          class="d-flex align-items-center justify-content-between gap-2 flex-wrap"
+                        >
+                          <label class="d-flex align-items-center gap-2 mb-0">
+                            <input
+                              class="form-check-input m-0"
+                              type="checkbox"
+                              name="app_access[]"
+                              value="1"
+                              checked
+                            />
+                            <span class="fw-bold">Task Manager</span>
+                            <span class="ap-chip">صلاحيات داخل التطبيق</span>
+                          </label>
+
+                          <div class="small ap-muted">(السماح بالدخول فقط)</div>
+                        </div>
+
+                        <div class="small ap-muted mt-2">
+                          هذا التطبيق صلاحياته داخل التطبيق نفسه، لذلك لا تظهر
+                          صفحات هنا.
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end gap-2 mt-4">
+                <a class="btn btn-outline-secondary" href="roles.html">
+                  عودة للأدوار
+                </a>
+                <button class="btn btn-primary fw-bold" type="submit">
+                  <i class="bi bi-save2 ms-1"></i> حفظ
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-top mt-4">
+      <div class="container-fluid px-3 px-lg-4 py-3">
+        <div class="small text-secondary text-center">
+          جميع الحقوق محفوظة لمركز التطبيقات الالكترونية بجامعه قنا لسنه 2025
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
+</html>

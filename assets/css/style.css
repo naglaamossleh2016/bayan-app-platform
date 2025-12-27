@@ -1,14 +1,18 @@
 /*
-  Bayan Platform - Single Theme (Refactor v3)
-  ------------------------------------------
-  - Bootstrap 5.3 RTL friendly
+  Bayan Platform - Single Theme (Refactor v3.1)
+  ---------------------------------------------
+  - Bootstrap 5.3 (RTL friendly)
+  - Clear sections + minimal duplication
   - Fixed: action buttons text hidden on desktop
-  - Clean sections + merged media queries
+  - Responsive tables:
+    * Apps table  -> card layout via .ap-table-stack (<= lg)
+    * Pages table -> card layout via .ap-pages-stack (<= lg)
+  - Permissions UI (tabs + details accordion)
 */
 
-/* =========================
-   1) Design tokens
-========================= */
+/* =========================================================
+   1) Design Tokens
+========================================================= */
 :root {
   /* Brand */
   --ap-navbar: #19324c;
@@ -51,9 +55,9 @@
   --bs-link-hover-color: #1f4f86;
 }
 
-/* =========================
-   2) Base layout + typography
-========================= */
+/* =========================================================
+   2) Base Layout + Typography
+========================================================= */
 html,
 body {
   height: 100%;
@@ -71,7 +75,7 @@ body {
     Arial, sans-serif;
   line-height: 1.85;
 
-  /* adjust based on navbar height */
+  /* Adjust based on navbar height */
   padding-top: 72px;
 }
 
@@ -108,9 +112,9 @@ h6 {
   color: var(--ap-muted) !important;
 }
 
-/* =========================
+/* =========================================================
    3) Navbar
-========================= */
+========================================================= */
 .navbar {
   background: var(--ap-navbar) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -141,18 +145,18 @@ h6 {
   filter: invert(1) grayscale(1) brightness(2);
 }
 
-/* =========================
+/* =========================================================
    4) Cards
-========================= */
+========================================================= */
 .ap-card {
   background: var(--ap-surface);
   box-shadow: var(--ap-shadow);
   border: 1px solid var(--ap-border);
 }
 
-/* =========================
+/* =========================================================
    5) Logo
-========================= */
+========================================================= */
 .ap-logo-wrap {
   width: 40px;
   height: 40px;
@@ -165,7 +169,7 @@ h6 {
   box-shadow: 0 12px 26px rgba(25, 50, 76, 0.18);
 }
 
-/* backward compatibility */
+/* Backward compatibility selectors */
 .ap-logo-wrap-inner,
 .app-logo-warp-inner {
   width: 60px;
@@ -193,9 +197,9 @@ h6 {
   border-radius: 12px;
 }
 
-/* =========================
+/* =========================================================
    6) Sidebar
-========================= */
+========================================================= */
 .ap-sidebar .nav-link {
   border-radius: 12px;
   font-weight: 800;
@@ -214,9 +218,9 @@ h6 {
   border: 1px solid #a5b5d2;
 }
 
-/* =========================
+/* =========================================================
    7) Buttons
-========================= */
+========================================================= */
 .btn-primary {
   --bs-btn-bg: var(--ap-primary);
   --bs-btn-border-color: var(--ap-primary);
@@ -244,24 +248,46 @@ h6 {
   --bs-btn-active-border-color: rgba(222, 172, 49, 0.7);
 }
 
-/* keep outlines readable */
+/* Keep outlines readable */
 .btn-outline-primary:hover,
-.btn-outline-secondary:hover {
+.btn-outline-secondary:hover,
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
   color: var(--ap-navbar);
 }
 
-/* =========================
+/* =========================================================
    8) Forms
-========================= */
+========================================================= */
 .form-control:focus,
 .form-select:focus {
   border-color: rgba(222, 172, 49, 0.65);
   box-shadow: 0 0 0 0.2rem rgba(222, 172, 49, 0.2);
 }
 
-/* =========================
-   9) Tables + badges
-========================= */
+/* Password toggle inside input (RTL) */
+.ap-pass-wrap {
+  position: relative;
+}
+
+.ap-pass-toggle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0.5rem; /* RTL: left side */
+  z-index: 5;
+}
+
+.ap-pass-wrap .form-control {
+  padding-left: 2.5rem;
+}
+
+/* =========================================================
+   9) Tables + Badges
+========================================================= */
 .table-responsive {
   border-radius: 14px;
   border: 1px solid var(--ap-border);
@@ -310,7 +336,7 @@ h6 {
   border-color: rgba(220, 53, 69, 0.25) !important;
 }
 
-/* Access mode badge (Table) */
+/* Access mode badges (Apps table) */
 .ap-badge-mode {
   font-weight: 800;
   border-radius: var(--ap-pill-radius);
@@ -328,9 +354,9 @@ h6 {
   color: #6b4f00;
 }
 
-/* =========================
-   10) Auth
-========================= */
+/* =========================================================
+   10) Auth (Login Background)
+========================================================= */
 .ap-auth-bg {
   min-height: 100vh;
   background: radial-gradient(
@@ -357,22 +383,22 @@ h6 {
   border: 1px solid rgba(226, 232, 240, 0.75);
 }
 
-/* =========================
+/* =========================================================
    11) Modals
-========================= */
+========================================================= */
 .modal-header {
   background-color: var(--ap-thead-bg) !important;
   justify-content: space-between;
 }
 
 .modal-header .btn-close {
-  background-color: var(--ap-ink) !important;
+  background-color: #6f5618 !important;
   color: var(--ap-bg) !important;
 }
 
-/* =========================
+/* =========================================================
    12) Offcanvas
-========================= */
+========================================================= */
 .offcanvas {
   background: var(--ap-navbar);
   color: #fff;
@@ -411,9 +437,9 @@ h6 {
   justify-content: space-between;
 }
 
-/* =========================
+/* =========================================================
    13) Pagination
-========================= */
+========================================================= */
 .page-link {
   border-radius: 12px;
   border-color: rgba(15, 23, 42, 0.12);
@@ -437,17 +463,17 @@ h6 {
   opacity: 0.6;
 }
 
-/* =========================
+/* =========================================================
    14) Footer
-========================= */
+========================================================= */
 footer {
   background-color: var(--ap-footer-bg) !important;
   color: var(--ap-footer-ink);
 }
 
-/* =========================
+/* =========================================================
    15) App Avatar
-========================= */
+========================================================= */
 .ap-app-avatar {
   width: var(--ap-avatar-size);
   height: var(--ap-avatar-size);
@@ -499,9 +525,9 @@ footer {
   display: none;
 }
 
-/* =========================
-   16) Access Mode UI
-========================= */
+/* =========================================================
+   16) Access Mode UI (Add/Edit App)
+========================================================= */
 .ap-mode-card {
   display: block;
   padding: 0.85rem 0.9rem;
@@ -519,9 +545,9 @@ footer {
 }
 
 .btn-check:checked + .ap-mode-card {
-  border-color: rgba(25, 50, 76, 0.35);
+  border-color: rgb(222 172 49);
   box-shadow: 0 10px 22px rgba(2, 6, 23, 0.08);
-  background: rgba(25, 50, 76, 0.03);
+  background: rgb(222 172 49 / 9%);
 }
 
 .ap-links-box,
@@ -532,9 +558,9 @@ footer {
   background: rgba(222, 172, 49, 0.08);
 }
 
-/* =========================
-   17) Helpers
-========================= */
+/* =========================================================
+   17) Page Helpers (Breadcrumbs / Toolbars / Sections)
+========================================================= */
 .ap-section {
   scroll-margin-top: 92px;
 }
@@ -608,18 +634,155 @@ footer {
   margin: 1rem 0;
 }
 
-/* =========================
-   Actions: show text on desktop
-========================= */
+/* =========================================================
+   18) Role Permissions UI (Tabs + App Details)
+========================================================= */
+
+/* Tabs (no JS) */
+.ap-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ap-tab-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ap-tab-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ap-tab-label:hover {
+  background: rgba(25, 50, 76, 0.04);
+}
+
+#tabPlatform:checked + label[for="tabPlatform"],
+#tabApps:checked + label[for="tabApps"] {
+  background: rgba(222, 172, 49, 0.14);
+  border-color: rgba(222, 172, 49, 0.55);
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.06);
+}
+
+.ap-tab-panels {
+  margin-top: 0.75rem;
+}
+
+.ap-tab-panel {
+  display: none;
+}
+
+#tabPlatform:checked ~ .ap-tab-panels #panelPlatform {
+  display: block;
+}
+
+#tabApps:checked ~ .ap-tab-panels #panelApps {
+  display: block;
+}
+
+/* Group header controls */
+.ap-group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.ap-group-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* Apps accordion (details) */
+.ap-app-accordion details {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.04);
+  overflow: hidden;
+}
+
+.ap-app-accordion details + details {
+  margin-top: 0.75rem;
+}
+
+.ap-app-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.85rem 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  user-select: none;
+}
+
+.ap-app-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.ap-app-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.ap-app-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ap-app-chevron {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.ap-app-chevron i {
+  transition: 0.15s ease-in-out;
+}
+
+details[open] .ap-app-chevron i {
+  transform: rotate(180deg);
+}
+
+.ap-app-body {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 0.9rem;
+}
+
+/* =========================================================
+   19) Actions: text show/hide (fix desktop + hide on mobile only)
+========================================================= */
+
+/* Default: show button text */
 .ap-btn-text {
   display: inline;
 }
 
 /* Hide action text ONLY on small screens */
 @media (max-width: 576px) {
-  .navbar-brand {
-    font-size: 1rem;
-  }
   .ap-actions .ap-btn-text {
     display: none;
   }
@@ -629,16 +792,25 @@ footer {
     padding: 0.35rem 0.55rem;
   }
 
-  /* Remove icon margin when text hidden */
+  /* Remove icon margin when text is hidden */
   .ap-actions .btn i {
     margin: 0 !important;
   }
 }
 
-/* =========================
-   Responsive table -> Cards (Apps table only)
-   Apply up to LG (mobile + tablet)
-========================= */
+/* Safety net: force readable font-size for action buttons on desktop */
+@media (min-width: 577px) {
+  .table td.text-nowrap .btn,
+  .table td.text-nowrap .btn.btn-sm {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* =========================================================
+   20) Responsive Tables -> Card Layout
+========================================================= */
+
+/* Apps table: add class .ap-table-stack on the table-responsive wrapper */
 @media (max-width: 991.98px) {
   .ap-table-stack {
     border: 0;
@@ -683,6 +855,7 @@ footer {
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
     margin-bottom: 0.75rem;
   }
+
   .ap-table-stack tbody td[data-label="الاسم"]::before {
     display: none;
   }
@@ -694,6 +867,7 @@ footer {
     border-top: 1px solid rgba(15, 23, 42, 0.08);
     margin-top: 0.75rem;
   }
+
   .ap-table-stack tbody td[data-label="إجراءات"]::before {
     display: none;
   }
@@ -713,20 +887,7 @@ footer {
   }
 }
 
-/* =========================
-   Desktop FIX (Critical)
-   - ensure action buttons text ALWAYS visible >= 577px
-========================= */
-@media (min-width: 577px) {
-  /* لو كان فيه أي rule قديم بيعمل font-size:0 للأزرار، ده بيكسره */
-  .table td.text-nowrap .btn,
-  .table td.text-nowrap .btn.btn-sm {
-    font-size: 0.875rem !important; /* bootstrap btn-sm baseline */
-  }
-}
-/* =========================
-   Pages table responsive -> Cards (Pages page only)
-========================= */
+/* Pages table: add class .ap-pages-stack on the table-responsive wrapper */
 @media (max-width: 991.98px) {
   .ap-pages-stack {
     border: 0;
@@ -771,6 +932,7 @@ footer {
     border-top: 1px solid rgba(15, 23, 42, 0.08);
     margin-top: 0.75rem;
   }
+
   .ap-pages-stack tbody td[data-label="إجراءات"]::before {
     display: none;
   }
@@ -782,26 +944,24 @@ footer {
   }
 }
 
-/* =========================
-   Actions text visibility (global)
-   - show text on desktop
-   - hide text only on small screens
-========================= */
-.ap-btn-text {
-  display: inline;
-}
-
+/* =========================================================
+   21) Responsive (Mobile tweaks)
+========================================================= */
 @media (max-width: 576px) {
-  .ap-actions .ap-btn-text {
-    display: none;
+  /* Navbar brand size */
+  .navbar-brand {
+    font-size: 1rem;
   }
 
-  .ap-actions .btn,
-  .ap-actions .btn.btn-sm {
-    padding: 0.35rem 0.55rem;
+  /* Tabs: full width buttons */
+  .ap-tab-label {
+    width: 100%;
+    justify-content: center;
   }
 
-  .ap-actions .btn i {
-    margin: 0 !important;
+  /* Details chevron alignment */
+  .ap-app-chevron {
+    width: 100%;
+    justify-content: center;
   }
 }

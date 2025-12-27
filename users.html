@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>الأدوار | منصة بيان</title>
+    <title>المستخدمين | منصة بيان</title>
+    <link rel="icon" type="icon" href="assets/img/favicon.ico" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,65 +23,10 @@
     />
 
     <link href="assets/css/style.css" rel="stylesheet" />
-
-    <!-- Page tweaks (move to style.css لو تحبي) -->
-    <style>
-      /* badges (لو موجودة عندك في style.css احذفيهم من هنا) */
-      .badge.ap-badge-enabled {
-        background: rgba(78, 178, 100, 0.12) !important;
-        color: green !important;
-        border-color: rgba(25, 50, 76, 0.28) !important;
-      }
-      .badge.ap-badge-disabled {
-        background: rgba(222, 172, 49, 0.2) !important;
-        color: #6b4f00 !important;
-        border-color: rgba(222, 172, 49, 0.4) !important;
-      }
-
-      /* Mobile: منع scroll بسبب min-width + تحويل أزرار الإجراءات لأيقونات فقط */
-      @media (max-width: 576px) {
-        .table-responsive > .table {
-          width: 100%;
-          min-width: 0 !important;
-          table-layout: fixed;
-        }
-
-        .table th,
-        .table td {
-          min-width: 0 !important;
-          white-space: normal !important;
-          overflow-wrap: anywhere;
-          word-break: break-word;
-        }
-
-        .table td.text-nowrap {
-          white-space: normal !important;
-        }
-
-        /* icons only */
-        .ap-btn-text {
-          display: none !important;
-        }
-
-        .table .btn.btn-sm {
-          width: 38px;
-          height: 38px;
-          padding: 0;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .table .btn.btn-sm i {
-          margin: 0 !important;
-          font-size: 1rem;
-        }
-      }
-    </style>
   </head>
 
   <body>
-    <!-- Navbar (Desktop + Offcanvas Mobile) -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg border-bottom fixed-top">
       <div class="container-fluid px-3">
         <a
@@ -93,14 +39,14 @@
           منصة بيان لإدارة التطبيقات
         </a>
 
-        <!-- Mobile toggler -> Offcanvas (RIGHT) -->
+        <!-- Mobile toggler -> Offcanvas -->
         <button
           class="navbar-toggler d-lg-none"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#apOffcanvas"
           aria-controls="apOffcanvas"
-          aria-label="Toggle navigation"
+          aria-label="فتح القائمة"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -114,7 +60,6 @@
             <li class="nav-item">
               <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" href="change-password.html"
                 >تغيير كلمة المرور</a
@@ -124,7 +69,8 @@
 
           <div class="d-flex align-items-center gap-2">
             <span class="fw-bold text-white">
-              مرحبًا، <span id="currentUserName" class="opacity-75">User</span>
+              مرحبًا،
+              <span id="currentUserName" class="opacity-75">User</span>
             </span>
 
             <a href="#" id="logoutBtn" class="btn btn-outline-secondary btn-sm">
@@ -133,7 +79,7 @@
           </div>
         </div>
 
-        <!-- Offcanvas (Mobile / Tablet) -->
+        <!-- Offcanvas (Mobile) : روابط فقط -->
         <div
           class="offcanvas offcanvas-end d-lg-none"
           tabindex="-1"
@@ -148,7 +94,7 @@
               type="button"
               class="btn-close ms-0"
               data-bs-dismiss="offcanvas"
-              aria-label="Close"
+              aria-label="إغلاق"
             ></button>
           </div>
 
@@ -161,9 +107,7 @@
                 <a class="nav-link" href="applications.html">التطبيقات</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="roles.html"
-                  >الأدوار</a
-                >
+                <a class="nav-link" href="roles.html">الأدوار</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="role-permissions.html"
@@ -171,7 +115,9 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="users.html">المستخدمين</a>
+                <a class="nav-link active" aria-current="page" href="users.html"
+                  >المستخدمين</a
+                >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="design-catalog.html"
@@ -184,7 +130,8 @@
                 >
               </li>
             </ul>
-              <hr />
+
+            <hr />
 
             <div
               class="d-flex align-items-center justify-content-between gap-2"
@@ -194,15 +141,6 @@
                 <span id="currentUserNameMobile" class="opacity-75">User</span>
               </span>
 
-              <!-- Backend logout -->
-              <!-- <form method="post" action="/logout" class="d-inline">
-            <button class="btn btn-outline-secondary btn-sm" type="submit">
-              <i class="bi bi-box-arrow-right ms-1"></i> خروج
-            </button>
-          </form> -->
-
-              <!-- Demo logout (بديل الفورم) -->
-
               <a
                 href="#"
                 id="logoutBtnMobile"
@@ -210,14 +148,16 @@
               >
                 <i class="bi bi-box-arrow-right ms-1"></i> خروج
               </a>
+            </div>
           </div>
         </div>
+        <!-- /Offcanvas -->
       </div>
     </nav>
 
     <main class="container-fluid my-4 px-3 px-lg-4">
       <div class="row g-3">
-        <!-- Sidebar -->
+        <!-- Sidebar (Desktop only) -->
         <div class="col-12 col-lg-2 d-none d-lg-block">
           <div class="ap-sidebar card ap-card p-2">
             <div class="d-flex align-items-center gap-2 mb-2 px-1">
@@ -232,11 +172,11 @@
             <nav class="nav nav-pills flex-column gap-1">
               <a class="nav-link" href="index.html">الرئيسية</a>
               <a class="nav-link" href="applications.html">التطبيقات</a>
-              <a class="nav-link active" href="roles.html">الأدوار</a>
+              <a class="nav-link" href="roles.html">الأدوار</a>
               <a class="nav-link" href="role-permissions.html"
                 >صلاحيات الأدوار</a
               >
-              <a class="nav-link" href="users.html">المستخدمين</a>
+              <a class="nav-link active" href="users.html">المستخدمين</a>
               <a class="nav-link" href="design-catalog.html">كتالوج التصميم</a>
             </nav>
           </div>
@@ -245,34 +185,47 @@
         <!-- Content -->
         <div class="col-12 col-lg-10">
           <div class="card ap-card p-4">
+            <!-- Header -->
             <div
               class="d-flex align-items-start justify-content-between gap-2 flex-wrap"
             >
               <div>
-                <h1 class="h4 fw-bold mb-1">الأدوار</h1>
+                <h1 class="h4 fw-bold mb-1">المستخدمين</h1>
                 <div class="small ap-muted">
-                  إنشاء وإدارة أدوار المستخدمين (اسم + كود + حالة).
+                  إدارة المستخدمين وربطهم بالبرنامج والدور.
                 </div>
               </div>
 
-              <button
-                class="btn btn-primary fw-bold"
-                data-bs-toggle="modal"
-                data-bs-target="#addRoleModal"
-              >
-                <i class="bi bi-plus-lg ms-1"></i> إضافة دور
-              </button>
+              <!-- زر شمال -->
+              <div class="ms-auto">
+                <button
+                  class="btn btn-primary fw-bold"
+                  data-bs-toggle="modal"
+                  data-bs-target="#addUserModal"
+                >
+                  <i class="bi bi-person-plus ms-1"></i> إضافة مستخدم
+                </button>
+              </div>
             </div>
 
-            <!-- Filters (GET) -->
-            <form class="row g-2 mt-3" method="get" action="/roles">
+            <!-- Filters (Optional) -->
+            <form class="row g-2 mt-3" method="get" action="/users">
               <div class="col-12 col-md-6">
                 <input
                   name="q"
                   class="form-control"
                   type="search"
-                  placeholder="ابحث باسم الدور أو الكود..."
+                  placeholder="ابحث بالاسم / اسم الدخول / الرقم القومي..."
                 />
+              </div>
+
+              <div class="col-6 col-md-3">
+                <select name="programId" class="form-select">
+                  <option value="">كل البرامج</option>
+                  <option value="1">برنامج الطب</option>
+                  <option value="2">برنامج طب الأسنان</option>
+                  <option value="3">برنامج الصيدلة</option>
+                </select>
               </div>
 
               <div class="col-6 col-md-3">
@@ -283,166 +236,119 @@
                 </select>
               </div>
 
-              <div class="col-6 col-md-3">
-                <select name="sort" class="form-select">
-                  <option value="nameAsc">الاسم A→Z</option>
-                  <option value="nameDesc">الاسم Z→A</option>
-                  <option value="updatedDesc">الأحدث تحديثًا</option>
-                  <option value="updatedAsc">الأقدم تحديثًا</option>
-                </select>
-              </div>
-
               <div class="col-12 d-flex gap-2">
                 <button class="btn btn-primary fw-bold" type="submit">
                   بحث
                 </button>
-                <a class="btn btn-outline-secondary" href="/roles">مسح</a>
+                <a class="btn btn-outline-secondary" href="/users">مسح</a>
               </div>
             </form>
 
-            <!-- Table -->
-            <div class="table-responsive mt-3">
+            <!-- Users table -->
+            <div class="table-responsive mt-3 ap-table-stack">
               <table class="table align-middle mb-0">
                 <thead class="table-light">
                   <tr>
-                    <th style="min-width: 260px">اسم الدور</th>
-                    <th style="min-width: 220px">كود الدور</th>
+                    <th style="min-width: 220px">البرنامج</th>
+                    <th style="min-width: 220px">الاسم</th>
+                    <th style="min-width: 180px">الرقم القومي</th>
+                    <th style="min-width: 160px">اسم الدخول</th>
+                    <th style="min-width: 180px">الدور</th>
                     <th style="min-width: 140px">الحالة</th>
                     <th style="min-width: 260px">إجراءات</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  <!-- Example row (server loop) -->
-                  <tr data-role-id="1">
-                    <td>
-                      <div class="fw-bold">مدير النظام</div>
-                      <div class="small ap-muted">صلاحيات كاملة على المنصة</div>
+                  <tr>
+                    <td data-label="البرنامج" class="text-secondary">
+                      برنامج الطب
                     </td>
-
-                    <td class="text-secondary">
-                      <span class="fw-bold">ADMIN</span>
+                    <td data-label="الاسم" class="fw-bold">أحمد محمد</td>
+                    <td data-label="الرقم القومي" class="text-secondary">
+                      29801011234567
                     </td>
-
-                    <td>
+                    <td data-label="اسم الدخول" class="text-secondary">
+                      ahmed.m
+                    </td>
+                    <td data-label="الدور" class="text-secondary">
+                      مدير النظام (ADMIN)
+                    </td>
+                    <td data-label="الحالة">
                       <span class="badge ap-badge-enabled">نشط</span>
                     </td>
 
-                    <td class="text-nowrap">
+                    <td data-label="إجراءات" class="text-nowrap">
                       <div class="d-flex gap-2 flex-wrap">
-                        <!-- Edit -->
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-secondary"
-                          data-bs-toggle="tooltip"
-                          data-bs-title="تعديل"
+                          title="تعديل"
                           aria-label="تعديل"
-                          data-bs-placement="top"
-                          data-bs-trigger="hover focus"
-                          data-bs-container="body"
-                          data-bs-target="#editRoleModal"
-                          data-bs-toggle2="modal"
-                          onclick="new bootstrap.Modal(document.getElementById('editRoleModal')).show();"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editUserModal"
                         >
-                          <i class="bi bi-pencil-square ms-1"></i>
-                          <span class="ap-btn-text">تعديل</span>
+                          <i class="bi bi-pencil-square"></i>
+                          <span class="d-none d-sm-inline ms-1">تعديل</span>
                         </button>
 
-                        <!-- Toggle status -->
-                        <button
-                          type="button"
-                          class="btn btn-sm btn-outline-primary"
-                          data-bs-toggle="tooltip"
-                          data-bs-title="تعطيل"
-                          aria-label="تعطيل"
-                          data-bs-placement="top"
-                          data-bs-trigger="hover focus"
-                          data-bs-container="body"
-                        >
-                          <i class="bi bi-toggle2-on ms-1"></i>
-                          <span class="ap-btn-text">تعطيل</span>
-                        </button>
-
-                        <!-- Delete (always last) -->
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-danger"
-                          data-bs-toggle="tooltip"
-                          data-bs-title="حذف"
+                          title="حذف"
                           aria-label="حذف"
-                          data-bs-placement="top"
-                          data-bs-trigger="hover focus"
-                          data-bs-container="body"
-                          onclick="new bootstrap.Modal(document.getElementById('deleteRoleModal')).show();"
+                          data-bs-toggle="modal"
+                          data-bs-target="#deleteUserModal"
                         >
-                          <i class="bi bi-trash3 ms-1"></i>
-                          <span class="ap-btn-text">حذف</span>
+                          <i class="bi bi-trash3"></i>
+                          <span class="d-none d-sm-inline ms-1">حذف</span>
                         </button>
                       </div>
                     </td>
                   </tr>
 
-                  <tr data-role-id="2">
-                    <td>
-                      <div class="fw-bold">مشرف</div>
-                      <div class="small ap-muted">متابعة وإدارة جزئية</div>
+                  <tr>
+                    <td data-label="البرنامج" class="text-secondary">
+                      برنامج طب الأسنان
                     </td>
-
-                    <td class="text-secondary">
-                      <span class="fw-bold">SUPERVISOR</span>
+                    <td data-label="الاسم" class="fw-bold">نجلاء أبوبكر</td>
+                    <td data-label="الرقم القومي" class="text-secondary">
+                      29801011230000
                     </td>
-
-                    <td>
+                    <td data-label="اسم الدخول" class="text-secondary">
+                      naglaa.a
+                    </td>
+                    <td data-label="الدور" class="text-secondary">
+                      مشرف (SUPERVISOR)
+                    </td>
+                    <td data-label="الحالة">
                       <span class="badge ap-badge-disabled">غير نشط</span>
                     </td>
 
-                    <td class="text-nowrap">
+                    <td data-label="إجراءات" class="text-nowrap">
                       <div class="d-flex gap-2 flex-wrap">
-                        <!-- Edit -->
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-secondary"
-                          data-bs-toggle="tooltip"
-                          data-bs-title="تعديل"
+                          title="تعديل"
                           aria-label="تعديل"
-                          data-bs-placement="top"
-                          data-bs-trigger="hover focus"
-                          data-bs-container="body"
-                          onclick="new bootstrap.Modal(document.getElementById('editRoleModal')).show();"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editUserModal"
                         >
-                          <i class="bi bi-pencil-square ms-1"></i>
-                          <span class="ap-btn-text">تعديل</span>
+                          <i class="bi bi-pencil-square"></i>
+                          <span class="d-none d-sm-inline ms-1">تعديل</span>
                         </button>
 
-                        <!-- Toggle status -->
-                        <button
-                          type="button"
-                          class="btn btn-sm btn-outline-primary"
-                          data-bs-toggle="tooltip"
-                          data-bs-title="تفعيل"
-                          aria-label="تفعيل"
-                          data-bs-placement="top"
-                          data-bs-trigger="hover focus"
-                          data-bs-container="body"
-                        >
-                          <i class="bi bi-toggle2-off ms-1"></i>
-                          <span class="ap-btn-text">تفعيل</span>
-                        </button>
-
-                        <!-- Delete (always last) -->
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-danger"
-                          data-bs-toggle="tooltip"
-                          data-bs-title="حذف"
+                          title="حذف"
                           aria-label="حذف"
-                          data-bs-placement="top"
-                          data-bs-trigger="hover focus"
-                          data-bs-container="body"
-                          onclick="new bootstrap.Modal(document.getElementById('deleteRoleModal')).show();"
+                          data-bs-toggle="modal"
+                          data-bs-target="#deleteUserModal"
                         >
-                          <i class="bi bi-trash3 ms-1"></i>
-                          <span class="ap-btn-text">حذف</span>
+                          <i class="bi bi-trash3"></i>
+                          <span class="d-none d-sm-inline ms-1">حذف</span>
                         </button>
                       </div>
                     </td>
@@ -451,14 +357,14 @@
               </table>
             </div>
 
-            <!-- Pagination (server-rendered) -->
+            <!-- Pagination (Example) -->
             <div
               class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-3"
             >
               <div class="small text-secondary">
                 عرض <span class="fw-bold">1</span> إلى
                 <span class="fw-bold">2</span> من
-                <span class="fw-bold">2</span> دور
+                <span class="fw-bold">2</span> مستخدم
               </div>
 
               <nav aria-label="Pagination">
@@ -467,7 +373,7 @@
                     <span class="page-link">السابق</span>
                   </li>
                   <li class="page-item active pe-1 ps-1">
-                    <a class="page-link" href="/roles?page=1">1</a>
+                    <a class="page-link" href="/users?page=1">1</a>
                   </li>
                   <li class="page-item disabled">
                     <span class="page-link">التالي</span>
@@ -475,19 +381,23 @@
                 </ul>
               </nav>
             </div>
-            <!-- /Pagination -->
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Add Role Modal -->
-    <div class="modal fade" id="addRoleModal" tabindex="-1" aria-hidden="true">
+    <!-- Add User Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-          <form method="post" action="/roles/create">
+          <form
+            method="post"
+            action="/users/create"
+            id="addUserForm"
+            novalidate
+          >
             <div class="modal-header">
-              <h5 class="modal-title fw-bold">إضافة دور جديد</h5>
+              <h5 class="modal-title fw-bold">إضافة مستخدم جديد</h5>
               <button
                 type="button"
                 class="btn-close ms-0"
@@ -498,47 +408,138 @@
 
             <div class="modal-body">
               <div class="row g-3">
+                <!-- Program -->
                 <div class="col-12 col-md-6">
-                  <label class="form-label fw-semibold">اسم الدور</label>
-                  <input
-                    name="roleName"
-                    class="form-control"
-                    type="text"
-                    placeholder="مثال: مشرف"
-                    required
-                  />
+                  <label class="form-label fw-semibold">البرنامج</label>
+                  <select class="form-select" name="programId" required>
+                    <option value="" selected disabled>اختر البرنامج...</option>
+                    <option value="1">برنامج الطب</option>
+                    <option value="2">برنامج طب الأسنان</option>
+                    <option value="3">برنامج الصيدلة</option>
+                  </select>
+                  <div class="invalid-feedback">من فضلك اختر البرنامج.</div>
                 </div>
 
+                <!-- Role -->
                 <div class="col-12 col-md-6">
-                  <label class="form-label fw-semibold">كود الدور</label>
+                  <label class="form-label fw-semibold">دور المستخدم</label>
+                  <select class="form-select" name="roleId" required>
+                    <option value="" selected disabled>اختر الدور...</option>
+                    <option value="ADMIN">مدير النظام (ADMIN)</option>
+                    <option value="SUPERVISOR">مشرف (SUPERVISOR)</option>
+                  </select>
+                  <div class="invalid-feedback">من فضلك اختر الدور.</div>
+                </div>
+
+                <!-- Full name -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">الاسم</label>
                   <input
-                    name="roleCode"
                     class="form-control"
-                    type="text"
-                    placeholder="مثال: SUPERVISOR"
+                    name="fullName"
+                    placeholder="مثال: أحمد محمد"
                     required
                   />
-                  <div class="form-text">
-                    إدخال يدوي (يفضل أحرف إنجليزية كبيرة + _).
+                  <div class="invalid-feedback">من فضلك أدخل الاسم.</div>
+                </div>
+
+                <!-- National ID -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">الرقم القومي</label>
+                  <input
+                    class="form-control"
+                    name="nationalId"
+                    inputmode="numeric"
+                    placeholder="14 رقم"
+                    minlength="14"
+                    maxlength="14"
+                    required
+                  />
+                  <div class="form-text">14 رقم بدون مسافات.</div>
+                  <div class="invalid-feedback">
+                    من فضلك أدخل الرقم القومي (14 رقم).
                   </div>
                 </div>
 
-                <div class="col-12">
-                  <label class="form-label fw-semibold">وصف (اختياري)</label>
+                <!-- Username -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">اسم الدخول</label>
                   <input
-                    name="roleDesc"
                     class="form-control"
-                    type="text"
-                    placeholder="وصف مختصر عن الدور..."
+                    name="username"
+                    placeholder="مثال: ahmed.m"
+                    autocomplete="username"
+                    required
                   />
+                  <div class="invalid-feedback">من فضلك أدخل اسم الدخول.</div>
                 </div>
 
+                <!-- Status -->
                 <div class="col-12 col-md-6">
-                  <label class="form-label fw-semibold">الحالة</label>
-                  <select name="status" class="form-select" required>
+                  <label class="form-label fw-semibold">حالة الحساب</label>
+                  <select class="form-select" name="status" required>
                     <option value="active" selected>نشط</option>
                     <option value="inactive">غير نشط</option>
                   </select>
+                  <div class="invalid-feedback">من فضلك اختر حالة الحساب.</div>
+                </div>
+
+                <!-- Password -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">كلمة المرور</label>
+                  <div class="ap-pass-wrap">
+                    <input
+                      id="userPassword"
+                      class="form-control"
+                      name="password"
+                      type="password"
+                      minlength="6"
+                      autocomplete="new-password"
+                      required
+                    />
+                    <button
+                      class="btn btn-outline-secondary btn-sm ap-pass-toggle"
+                      type="button"
+                      data-toggle-pass="#userPassword"
+                      aria-label="إظهار كلمة المرور"
+                      title="إظهار كلمة المرور"
+                    >
+                      <i class="bi bi-eye"></i>
+                    </button>
+                    <div class="invalid-feedback">
+                      من فضلك أدخل كلمة مرور (6 أحرف على الأقل).
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold"
+                    >تأكيد كلمة المرور</label
+                  >
+                  <div class="ap-pass-wrap">
+                    <input
+                      id="userConfirmPassword"
+                      class="form-control"
+                      name="confirmPassword"
+                      type="password"
+                      minlength="6"
+                      autocomplete="new-password"
+                      required
+                    />
+                    <button
+                      class="btn btn-outline-secondary btn-sm ap-pass-toggle"
+                      type="button"
+                      data-toggle-pass="#userConfirmPassword"
+                      aria-label="إظهار تأكيد كلمة المرور"
+                      title="إظهار تأكيد كلمة المرور"
+                    >
+                      <i class="bi bi-eye"></i>
+                    </button>
+                    <div class="invalid-feedback" id="confirmPasswordFeedback">
+                      من فضلك أكّد كلمة المرور.
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -551,20 +552,22 @@
               >
                 إلغاء
               </button>
-              <button type="submit" class="btn btn-primary fw-bold">حفظ</button>
+              <button type="submit" class="btn btn-primary fw-bold">
+                حفظ المستخدم
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
 
-    <!-- Edit Role Modal -->
-    <div class="modal fade" id="editRoleModal" tabindex="-1" aria-hidden="true">
+    <!-- Edit User Modal (UI فقط) -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-          <form method="post" action="/roles/update">
+          <form method="post" action="/users/update">
             <div class="modal-header">
-              <h5 class="modal-title fw-bold">تعديل الدور</h5>
+              <h5 class="modal-title fw-bold">تعديل المستخدم</h5>
               <button
                 type="button"
                 class="btn-close ms-0"
@@ -574,45 +577,61 @@
             </div>
 
             <div class="modal-body">
-              <input type="hidden" name="id" value="[RoleId]" />
+              <input type="hidden" name="id" value="[UserId]" />
 
               <div class="row g-3">
                 <div class="col-12 col-md-6">
-                  <label class="form-label fw-semibold">اسم الدور</label>
+                  <label class="form-label fw-semibold">البرنامج</label>
+                  <select class="form-select" name="programId" required>
+                    <option value="1">برنامج الطب</option>
+                    <option value="2">برنامج طب الأسنان</option>
+                    <option value="3">برنامج الصيدلة</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">دور المستخدم</label>
+                  <select class="form-select" name="roleId" required>
+                    <option value="ADMIN">مدير النظام (ADMIN)</option>
+                    <option value="SUPERVISOR">مشرف (SUPERVISOR)</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">الاسم</label>
                   <input
-                    name="roleName"
                     class="form-control"
-                    type="text"
-                    value="[RoleName]"
+                    name="fullName"
+                    value="[FullName]"
                     required
                   />
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label class="form-label fw-semibold">كود الدور</label>
+                  <label class="form-label fw-semibold">الرقم القومي</label>
                   <input
-                    name="roleCode"
                     class="form-control"
-                    type="text"
-                    value="[RoleCode]"
+                    name="nationalId"
+                    value="[NationalId]"
+                    minlength="14"
+                    maxlength="14"
                     required
                   />
                 </div>
 
-                <div class="col-12">
-                  <label class="form-label fw-semibold">وصف (اختياري)</label>
+                <div class="col-12 col-md-6">
+                  <label class="form-label fw-semibold">اسم الدخول</label>
                   <input
-                    name="roleDesc"
                     class="form-control"
-                    type="text"
-                    value="[RoleDesc]"
+                    name="username"
+                    value="[Username]"
+                    required
                   />
                 </div>
 
                 <div class="col-12 col-md-6">
                   <label class="form-label fw-semibold">الحالة</label>
-                  <select name="status" class="form-select" required>
-                    <option value="[Status]">[Status]</option>
+                  <select class="form-select" name="status" required>
                     <option value="active">نشط</option>
                     <option value="inactive">غير نشط</option>
                   </select>
@@ -637,10 +656,10 @@
       </div>
     </div>
 
-    <!-- Delete Role Modal -->
+    <!-- Delete User Modal -->
     <div
       class="modal fade"
-      id="deleteRoleModal"
+      id="deleteUserModal"
       tabindex="-1"
       aria-hidden="true"
     >
@@ -658,7 +677,7 @@
 
           <div class="modal-body">
             <p class="mb-0">
-              هل متأكد من حذف هذا الدور؟ لا يمكن التراجع عن هذا الإجراء.
+              هل متأكد من حذف هذا المستخدم؟ لا يمكن التراجع عن هذا الإجراء.
             </p>
           </div>
 
@@ -670,10 +689,9 @@
             >
               إلغاء
             </button>
-
             <form
               method="post"
-              action="/roles/[RoleId]/delete"
+              action="/users/[UserId]/delete"
               class="d-inline"
             >
               <button type="submit" class="btn btn-danger fw-bold">
@@ -696,16 +714,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/site.js"></script>
-
-    <script>
-      // Enable Bootstrap tooltips
-      document.addEventListener("DOMContentLoaded", function () {
-        document
-          .querySelectorAll('[data-bs-toggle="tooltip"]')
-          .forEach((el) => {
-            new bootstrap.Tooltip(el);
-          });
-      });
-    </script>
   </body>
 </html>
