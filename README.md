@@ -73,7 +73,7 @@ It focuses on **clean RTL UI**, **consistent theme**, and **responsive tables**,
 ### CSS
 
 - `assets/css/style.css`
-  - Single theme (Refactor v3)
+  - Single theme
   - RTL-friendly
   - Refactored into clear sections:
     - Design tokens
@@ -82,7 +82,7 @@ It focuses on **clean RTL UI**, **consistent theme**, and **responsive tables**,
     - Tables + badges
     - Modals / Offcanvas
     - Helpers + permissions UI styles
-    - Responsive rules (merged + fixed)
+    - Responsive rules
 
 **Important helper classes you should use in HTML:**
 
