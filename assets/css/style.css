@@ -1,9 +1,9 @@
 /*
-  Bayan Platform - Single Theme (Refactor v3.1)
+  Bayan Platform - Single Theme (Refactor v3.2)
   ---------------------------------------------
   - Bootstrap 5.3 (RTL friendly)
   - Clear sections + minimal duplication
-  - Fixed: action buttons text hidden on desktop
+  - Action buttons: text visible on desktop, icons-only on small screens
   - Responsive tables:
     * Apps table  -> card layout via .ap-table-stack (<= lg)
     * Pages table -> card layout via .ap-pages-stack (<= lg)
@@ -315,7 +315,7 @@ h6 {
   border: 1px solid rgba(15, 23, 42, 0.18);
 }
 
-/* Status badges */
+/* Status badges (unified: removed duplicates at file end) */
 .badge.ap-badge-published,
 .badge.ap-badge-enabled {
   background: rgba(78, 178, 100, 0.12) !important;
@@ -637,8 +637,6 @@ footer {
 /* =========================================================
    18) Role Permissions UI (Tabs + App Details)
 ========================================================= */
-
-/* Tabs (no JS) */
 .ap-tabs {
   display: flex;
   align-items: center;
@@ -773,15 +771,22 @@ details[open] .ap-app-chevron i {
 }
 
 /* =========================================================
-   19) Actions: text show/hide (fix desktop + hide on mobile only)
+   19) Actions: button text visibility rules
 ========================================================= */
-
 /* Default: show button text */
 .ap-btn-text {
   display: inline;
 }
 
-/* Hide action text ONLY on small screens */
+/* Desktop safety: keep action buttons readable */
+@media (min-width: 577px) {
+  .table td.text-nowrap .btn,
+  .table td.text-nowrap .btn.btn-sm {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Small screens: icons-only + tighter paddings */
 @media (max-width: 576px) {
   .ap-actions .ap-btn-text {
     display: none;
@@ -792,36 +797,29 @@ details[open] .ap-app-chevron i {
     padding: 0.35rem 0.55rem;
   }
 
-  /* Remove icon margin when text is hidden */
   .ap-actions .btn i {
     margin: 0 !important;
   }
 }
 
-/* Safety net: force readable font-size for action buttons on desktop */
-@media (min-width: 577px) {
-  .table td.text-nowrap .btn,
-  .table td.text-nowrap .btn.btn-sm {
-    font-size: 0.875rem !important;
-  }
-}
-
 /* =========================================================
-   20) Responsive Tables -> Card Layout
+   20) Responsive Tables -> Card Layout (<= lg)
 ========================================================= */
-
-/* Apps table: add class .ap-table-stack on the table-responsive wrapper */
+/* Shared stack rules for both tables */
 @media (max-width: 991.98px) {
-  .ap-table-stack {
+  .ap-table-stack,
+  .ap-pages-stack {
     border: 0;
     background: transparent;
   }
 
-  .ap-table-stack thead {
+  .ap-table-stack thead,
+  .ap-pages-stack thead {
     display: none;
   }
 
-  .ap-table-stack tbody tr {
+  .ap-table-stack tbody tr,
+  .ap-pages-stack tbody tr {
     display: block;
     background: #fff;
     border: 1px solid var(--ap-border);
@@ -831,7 +829,8 @@ details[open] .ap-app-chevron i {
     margin-bottom: 0.9rem;
   }
 
-  .ap-table-stack tbody td {
+  .ap-table-stack tbody td,
+  .ap-pages-stack tbody td {
     display: grid;
     grid-template-columns: 7.5rem 1fr;
     gap: 0.6rem;
@@ -841,14 +840,36 @@ details[open] .ap-app-chevron i {
     white-space: normal !important;
   }
 
-  .ap-table-stack tbody td::before {
+  .ap-table-stack tbody td::before,
+  .ap-pages-stack tbody td::before {
     content: attr(data-label);
     font-weight: 800;
     color: var(--ap-muted);
     line-height: 1.4;
   }
 
-  /* Name cell: full width (no label) */
+  /* Actions cell: full width (no label) */
+  .ap-table-stack tbody td[data-label="إجراءات"],
+  .ap-pages-stack tbody td[data-label="إجراءات"] {
+    display: block;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    margin-top: 0.75rem;
+  }
+
+  .ap-table-stack tbody td[data-label="إجراءات"]::before,
+  .ap-pages-stack tbody td[data-label="إجراءات"]::before {
+    display: none;
+  }
+
+  .ap-table-stack tbody td[data-label="إجراءات"] .ap-actions,
+  .ap-pages-stack tbody td[data-label="إجراءات"] .ap-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Apps table only: Name cell full width (no label) */
   .ap-table-stack tbody td[data-label="الاسم"] {
     display: block;
     padding-bottom: 0.75rem;
@@ -860,87 +881,12 @@ details[open] .ap-app-chevron i {
     display: none;
   }
 
-  /* Actions cell: full width (no label) */
-  .ap-table-stack tbody td[data-label="إجراءات"] {
-    display: block;
-    padding-top: 0.75rem;
-    border-top: 1px solid rgba(15, 23, 42, 0.08);
-    margin-top: 0.75rem;
-  }
-
-  .ap-table-stack tbody td[data-label="إجراءات"]::before {
-    display: none;
-  }
-
-  .ap-table-stack tbody td[data-label="إجراءات"] .ap-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
   /* URL inside name */
   .ap-table-stack .text-truncate {
     max-width: 100% !important;
     white-space: normal !important;
     overflow: visible !important;
     text-overflow: unset !important;
-  }
-}
-
-/* Pages table: add class .ap-pages-stack on the table-responsive wrapper */
-@media (max-width: 991.98px) {
-  .ap-pages-stack {
-    border: 0;
-    background: transparent;
-  }
-
-  .ap-pages-stack thead {
-    display: none;
-  }
-
-  .ap-pages-stack tbody tr {
-    display: block;
-    background: #fff;
-    border: 1px solid var(--ap-border);
-    border-radius: 14px;
-    box-shadow: var(--ap-shadow);
-    padding: 0.9rem;
-    margin-bottom: 0.9rem;
-  }
-
-  .ap-pages-stack tbody td {
-    display: grid;
-    grid-template-columns: 7.5rem 1fr;
-    gap: 0.6rem;
-    align-items: start;
-    padding: 0.45rem 0;
-    border: 0;
-    white-space: normal !important;
-  }
-
-  .ap-pages-stack tbody td::before {
-    content: attr(data-label);
-    font-weight: 800;
-    color: var(--ap-muted);
-    line-height: 1.4;
-  }
-
-  /* Actions cell: full width (no label) */
-  .ap-pages-stack tbody td[data-label="إجراءات"] {
-    display: block;
-    padding-top: 0.75rem;
-    border-top: 1px solid rgba(15, 23, 42, 0.08);
-    margin-top: 0.75rem;
-  }
-
-  .ap-pages-stack tbody td[data-label="إجراءات"]::before {
-    display: none;
-  }
-
-  .ap-pages-stack tbody td[data-label="إجراءات"] .ap-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
   }
 }
 
@@ -963,5 +909,39 @@ details[open] .ap-app-chevron i {
   .ap-app-chevron {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Prevent horizontal scroll from table min-width */
+  .table-responsive > .table {
+    width: 100%;
+    min-width: 0 !important;
+    table-layout: fixed;
+  }
+
+  .table th,
+  .table td {
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .table td.text-nowrap {
+    white-space: normal !important;
+  }
+
+  /* Optional: make small action buttons perfectly square */
+  .table .btn.btn-sm {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .table .btn.btn-sm i {
+    margin: 0 !important;
+    font-size: 1rem;
   }
 }

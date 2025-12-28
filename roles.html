@@ -6,6 +6,7 @@
     <title>الأدوار | منصة بيان</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" type="icon" href="assets/img/favicon.ico" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap"
@@ -24,59 +25,6 @@
     <link href="assets/css/style.css" rel="stylesheet" />
 
     <!-- Page tweaks (move to style.css لو تحبي) -->
-    <style>
-      /* badges (لو موجودة عندك في style.css احذفيهم من هنا) */
-      .badge.ap-badge-enabled {
-        background: rgba(78, 178, 100, 0.12) !important;
-        color: green !important;
-        border-color: rgba(25, 50, 76, 0.28) !important;
-      }
-      .badge.ap-badge-disabled {
-        background: rgba(222, 172, 49, 0.2) !important;
-        color: #6b4f00 !important;
-        border-color: rgba(222, 172, 49, 0.4) !important;
-      }
-
-      /* Mobile: منع scroll بسبب min-width + تحويل أزرار الإجراءات لأيقونات فقط */
-      @media (max-width: 576px) {
-        .table-responsive > .table {
-          width: 100%;
-          min-width: 0 !important;
-          table-layout: fixed;
-        }
-
-        .table th,
-        .table td {
-          min-width: 0 !important;
-          white-space: normal !important;
-          overflow-wrap: anywhere;
-          word-break: break-word;
-        }
-
-        .table td.text-nowrap {
-          white-space: normal !important;
-        }
-
-        /* icons only */
-        .ap-btn-text {
-          display: none !important;
-        }
-
-        .table .btn.btn-sm {
-          width: 38px;
-          height: 38px;
-          padding: 0;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .table .btn.btn-sm i {
-          margin: 0 !important;
-          font-size: 1rem;
-        }
-      }
-    </style>
   </head>
 
   <body>
@@ -184,7 +132,7 @@
                 >
               </li>
             </ul>
-              <hr />
+            <hr />
 
             <div
               class="d-flex align-items-center justify-content-between gap-2"
@@ -194,15 +142,6 @@
                 <span id="currentUserNameMobile" class="opacity-75">User</span>
               </span>
 
-              <!-- Backend logout -->
-              <!-- <form method="post" action="/logout" class="d-inline">
-            <button class="btn btn-outline-secondary btn-sm" type="submit">
-              <i class="bi bi-box-arrow-right ms-1"></i> خروج
-            </button>
-          </form> -->
-
-              <!-- Demo logout (بديل الفورم) -->
-
               <a
                 href="#"
                 id="logoutBtnMobile"
@@ -210,6 +149,7 @@
               >
                 <i class="bi bi-box-arrow-right ms-1"></i> خروج
               </a>
+            </div>
           </div>
         </div>
       </div>
@@ -329,7 +269,8 @@
                     </td>
 
                     <td class="text-nowrap">
-                      <div class="d-flex gap-2 flex-wrap">
+                      <!-- ✅ مهم: ap-actions عشان CSS يخفي النص على الموبايل -->
+                      <div class="ap-actions d-flex gap-2 flex-wrap">
                         <!-- Edit -->
                         <button
                           type="button"
@@ -340,11 +281,9 @@
                           data-bs-placement="top"
                           data-bs-trigger="hover focus"
                           data-bs-container="body"
-                          data-bs-target="#editRoleModal"
-                          data-bs-toggle2="modal"
                           onclick="new bootstrap.Modal(document.getElementById('editRoleModal')).show();"
                         >
-                          <i class="bi bi-pencil-square ms-1"></i>
+                          <i class="bi bi-pencil-square ms-1 ap-btn-icon"></i>
                           <span class="ap-btn-text">تعديل</span>
                         </button>
 
@@ -359,11 +298,11 @@
                           data-bs-trigger="hover focus"
                           data-bs-container="body"
                         >
-                          <i class="bi bi-toggle2-on ms-1"></i>
+                          <i class="bi bi-toggle2-on ms-1 ap-btn-icon"></i>
                           <span class="ap-btn-text">تعطيل</span>
                         </button>
 
-                        <!-- Delete (always last) -->
+                        <!-- Delete -->
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-danger"
@@ -375,7 +314,7 @@
                           data-bs-container="body"
                           onclick="new bootstrap.Modal(document.getElementById('deleteRoleModal')).show();"
                         >
-                          <i class="bi bi-trash3 ms-1"></i>
+                          <i class="bi bi-trash3 ms-1 ap-btn-icon"></i>
                           <span class="ap-btn-text">حذف</span>
                         </button>
                       </div>
@@ -397,7 +336,8 @@
                     </td>
 
                     <td class="text-nowrap">
-                      <div class="d-flex gap-2 flex-wrap">
+                      <!-- ✅ مهم: ap-actions -->
+                      <div class="ap-actions d-flex gap-2 flex-wrap">
                         <!-- Edit -->
                         <button
                           type="button"
@@ -410,7 +350,7 @@
                           data-bs-container="body"
                           onclick="new bootstrap.Modal(document.getElementById('editRoleModal')).show();"
                         >
-                          <i class="bi bi-pencil-square ms-1"></i>
+                          <i class="bi bi-pencil-square ms-1 ap-btn-icon"></i>
                           <span class="ap-btn-text">تعديل</span>
                         </button>
 
@@ -425,11 +365,11 @@
                           data-bs-trigger="hover focus"
                           data-bs-container="body"
                         >
-                          <i class="bi bi-toggle2-off ms-1"></i>
+                          <i class="bi bi-toggle2-off ms-1 ap-btn-icon"></i>
                           <span class="ap-btn-text">تفعيل</span>
                         </button>
 
-                        <!-- Delete (always last) -->
+                        <!-- Delete -->
                         <button
                           type="button"
                           class="btn btn-sm btn-outline-danger"
@@ -441,7 +381,7 @@
                           data-bs-container="body"
                           onclick="new bootstrap.Modal(document.getElementById('deleteRoleModal')).show();"
                         >
-                          <i class="bi bi-trash3 ms-1"></i>
+                          <i class="bi bi-trash3 ms-1 ap-btn-icon"></i>
                           <span class="ap-btn-text">حذف</span>
                         </button>
                       </div>
@@ -696,16 +636,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/site.js"></script>
-
-    <script>
-      // Enable Bootstrap tooltips
-      document.addEventListener("DOMContentLoaded", function () {
-        document
-          .querySelectorAll('[data-bs-toggle="tooltip"]')
-          .forEach((el) => {
-            new bootstrap.Tooltip(el);
-          });
-      });
-    </script>
   </body>
 </html>
