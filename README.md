@@ -54,7 +54,7 @@ It focuses on **clean RTL UI**, **consistent theme**, and **responsive tables**,
 
   - Users list
   - Add User as **modal** (not inline form)
-  - Sidebar label is **"المستخدمين"** (not "المستخدمون")
+  - Sidebar label is **"المستخدمين"**
 
 - `role-permissions.html`
   - Role permissions UI (platform + apps)
