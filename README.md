@@ -40,7 +40,7 @@ It focuses on **clean RTL UI**, **consistent theme**, and **responsive tables**,
   - Responsive stack table: **use `.ap-table-stack`**
   - Action buttons: text visible on desktop, icon-only on small screens (via `.ap-actions` + `.ap-btn-text`)
 
-- `app-pages.html` (or `app-details.html` depending on naming)
+- `app-pages.html`
   - App internal pages/links
   - Responsive stack table: **use `.ap-pages-stack`**
 
@@ -65,8 +65,6 @@ It focuses on **clean RTL UI**, **consistent theme**, and **responsive tables**,
 
 - `design-catalog.html`
 - `change-password.html`
-
-> Note: if you currently have `app-details.html` you can keep it, but the “Pages/Links” screen is the one we styled as a responsive table.
 
 ---
 
@@ -106,24 +104,3 @@ It focuses on **clean RTL UI**, **consistent theme**, and **responsive tables**,
     - Role permissions “Select all / Clear all” per group + app pages enable/disable
 
 ---
-
-## Backend Integration Notes (PHP / .NET)
-
-This UI is designed to be **server-rendered**:
-
-- Replace placeholders like:
-  - `[UserName]`, `[TotalApps]`, `[AppId]`, `[RoleId]`, `[Status]`
-- Replace sample rows with real loops:
-  - `foreach ($apps as $app) ...`
-- The `form method/action` attributes already exist; map them to your endpoints.
-
-### Permissions data (Role Permissions)
-
-Typically you’ll have:
-
-- `roles` table
-- `platform_permissions` table
-- `role_platform_permissions` mapping
-- `apps` table
-- `app_pages` table (only for apps managed by platform)
-- `role_app_page_permissions` mapping
