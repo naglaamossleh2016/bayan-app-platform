@@ -23,10 +23,8 @@
       rel="stylesheet"
     />
 
-    <!-- Theme CSS (your refactored file) -->
+    <!-- Theme CSS -->
     <link href="assets/css/style.css" rel="stylesheet" />
-
-    <!-- Catalog-only tiny helpers (optional, safe) -->
   </head>
 
   <body>
@@ -163,7 +161,6 @@
 
     <main class="container-fluid my-4 px-3 px-lg-4">
       <div class="row g-3">
-        <!-- Sidebar الأساسية -->
         <!-- Sidebar الأساسية -->
         <div class="col-12 col-lg-2 d-none d-lg-block">
           <div class="ap-sidebar card ap-card p-2 sticky-top" style="top: 92px">
@@ -500,7 +497,8 @@
           <section id="tables" class="ap-section card ap-card p-4 mt-3">
             <h2 class="h5 fw-bold mb-3">الجداول (Tables)</h2>
 
-            <div class="table-responsive p-2">
+            <!-- ✅ مهم: أضفنا ap-catalog-stack عشان يتحول كارد على الموبايل -->
+            <div class="table-responsive p-2 ap-catalog-stack">
               <table class="table align-middle mb-0">
                 <thead>
                   <tr>
@@ -512,47 +510,88 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="fw-bold">بوابة الخدمات</td>
-                    <td class="text-secondary">مركز التطبيقات</td>
-                    <td>
+                    <td class="fw-bold" data-label="اسم التطبيق">
+                      بوابة الخدمات
+                    </td>
+                    <td class="text-secondary" data-label="الجهة">
+                      مركز التطبيقات
+                    </td>
+                    <td data-label="الحالة">
                       <span class="badge ap-badge-published">منشور</span>
                     </td>
-                    <td class="text-end">
-                      <button class="btn btn-outline-primary btn-sm">
-                        <i class="bi bi-eye ms-1"></i> عرض
-                      </button>
-                      <button class="btn btn-primary btn-sm">
-                        <i class="bi bi-pencil ms-1"></i> تعديل
-                      </button>
+                    <td class="text-end text-nowrap" data-label="إجراءات">
+                      <!-- ✅ مهم: ap-actions + ap-btn-text -->
+                      <div
+                        class="ap-actions d-flex justify-content-end gap-2 flex-wrap"
+                      >
+                        <button
+                          class="btn btn-outline-primary btn-sm"
+                          aria-label="عرض"
+                        >
+                          <i class="bi bi-eye ms-1 ap-btn-icon"></i>
+                          <span class="ap-btn-text">عرض</span>
+                        </button>
+                        <button
+                          class="btn btn-primary btn-sm"
+                          aria-label="تعديل"
+                        >
+                          <i class="bi bi-pencil ms-1 ap-btn-icon"></i>
+                          <span class="ap-btn-text">تعديل</span>
+                        </button>
+                      </div>
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="fw-bold">إدارة الطلاب</td>
-                    <td class="text-secondary">الجامعة</td>
-                    <td>
+                    <td class="fw-bold" data-label="اسم التطبيق">
+                      إدارة الطلاب
+                    </td>
+                    <td class="text-secondary" data-label="الجهة">الجامعة</td>
+                    <td data-label="الحالة">
                       <span class="badge ap-badge-unpublished">مسودة</span>
                     </td>
-                    <td class="text-end">
-                      <button class="btn btn-outline-primary btn-sm">
-                        <i class="bi bi-eye ms-1"></i> عرض
-                      </button>
-                      <button class="btn btn-primary btn-sm">
-                        <i class="bi bi-upload ms-1"></i> نشر
-                      </button>
+                    <td class="text-end text-nowrap" data-label="إجراءات">
+                      <div
+                        class="ap-actions d-flex justify-content-end gap-2 flex-wrap"
+                      >
+                        <button
+                          class="btn btn-outline-primary btn-sm"
+                          aria-label="عرض"
+                        >
+                          <i class="bi bi-eye ms-1 ap-btn-icon"></i>
+                          <span class="ap-btn-text">عرض</span>
+                        </button>
+                        <button class="btn btn-primary btn-sm" aria-label="نشر">
+                          <i class="bi bi-upload ms-1 ap-btn-icon"></i>
+                          <span class="ap-btn-text">نشر</span>
+                        </button>
+                      </div>
                     </td>
                   </tr>
 
                   <tr>
-                    <td class="fw-bold">النظام القديم</td>
-                    <td class="text-secondary">قسم التطوير</td>
-                    <td>
+                    <td class="fw-bold" data-label="اسم التطبيق">
+                      النظام القديم
+                    </td>
+                    <td class="text-secondary" data-label="الجهة">
+                      قسم التطوير
+                    </td>
+                    <td data-label="الحالة">
                       <span class="badge ap-badge-deprecated">متوقف</span>
                     </td>
-                    <td class="text-end">
-                      <button class="btn btn-outline-secondary btn-sm" disabled>
-                        <i class="bi bi-slash-circle ms-1"></i> غير متاح
-                      </button>
+                    <td class="text-end text-nowrap" data-label="إجراءات">
+                      <div
+                        class="ap-actions d-flex justify-content-end gap-2 flex-wrap"
+                      >
+                        <button
+                          class="btn btn-outline-secondary btn-sm"
+                          disabled
+                          aria-label="غير متاح"
+                        >
+                          <i class="bi bi-slash-circle ms-1 ap-btn-icon"></i>
+                          <span class="ap-btn-text">غير متاح</span>
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
