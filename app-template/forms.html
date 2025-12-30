@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>النماذج | لوحة تحكم بيان</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet"/>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+</head>
+<body class="ap-admin">
+  
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+    <div class="d-flex align-items-center gap-2">
+      <!-- Mobile: open offcanvas -->
+      <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#apOffcanvasNav" aria-controls="apOffcanvasNav">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <!-- Desktop: collapse sidebar -->
+      <button id="apSidebarToggle" class="btn btn-outline-light d-none d-lg-inline-flex" type="button" aria-label="Toggle sidebar">
+        <i class="bi bi-layout-sidebar-inset"></i>
+      </button>
+
+      <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="index.html">
+        <span class="ap-logo-wrap ap-logo-sm">
+          <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
+        </span>
+        <span>لوحة التحكم</span>
+      </a>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <span class="navbar-text fw-bold">
+        مرحباً، <span class="fw-bolder">[UserName]</span>
+      </span>
+      <a class="btn btn-primary btn-sm" href="#logout">
+        <i class="bi bi-box-arrow-right ms-1"></i>
+        خروج
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+  
+<div class="offcanvas offcanvas-start" tabindex="-1" id="apOffcanvasNav" aria-labelledby="apOffcanvasNavLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" data-ap-nav>
+    <nav class="nav flex-column gap-1">
+      
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-speedometer2 ms-2"></i>الرئيسية
+          </a>
+          <a class="nav-link" href="colors.html">
+            <i class="bi bi-palette2 ms-2"></i>الألوان
+          </a>
+          <a class="nav-link" href="typography.html">
+            <i class="bi bi-type ms-2"></i>الخطوط
+          </a>
+          <a class="nav-link" href="buttons.html">
+            <i class="bi bi-toggle-on ms-2"></i>الأزرار
+          </a>
+          <a class="nav-link" href="tables.html">
+            <i class="bi bi-table ms-2"></i>الجداول
+          </a>
+          <a class="nav-link" href="forms.html">
+            <i class="bi bi-ui-checks-grid ms-2"></i>النماذج
+          </a>
+          <a class="nav-link" href="badges.html">
+            <i class="bi bi-patch-check ms-2"></i>الشارات
+          </a>
+          <a class="nav-link" href="cards.html">
+            <i class="bi bi-collection ms-2"></i>الكروت
+          </a>
+          <a class="nav-link" href="modals.html">
+            <i class="bi bi-window ms-2"></i>النوافذ
+          </a>
+          <a class="nav-link" href="pagination.html">
+            <i class="bi bi-list-ol ms-2"></i>الصفحات
+          </a>
+          <a class="nav-link" href="icons.html">
+            <i class="bi bi-grid-3x3-gap ms-2"></i>الأيقونات
+          </a>
+          <a class="nav-link" href="alerts.html">
+            <i class="bi bi-bell ms-2"></i>التنبيهات
+          </a>
+          <a class="nav-link" href="blank.html">
+            <i class="bi bi-file-earmark ms-2"></i>صفحة فارغة
+          </a><hr class="my-2">
+      <a class="nav-link" href="#logout"><i class="bi bi-box-arrow-right ms-2"></i>تسجيل الخروج</a>
+    
+    </nav>
+  </div>
+</div>
+
+
+  <main class="ap-admin">
+    <div class="container-fluid">
+      <div class="ap-admin-shell">
+        <!-- Desktop sidebar -->
+        <aside class="ap-admin-aside" data-ap-nav>
+          <nav class="ap-sidebar nav flex-column gap-1">
+            <div class="ap-sidebar-group-title">القائمة</div>
+
+          <a class="nav-link" href="index.html" data-ap-tooltip title="الرئيسية">
+            <i class="bi bi-speedometer2"></i>
+            <span class="ap-sidebar-label">الرئيسية</span>
+          </a>
+
+          <a class="nav-link" href="colors.html" data-ap-tooltip title="الألوان">
+            <i class="bi bi-palette2"></i>
+            <span class="ap-sidebar-label">الألوان</span>
+          </a>
+
+          <a class="nav-link" href="typography.html" data-ap-tooltip title="الخطوط">
+            <i class="bi bi-type"></i>
+            <span class="ap-sidebar-label">الخطوط</span>
+          </a>
+
+          <a class="nav-link" href="buttons.html" data-ap-tooltip title="الأزرار">
+            <i class="bi bi-toggle-on"></i>
+            <span class="ap-sidebar-label">الأزرار</span>
+          </a>
+
+          <a class="nav-link" href="tables.html" data-ap-tooltip title="الجداول">
+            <i class="bi bi-table"></i>
+            <span class="ap-sidebar-label">الجداول</span>
+          </a>
+
+          <a class="nav-link" href="forms.html" data-ap-tooltip title="النماذج">
+            <i class="bi bi-ui-checks-grid"></i>
+            <span class="ap-sidebar-label">النماذج</span>
+          </a>
+
+          <a class="nav-link" href="badges.html" data-ap-tooltip title="الشارات">
+            <i class="bi bi-patch-check"></i>
+            <span class="ap-sidebar-label">الشارات</span>
+          </a>
+
+          <a class="nav-link" href="cards.html" data-ap-tooltip title="الكروت">
+            <i class="bi bi-collection"></i>
+            <span class="ap-sidebar-label">الكروت</span>
+          </a>
+
+          <a class="nav-link" href="modals.html" data-ap-tooltip title="النوافذ">
+            <i class="bi bi-window"></i>
+            <span class="ap-sidebar-label">النوافذ</span>
+          </a>
+
+          <a class="nav-link" href="pagination.html" data-ap-tooltip title="الصفحات">
+            <i class="bi bi-list-ol"></i>
+            <span class="ap-sidebar-label">الصفحات</span>
+          </a>
+
+          <a class="nav-link" href="icons.html" data-ap-tooltip title="الأيقونات">
+            <i class="bi bi-grid-3x3-gap"></i>
+            <span class="ap-sidebar-label">الأيقونات</span>
+          </a>
+
+          <a class="nav-link" href="alerts.html" data-ap-tooltip title="التنبيهات">
+            <i class="bi bi-bell"></i>
+            <span class="ap-sidebar-label">التنبيهات</span>
+          </a>
+
+          <a class="nav-link" href="blank.html" data-ap-tooltip title="صفحة فارغة">
+            <i class="bi bi-file-earmark"></i>
+            <span class="ap-sidebar-label">صفحة فارغة</span>
+          </a>
+<hr class="my-2">
+
+      <a class="nav-link" href="#logout" data-ap-tooltip title="تسجيل الخروج">
+        <i class="bi bi-box-arrow-right"></i>
+        <span class="ap-sidebar-label">تسجيل الخروج</span>
+      </a>
+          </nav>
+        </aside>
+
+        <section class="ap-admin-main">
+          <div class="ap-card p-3 mb-3">
+            <div class="ap-page-header">
+              <div>
+                <h1 class="h4 mb-1">النماذج</h1>
+                <div class="ap-muted">Inputs/Select/Validation + Password toggle layout.</div>
+              </div>
+              <div class="ap-toolbar">
+                <a class="btn btn-outline-primary btn-sm" href="blank.html"><i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة</a>
+              </div>
+            </div>
+          </div>
+
+          
+<div class="ap-card p-3 mb-3">
+  <h2 class="h6 mb-3">حقول أساسية</h2>
+  <div class="row g-3">
+    <div class="col-12 col-md-6">
+      <label class="form-label fw-bold">اسم</label>
+      <input class="form-control" placeholder="اكتب الاسم"/>
+    </div>
+    <div class="col-12 col-md-6">
+      <label class="form-label fw-bold">الحالة</label>
+      <select class="form-select">
+        <option>Enabled</option>
+        <option>Disabled</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label class="form-label fw-bold">ملاحظات</label>
+      <textarea class="form-control" rows="3" placeholder="..." ></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="ap-card p-3 mb-3">
+  <h2 class="h6 mb-3">Validation</h2>
+  <div class="row g-3">
+    <div class="col-12 col-md-6">
+      <label class="form-label fw-bold">بريد إلكتروني</label>
+      <input class="form-control is-invalid" value="test@" />
+      <div class="invalid-feedback">صيغة البريد غير صحيحة.</div>
+    </div>
+    <div class="col-12 col-md-6">
+      <label class="form-label fw-bold">رقم</label>
+      <input class="form-control is-valid" value="123" />
+      <div class="valid-feedback">تمام.</div>
+    </div>
+  </div>
+</div>
+
+<div class="ap-card p-3">
+  <h2 class="h6 mb-3">Password</h2>
+  <div class="ap-pass-wrap">
+    <button class="btn btn-outline-primary btn-sm ap-pass-toggle" type="button" onclick="(function(btn){var i=btn.parentElement.querySelector('input'); i.type = i.type==='password'?'text':'password';})(this)">
+      <i class="bi bi-eye"></i>
+    </button>
+    <input class="form-control" type="password" placeholder="كلمة المرور"/>
+  </div>
+</div>
+
+
+        </section>
+      </div>
+    </div>
+  </main>
+
+  
+<footer class="py-3 ap-admin-footer">
+  <div class="container-fluid">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+      <div>© [Year] منصة بيان — لوحة التحكم</div>
+      <div class="ap-muted">UI Template (HTML/CSS/Bootstrap)</div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script>
+    // Replace year placeholder quickly
+    document.querySelectorAll("footer [data-year]").forEach(el => el.textContent = new Date().getFullYear());
+  </script>
+</body>
+</html>

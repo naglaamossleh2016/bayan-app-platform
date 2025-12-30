@@ -1,0 +1,1066 @@
+/*
+  Bayan Platform - Single Theme (Refactor v3.2)
+  ---------------------------------------------
+  - Bootstrap 5.3 (RTL friendly)
+  - Clear sections + minimal duplication
+  - Action buttons: text visible on desktop, icons-only on small screens
+  - Responsive tables:
+    * Apps table  -> card layout via .ap-table-stack (<= lg)
+    * Pages table -> card layout via .ap-pages-stack (<= lg)
+  - Permissions UI (tabs + details accordion)
+*/
+
+/* =========================================================
+   1) Design Tokens
+========================================================= */
+:root {
+  /* Brand */
+  --ap-navbar: #19324c;
+  --ap-primary: #deac31;
+  --ap-primary-hover: #c9961f;
+  --ap-primary-active: #b6861b;
+
+  /* Neutrals */
+  --ap-bg: #f6f8fd;
+  --ap-surface: #ffffff;
+  --ap-ink: #0f172a;
+  --ap-muted: #64748b;
+
+  /* Effects */
+  --ap-border: rgba(15, 23, 42, 0.1);
+  --ap-shadow: 0 12px 30px rgba(2, 6, 23, 0.08);
+
+  /* Table header */
+  --ap-thead-bg: #f0f0f0;
+  --ap-thead-ink: #111827;
+
+  /* Footer */
+  --ap-footer-bg: #112335;
+  --ap-footer-ink: #a2a7a7;
+
+  /* Avatar */
+  --ap-avatar-size: 40px;
+  --ap-avatar-ink: var(--ap-navbar);
+  --ap-avatar-bg: rgba(222, 172, 49, 0.18);
+  --ap-avatar-ring: rgba(15, 23, 42, 0.12);
+  --ap-avatar-shadow: 0 10px 22px rgba(2, 6, 23, 0.12);
+
+  /* Pills / badges */
+  --ap-pill-radius: 999px;
+
+  /* Bootstrap overrides */
+  --bs-primary: var(--ap-primary);
+  --bs-primary-rgb: 222, 172, 49;
+  --bs-link-color: #2b6cb0;
+  --bs-link-hover-color: #1f4f86;
+}
+
+/* =========================================================
+   2) Base Layout + Typography
+========================================================= */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  background: var(--ap-bg);
+  color: var(--ap-ink);
+
+  font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI",
+    Arial, sans-serif;
+  line-height: 1.85;
+
+  /* Adjust based on navbar height */
+  padding-top: 90px;
+}
+
+main {
+  flex: 1;
+}
+
+/* Headings + brand + buttons */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand,
+.btn {
+  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 800;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+.ap-muted {
+  color: var(--ap-muted) !important;
+}
+
+/* =========================================================
+   3) Navbar
+========================================================= */
+.navbar {
+  background: var(--ap-navbar) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-text {
+  color: #ffffff !important;
+}
+
+.navbar .nav-link {
+  opacity: 0.92;
+  font-weight: 700;
+}
+
+.navbar .nav-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.navbar .navbar-toggler-icon {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+
+/* =========================================================
+   4) Cards
+========================================================= */
+.ap-card {
+  background: var(--ap-surface);
+  box-shadow: var(--ap-shadow);
+  border: 1px solid var(--ap-border);
+}
+
+/* =========================================================
+   5) Logo
+========================================================= */
+.ap-logo-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  box-shadow: 0 12px 26px rgba(25, 50, 76, 0.18);
+}
+
+/* Backward compatibility selectors */
+.ap-logo-wrap-inner,
+.app-logo-warp-inner {
+  width: 60px;
+  height: 60px;
+  background: var(--ap-thead-bg);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.ap-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.ap-logo-wrap.ap-logo-lg {
+  width: 130px;
+  height: 100px;
+  border-radius: 18px;
+}
+
+.ap-logo-wrap.ap-logo-sm {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+}
+
+/* =========================================================
+   6) Sidebar
+========================================================= */
+.ap-sidebar .nav-link {
+  border-radius: 12px;
+  font-weight: 800;
+  color: var(--ap-ink);
+  padding: 0.5rem 0.65rem;
+}
+
+.ap-sidebar .nav-link:hover {
+  background: rgba(25, 50, 76, 0.06);
+  color: var(--ap-navbar);
+}
+
+.ap-sidebar .nav-link.active {
+  background: rgba(102, 135, 197, 0.32);
+  color: var(--ap-navbar);
+  border: 1px solid #a5b5d2;
+}
+
+/* =========================================================
+   7) Buttons
+========================================================= */
+.btn-primary {
+  --bs-btn-bg: var(--ap-primary);
+  --bs-btn-border-color: var(--ap-primary);
+  --bs-btn-color: #ffffff;
+
+  --bs-btn-hover-bg: var(--ap-primary-hover);
+  --bs-btn-hover-border-color: var(--ap-primary-hover);
+  --bs-btn-hover-color: #ffffff;
+
+  --bs-btn-active-bg: var(--ap-primary-active);
+  --bs-btn-active-border-color: var(--ap-primary-active);
+  --bs-btn-active-color: #ffffff;
+
+  --bs-btn-disabled-bg: rgba(222, 172, 49, 0.55);
+  --bs-btn-disabled-border-color: rgba(222, 172, 49, 0.55);
+  --bs-btn-disabled-color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--ap-navbar);
+  --bs-btn-border-color: rgba(25, 50, 76, 0.35);
+  --bs-btn-hover-bg: rgba(222, 172, 49, 0.14);
+  --bs-btn-hover-border-color: rgba(222, 172, 49, 0.6);
+  --bs-btn-active-bg: rgba(222, 172, 49, 0.18);
+  --bs-btn-active-border-color: rgba(222, 172, 49, 0.7);
+}
+
+/* Keep outlines readable */
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover,
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  color: var(--ap-navbar);
+}
+
+/* =========================================================
+   8) Forms
+========================================================= */
+.form-control:focus,
+.form-select:focus {
+  border-color: rgba(222, 172, 49, 0.65);
+  box-shadow: 0 0 0 0.2rem rgba(222, 172, 49, 0.2);
+}
+
+/* Password toggle inside input (RTL) */
+.ap-pass-wrap {
+  position: relative;
+}
+
+.ap-pass-toggle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0.5rem; /* RTL: left side */
+  z-index: 5;
+}
+
+.ap-pass-wrap .form-control {
+  padding-left: 2.5rem;
+}
+
+/* =========================================================
+   9) Tables + Badges
+========================================================= */
+.table-responsive {
+  border-radius: 14px;
+  border: 1px solid var(--ap-border);
+  background: #fff;
+}
+
+/* THEAD */
+.table thead,
+.table thead th {
+  background: var(--ap-thead-bg) !important;
+  color: var(--ap-thead-ink) !important;
+}
+
+/* table-light compatibility */
+.table-light {
+  --bs-table-bg: var(--ap-thead-bg);
+  --bs-table-color: var(--ap-thead-ink);
+}
+
+/* Base badges */
+.table .badge {
+  font-weight: 800;
+  padding: 0.45em 0.7em;
+  border-radius: var(--ap-pill-radius);
+  border: 1px solid rgba(15, 23, 42, 0.18);
+}
+
+/* Status badges (unified: removed duplicates at file end) */
+.badge.ap-badge-published,
+.badge.ap-badge-enabled {
+  background: rgba(78, 178, 100, 0.12) !important;
+  color: green !important;
+  border-color: rgba(25, 50, 76, 0.28) !important;
+}
+
+.badge.ap-badge-unpublished,
+.badge.ap-badge-disabled {
+  background: rgba(222, 172, 49, 0.2) !important;
+  color: #6b4f00 !important;
+  border-color: rgba(222, 172, 49, 0.4) !important;
+}
+
+.badge.ap-badge-deprecated {
+  background: rgba(220, 53, 69, 0.12) !important;
+  color: #b42318 !important;
+  border-color: rgba(220, 53, 69, 0.25) !important;
+}
+
+/* Access mode badges (Apps table) */
+.ap-badge-mode {
+  font-weight: 800;
+  border-radius: var(--ap-pill-radius);
+  padding: 0.35em 0.65em;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.ap-badge-mode-app {
+  background: rgba(25, 50, 76, 0.08);
+  color: var(--ap-navbar);
+}
+
+.ap-badge-mode-platform {
+  background: rgba(222, 172, 49, 0.18);
+  color: #6b4f00;
+}
+
+/* =========================================================
+   10) Auth (Login Background)
+========================================================= */
+.ap-auth-bg {
+  min-height: 100vh;
+  background: radial-gradient(
+      900px 520px at 78% 18%,
+      rgba(222, 172, 49, 0.26),
+      transparent 62%
+    ),
+    radial-gradient(
+      950px 540px at 25% 88%,
+      rgba(222, 172, 49, 0.22),
+      transparent 64%
+    ),
+    radial-gradient(
+      760px 420px at 16% 22%,
+      rgba(25, 50, 76, 0.22),
+      transparent 60%
+    ),
+    linear-gradient(160deg, #071226, #0b1f36 55%, #071226);
+}
+
+.ap-auth-card {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.75);
+}
+
+/* =========================================================
+   11) Modals
+========================================================= */
+.modal-header {
+  background-color: var(--ap-thead-bg) !important;
+  justify-content: space-between;
+}
+
+.modal-header .btn-close {
+  background-color: #6f5618 !important;
+  color: var(--ap-bg) !important;
+}
+
+/* =========================================================
+   12) Offcanvas
+========================================================= */
+.offcanvas {
+  background: var(--ap-navbar);
+  color: #fff;
+}
+
+.offcanvas .nav-link {
+  color: #fff !important;
+  opacity: 0.92;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 0.6rem 0.75rem;
+}
+
+.offcanvas .nav-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.offcanvas .nav-link.active {
+  background: rgba(222, 172, 49, 0.18);
+  border: 1px solid rgba(222, 172, 49, 0.35);
+  opacity: 1;
+  text-decoration: none !important;
+}
+
+.offcanvas .btn-close {
+  filter: invert(1) grayscale(1) brightness(2);
+}
+
+.offcanvas hr {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.offcanvas-header {
+  justify-content: space-between;
+}
+
+/* =========================================================
+   13) Pagination
+========================================================= */
+.page-link {
+  border-radius: 12px;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: var(--ap-navbar);
+}
+
+.page-link:hover {
+  color: var(--ap-navbar);
+  background: rgba(222, 172, 49, 0.12);
+  border-color: rgba(222, 172, 49, 0.35);
+}
+
+.page-item.active .page-link {
+  background: var(--ap-primary);
+  border-color: var(--ap-primary);
+  color: #fff;
+  font-weight: 800;
+}
+
+.page-item.disabled .page-link {
+  opacity: 0.6;
+}
+
+/* =========================================================
+   14) Footer
+========================================================= */
+footer {
+  background-color: var(--ap-footer-bg) !important;
+  color: var(--ap-footer-ink);
+}
+
+/* =========================================================
+   15) App Avatar
+========================================================= */
+.ap-app-avatar {
+  width: var(--ap-avatar-size);
+  height: var(--ap-avatar-size);
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  border-radius: var(--ap-pill-radius);
+  background: radial-gradient(
+      120% 120% at 30% 25%,
+      rgba(255, 255, 255, 0.85),
+      transparent 55%
+    ),
+    var(--ap-avatar-bg);
+  border: 1px solid var(--ap-avatar-ring);
+  box-shadow: var(--ap-avatar-shadow);
+}
+
+.ap-app-avatar.has-image {
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.ap-app-avatar-img {
+  width: var(--ap-avatar-size);
+  height: var(--ap-avatar-size);
+  object-fit: contain;
+  display: block;
+  background: transparent;
+  padding: 0;
+}
+
+.ap-app-avatar-initials {
+  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  line-height: 1;
+  letter-spacing: 0.6px;
+  color: var(--ap-avatar-ink) !important;
+  display: grid;
+  place-items: center;
+}
+
+.ap-app-avatar.has-image .ap-app-avatar-initials {
+  display: none;
+}
+
+/* =========================================================
+   16) Access Mode UI (Add/Edit App)
+========================================================= */
+.ap-mode-card {
+  display: block;
+  padding: 0.85rem 0.9rem;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+  height: 100%;
+}
+
+.ap-mode-card i {
+  font-size: 1.1rem;
+  color: var(--ap-navbar);
+}
+
+.btn-check:checked + .ap-mode-card {
+  border-color: rgb(222 172 49);
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.08);
+  background: rgb(222 172 49 / 9%);
+}
+
+.ap-links-box,
+.ap-mode-help {
+  padding: 0.9rem;
+  border-radius: 14px;
+  border: 1px dashed rgba(25, 50, 76, 0.28);
+  background: rgba(222, 172, 49, 0.08);
+}
+
+/* =========================================================
+   17) Page Helpers (Breadcrumbs / Toolbars / Sections)
+========================================================= */
+.ap-section {
+  scroll-margin-top: 92px;
+}
+
+.ap-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: var(--ap-pill-radius);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.ap-swatch {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.ap-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+}
+
+/* Page header utilities */
+.ap-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ap-breadcrumb-lite {
+  font-size: 0.9rem;
+  color: var(--ap-muted);
+}
+
+.ap-breadcrumb-lite a {
+  color: var(--ap-navbar);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.ap-breadcrumb-lite a:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.ap-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ap-inline-form {
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  padding: 0.9rem;
+}
+
+.ap-divider {
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
+  margin: 1rem 0;
+}
+
+/* =========================================================
+   18) Role Permissions UI (Tabs + App Details)
+========================================================= */
+.ap-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ap-tab-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ap-tab-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ap-tab-label:hover {
+  background: rgba(25, 50, 76, 0.04);
+}
+
+#tabPlatform:checked + label[for="tabPlatform"],
+#tabApps:checked + label[for="tabApps"] {
+  background: rgba(222, 172, 49, 0.14);
+  border-color: rgba(222, 172, 49, 0.55);
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.06);
+}
+
+.ap-tab-panels {
+  margin-top: 0.75rem;
+}
+
+.ap-tab-panel {
+  display: none;
+}
+
+#tabPlatform:checked ~ .ap-tab-panels #panelPlatform {
+  display: block;
+}
+
+#tabApps:checked ~ .ap-tab-panels #panelApps {
+  display: block;
+}
+
+/* Group header controls */
+.ap-group-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.ap-group-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* Apps accordion (details) */
+.ap-app-accordion details {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.04);
+  overflow: hidden;
+}
+
+.ap-app-accordion details + details {
+  margin-top: 0.75rem;
+}
+
+.ap-app-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.85rem 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  user-select: none;
+}
+
+.ap-app-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.ap-app-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.ap-app-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ap-app-chevron {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.ap-app-chevron i {
+  transition: 0.15s ease-in-out;
+}
+
+details[open] .ap-app-chevron i {
+  transform: rotate(180deg);
+}
+
+.ap-app-body {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 0.9rem;
+}
+
+/* =========================================================
+   19) Actions: button text visibility rules
+========================================================= */
+/* Default: show button text */
+.ap-btn-text {
+  display: inline;
+}
+
+/* Desktop safety: keep action buttons readable */
+@media (min-width: 577px) {
+  .table td.text-nowrap .btn,
+  .table td.text-nowrap .btn.btn-sm {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Small screens: icons-only + tighter paddings */
+@media (max-width: 576px) {
+  .ap-actions .ap-btn-text {
+    display: none;
+  }
+
+  .ap-actions .btn,
+  .ap-actions .btn.btn-sm {
+    padding: 0.35rem 0.55rem;
+  }
+
+  .ap-actions .btn i {
+    margin: 0 !important;
+  }
+}
+
+/* =========================================================
+   20) Responsive Tables -> Card Layout (<= lg)
+========================================================= */
+/* Shared stack rules for both tables */
+@media (max-width: 991.98px) {
+  .ap-table-stack,
+  .ap-pages-stack {
+    border: 0;
+    background: transparent;
+  }
+
+  .ap-table-stack thead,
+  .ap-pages-stack thead {
+    display: none;
+  }
+
+  .ap-table-stack tbody tr,
+  .ap-pages-stack tbody tr {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--ap-border);
+    border-radius: 14px;
+    box-shadow: var(--ap-shadow);
+    padding: 0.9rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .ap-table-stack tbody td,
+  .ap-pages-stack tbody td {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.6rem;
+    align-items: start;
+    padding: 0.45rem 0;
+    border: 0;
+    white-space: normal !important;
+  }
+
+  .ap-table-stack tbody td::before,
+  .ap-pages-stack tbody td::before {
+    content: attr(data-label);
+    font-weight: 800;
+    color: var(--ap-muted);
+    line-height: 1.4;
+  }
+
+  /* Actions cell: full width (no label) */
+  .ap-table-stack tbody td[data-label="إجراءات"],
+  .ap-pages-stack tbody td[data-label="إجراءات"] {
+    display: block;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    margin-top: 0.75rem;
+  }
+
+  .ap-table-stack tbody td[data-label="إجراءات"]::before,
+  .ap-pages-stack tbody td[data-label="إجراءات"]::before {
+    display: none;
+  }
+
+  .ap-table-stack tbody td[data-label="إجراءات"] .ap-actions,
+  .ap-pages-stack tbody td[data-label="إجراءات"] .ap-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Apps table only: Name cell full width (no label) */
+  .ap-table-stack tbody td[data-label="الاسم"] {
+    display: block;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    margin-bottom: 0.75rem;
+  }
+
+  .ap-table-stack tbody td[data-label="الاسم"]::before {
+    display: none;
+  }
+
+  /* URL inside name */
+  .ap-table-stack .text-truncate {
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
+}
+
+/* =========================================================
+   21) Responsive (Mobile tweaks)
+========================================================= */
+@media (max-width: 576px) {
+  /* Navbar brand size */
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  /* Tabs: full width buttons */
+  .ap-tab-label {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Details chevron alignment */
+  .ap-app-chevron {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Prevent horizontal scroll from table min-width */
+  .table-responsive > .table {
+    width: 100%;
+    min-width: 0 !important;
+    table-layout: fixed;
+  }
+
+  .table th,
+  .table td {
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .table td.text-nowrap {
+    white-space: normal !important;
+  }
+
+  /* Optional: make small action buttons perfectly square */
+  .table .btn.btn-sm {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .table .btn.btn-sm i {
+    margin: 0 !important;
+    font-size: 1rem;
+  }
+}
+
+/* =========================================================
+   22) Admin Layout Additions (Bayan Admin)
+========================================================= */
+:root {
+  --ap-header-h: 90px;
+  --ap-sidebar-w: 260px;
+  --ap-sidebar-collapsed-w: 78px;
+}
+
+/* Admin shell */
+.ap-admin {
+  width: 100%;
+}
+
+.ap-admin-shell {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.ap-admin-aside {
+  width: var(--ap-sidebar-w);
+  flex: 0 0 var(--ap-sidebar-w);
+}
+
+.ap-admin-main {
+  min-width: 0;
+  flex: 1;
+}
+
+/* Sticky sidebar under fixed navbar */
+.ap-admin-aside .ap-sidebar {
+  position: sticky;
+  top: var(--ap-header-h);
+  height: calc(100vh - var(--ap-header-h));
+  overflow-y: auto;
+  padding: 0.9rem;
+}
+
+/* Sidebar card look */
+.ap-admin-aside .ap-sidebar {
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid var(--ap-border);
+  box-shadow: var(--ap-shadow);
+}
+
+/* Nav link layout (icon + label) */
+.ap-sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ap-sidebar .nav-link i {
+  font-size: 1.15rem;
+  width: 1.4rem;
+  display: inline-flex;
+  justify-content: center;
+}
+
+/* Collapsed (desktop) */
+body.ap-sidebar-collapsed .ap-admin-aside {
+  width: var(--ap-sidebar-collapsed-w);
+  flex: 0 0 var(--ap-sidebar-collapsed-w);
+}
+
+body.ap-sidebar-collapsed .ap-sidebar .ap-sidebar-label,
+body.ap-sidebar-collapsed .ap-sidebar .ap-sidebar-group-title {
+  display: none !important;
+}
+
+body.ap-sidebar-collapsed .ap-sidebar .nav-link {
+  justify-content: center;
+  gap: 0;
+  padding: 0.55rem 0.5rem;
+}
+
+body.ap-sidebar-collapsed .ap-sidebar .nav-link i {
+  width: auto;
+}
+
+/* Group title */
+.ap-sidebar-group-title {
+  font-weight: 900;
+  color: var(--ap-muted);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.55rem;
+}
+
+/* Content padding */
+.ap-admin-main > .container-fluid {
+  padding-inline: 1rem;
+}
+
+/* Responsive: switch to offcanvas on <= lg */
+@media (max-width: 991.98px) {
+  .ap-admin-shell {
+    display: block;
+  }
+  .ap-admin-aside {
+    display: none;
+  }
+  .ap-admin-main > .container-fluid {
+    padding-inline: 0.75rem;
+  }
+}
+
+/* Footer spacing */
+.ap-admin-footer {
+  margin-top: 1.25rem;
+}
+/* منع لف عناصر السايدبار لعمودين */
+.ap-admin-aside .ap-sidebar.nav,
+.offcanvas [data-ap-nav] .nav {
+  flex-wrap: nowrap !important;
+  align-content: flex-start;
+}
