@@ -1,275 +1,991 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>النوافذ | لوحة تحكم بيان</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>النوافذ | لوحة تحكم بيان</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet"/>
-  <link href="assets/css/style.css" rel="stylesheet"/>
-</head>
-<body class="ap-admin">
-  
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-fluid">
-    <div class="d-flex align-items-center gap-2">
-      <!-- Mobile: open offcanvas -->
-      <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#apOffcanvasNav" aria-controls="apOffcanvasNav">
-        <i class="bi bi-list"></i>
-      </button>
-
-      <!-- Desktop: collapse sidebar -->
-      <button id="apSidebarToggle" class="btn btn-outline-light d-none d-lg-inline-flex" type="button" aria-label="Toggle sidebar">
-        <i class="bi bi-layout-sidebar-inset"></i>
-      </button>
-
-      <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="index.html">
-        <span class="ap-logo-wrap ap-logo-sm">
-          <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
-        </span>
-        <span>لوحة التحكم</span>
-      </a>
-    </div>
-
-    <div class="d-flex align-items-center gap-3">
-      <span class="navbar-text fw-bold">
-        مرحباً، <span class="fw-bolder">[UserName]</span>
-      </span>
-      <a class="btn btn-primary btn-sm" href="#logout">
-        <i class="bi bi-box-arrow-right ms-1"></i>
-        خروج
-      </a>
-    </div>
-  </div>
-</nav>
-
-
-  
-<div class="offcanvas offcanvas-start" tabindex="-1" id="apOffcanvasNav" aria-labelledby="apOffcanvasNavLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body" data-ap-nav>
-    <nav class="nav flex-column gap-1">
-      
-          <a class="nav-link" href="index.html">
-            <i class="bi bi-speedometer2 ms-2"></i>الرئيسية
-          </a>
-          <a class="nav-link" href="colors.html">
-            <i class="bi bi-palette2 ms-2"></i>الألوان
-          </a>
-          <a class="nav-link" href="typography.html">
-            <i class="bi bi-type ms-2"></i>الخطوط
-          </a>
-          <a class="nav-link" href="buttons.html">
-            <i class="bi bi-toggle-on ms-2"></i>الأزرار
-          </a>
-          <a class="nav-link" href="tables.html">
-            <i class="bi bi-table ms-2"></i>الجداول
-          </a>
-          <a class="nav-link" href="forms.html">
-            <i class="bi bi-ui-checks-grid ms-2"></i>النماذج
-          </a>
-          <a class="nav-link" href="badges.html">
-            <i class="bi bi-patch-check ms-2"></i>الشارات
-          </a>
-          <a class="nav-link" href="cards.html">
-            <i class="bi bi-collection ms-2"></i>الكروت
-          </a>
-          <a class="nav-link" href="modals.html">
-            <i class="bi bi-window ms-2"></i>النوافذ
-          </a>
-          <a class="nav-link" href="pagination.html">
-            <i class="bi bi-list-ol ms-2"></i>الصفحات
-          </a>
-          <a class="nav-link" href="icons.html">
-            <i class="bi bi-grid-3x3-gap ms-2"></i>الأيقونات
-          </a>
-          <a class="nav-link" href="alerts.html">
-            <i class="bi bi-bell ms-2"></i>التنبيهات
-          </a>
-          <a class="nav-link" href="blank.html">
-            <i class="bi bi-file-earmark ms-2"></i>صفحة فارغة
-          </a><hr class="my-2">
-      <a class="nav-link" href="#logout"><i class="bi bi-box-arrow-right ms-2"></i>تسجيل الخروج</a>
-    
-    </nav>
-  </div>
-</div>
-
-
-  <main class="ap-admin">
-    <div class="container-fluid">
-      <div class="ap-admin-shell">
-        <!-- Desktop sidebar -->
-        <aside class="ap-admin-aside" data-ap-nav>
-          <nav class="ap-sidebar nav flex-column gap-1">
-            <div class="ap-sidebar-group-title">القائمة</div>
-
-          <a class="nav-link" href="index.html" data-ap-tooltip title="الرئيسية">
-            <i class="bi bi-speedometer2"></i>
-            <span class="ap-sidebar-label">الرئيسية</span>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="ap-admin">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <!-- Right side (RTL): Brand + Desktop collapse/expand -->
+        <div class="d-flex align-items-center gap-5">
+          <a
+            class="navbar-brand d-flex align-items-center gap-2 m-0"
+            href="index.html"
+          >
+            <span class="ap-logo-wrap ap-logo-sm">
+              <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
+            </span>
+            <span class="ap-brand-title">لوحة التحكم</span>
           </a>
 
-          <a class="nav-link" href="colors.html" data-ap-tooltip title="الألوان">
-            <i class="bi bi-palette2"></i>
-            <span class="ap-sidebar-label">الألوان</span>
-          </a>
+          <!-- Desktop only: collapse/expand sidebar (right after title) -->
+          <button
+            id="apSidebarToggle"
+            class="btn btn-outline-light ap-nav-toggle d-none d-lg-inline-flex"
+            type="button"
+            aria-label="تصغير/توسيع القائمة"
+            title="تصغير/توسيع القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
 
-          <a class="nav-link" href="typography.html" data-ap-tooltip title="الخطوط">
-            <i class="bi bi-type"></i>
-            <span class="ap-sidebar-label">الخطوط</span>
-          </a>
-
-          <a class="nav-link" href="buttons.html" data-ap-tooltip title="الأزرار">
-            <i class="bi bi-toggle-on"></i>
-            <span class="ap-sidebar-label">الأزرار</span>
-          </a>
-
-          <a class="nav-link" href="tables.html" data-ap-tooltip title="الجداول">
-            <i class="bi bi-table"></i>
-            <span class="ap-sidebar-label">الجداول</span>
-          </a>
-
-          <a class="nav-link" href="forms.html" data-ap-tooltip title="النماذج">
-            <i class="bi bi-ui-checks-grid"></i>
-            <span class="ap-sidebar-label">النماذج</span>
-          </a>
-
-          <a class="nav-link" href="badges.html" data-ap-tooltip title="الشارات">
-            <i class="bi bi-patch-check"></i>
-            <span class="ap-sidebar-label">الشارات</span>
-          </a>
-
-          <a class="nav-link" href="cards.html" data-ap-tooltip title="الكروت">
-            <i class="bi bi-collection"></i>
-            <span class="ap-sidebar-label">الكروت</span>
-          </a>
-
-          <a class="nav-link" href="modals.html" data-ap-tooltip title="النوافذ">
-            <i class="bi bi-window"></i>
-            <span class="ap-sidebar-label">النوافذ</span>
-          </a>
-
-          <a class="nav-link" href="pagination.html" data-ap-tooltip title="الصفحات">
-            <i class="bi bi-list-ol"></i>
-            <span class="ap-sidebar-label">الصفحات</span>
-          </a>
-
-          <a class="nav-link" href="icons.html" data-ap-tooltip title="الأيقونات">
-            <i class="bi bi-grid-3x3-gap"></i>
-            <span class="ap-sidebar-label">الأيقونات</span>
-          </a>
-
-          <a class="nav-link" href="alerts.html" data-ap-tooltip title="التنبيهات">
-            <i class="bi bi-bell"></i>
-            <span class="ap-sidebar-label">التنبيهات</span>
-          </a>
-
-          <a class="nav-link" href="blank.html" data-ap-tooltip title="صفحة فارغة">
-            <i class="bi bi-file-earmark"></i>
-            <span class="ap-sidebar-label">صفحة فارغة</span>
-          </a>
-<hr class="my-2">
-
-      <a class="nav-link" href="#logout" data-ap-tooltip title="تسجيل الخروج">
-        <i class="bi bi-box-arrow-right"></i>
-        <span class="ap-sidebar-label">تسجيل الخروج</span>
-      </a>
-          </nav>
-        </aside>
-
-        <section class="ap-admin-main">
-          <div class="ap-card p-3 mb-3">
-            <div class="ap-page-header">
-              <div>
-                <h1 class="h4 mb-1">النوافذ</h1>
-                <div class="ap-muted">Modals + Offcanvas أمثلة أساسية.</div>
-              </div>
-              <div class="ap-toolbar">
-                <a class="btn btn-outline-primary btn-sm" href="blank.html"><i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة</a>
-              </div>
-            </div>
+        <!-- Left side (RTL): Desktop user + Mobile offcanvas toggle -->
+        <div class="d-flex align-items-center gap-3">
+          <!-- Desktop only -->
+          <div class="d-none d-lg-flex align-items-center gap-3">
+            <span class="navbar-text fw-bold">
+              مرحباً، <span class="fw-bolder">[UserName]</span>
+            </span>
+            <a class="btn btn-primary btn-sm" href="#logout">
+              <i class="bi bi-box-arrow-right me-1"></i>خروج
+            </a>
           </div>
 
-          
-<div class="ap-card p-3 mb-3">
-  <h2 class="h6 mb-2">Modal</h2>
-  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <i class="bi bi-window ms-1"></i>افتح Modal
-  </button>
-</div>
+          <!-- Mobile only: offcanvas toggle (far left) -->
+          <button
+            class="btn btn-outline-light ap-nav-toggle d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#apOffcanvasNav"
+            aria-controls="apOffcanvasNav"
+            aria-label="فتح القائمة"
+            title="القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Mobile offcanvas menu -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="apOffcanvasNav"
+      aria-labelledby="apOffcanvasNavLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body" data-ap-nav>
+        <div class="ap-offcanvas-user mb-3">
+          <div class="ap-offcanvas-hello mb-2">
+            مرحباً، <span class="fw-bolder">[UserName]</span>
+          </div>
+          <a class="btn btn-primary btn-sm" href="#logout">
+            <i class="bi bi-box-arrow-right me-1"></i>تسجيل الخروج
+          </a>
+        </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">عنوان النافذة</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p class="mb-0">محتوى بسيط داخل Modal بنفس الستايل.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">إغلاق</button>
-        <button type="button" class="btn btn-primary">حفظ</button>
+        <nav class="nav flex-column gap-1">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-speedometer2 me-2"></i>الرئيسية
+          </a>
+          <a class="nav-link" href="colors.html">
+            <i class="bi bi-palette2 me-2"></i>الألوان
+          </a>
+          <a class="nav-link" href="typography.html">
+            <i class="bi bi-type me-2"></i>الخطوط
+          </a>
+          <a class="nav-link" href="buttons.html">
+            <i class="bi bi-toggle-on me-2"></i>الأزرار
+          </a>
+          <a class="nav-link" href="tables.html">
+            <i class="bi bi-table me-2"></i>الجداول
+          </a>
+          <a class="nav-link" href="forms.html">
+            <i class="bi bi-ui-checks-grid me-2"></i>النماذج
+          </a>
+          <a class="nav-link" href="badges.html">
+            <i class="bi bi-patch-check me-2"></i>الشارات
+          </a>
+          <a class="nav-link" href="cards.html">
+            <i class="bi bi-collection me-2"></i>الكروت
+          </a>
+          <a class="nav-link" href="modals.html">
+            <i class="bi bi-window me-2"></i>النوافذ
+          </a>
+          <a class="nav-link" href="pagination.html">
+            <i class="bi bi-list-ol me-2"></i>الصفحات
+          </a>
+          <a class="nav-link" href="icons.html">
+            <i class="bi bi-grid-3x3-gap me-2"></i>الأيقونات
+          </a>
+          <a class="nav-link" href="alerts.html">
+            <i class="bi bi-bell me-2"></i>التنبيهات
+          </a>
+          <a class="nav-link" href="blank.html">
+            <i class="bi bi-file-earmark me-2"></i>صفحة فارغة
+          </a>
+        </nav>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="ap-card p-3">
-  <h2 class="h6 mb-2">Offcanvas</h2>
-  <button class="btn btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#filterCanvas" aria-controls="filterCanvas">
-    <i class="bi bi-funnel ms-1"></i>فلترة (Offcanvas)
-  </button>
-</div>
+    <main class="ap-admin">
+      <div class="container-fluid">
+        <div class="ap-admin-shell">
+          <!-- Sidebar -->
+          <aside class="ap-admin-aside" data-ap-nav>
+            <nav class="ap-sidebar nav flex-column gap-1">
+              <div class="ap-sidebar-top">
+                <div class="ap-sidebar-app-title">القائمة</div>
+              </div>
+              <hr class="ap-sidebar-hr" />
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="filterCanvas" aria-labelledby="filterCanvasLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="filterCanvasLabel">فلترة</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div class="mb-3">
-      <label class="form-label fw-bold">حالة</label>
-      <select class="form-select">
-        <option>الكل</option>
-        <option>Enabled</option>
-        <option>Disabled</option>
-      </select>
-    </div>
-    <button class="btn btn-primary w-100">تطبيق</button>
-  </div>
-</div>
+              <a
+                class="nav-link"
+                href="index.html"
+                data-ap-tooltip
+                title="الرئيسية"
+              >
+                <i class="bi bi-speedometer2"></i>
+                <span class="ap-sidebar-label">الرئيسية</span>
+              </a>
 
+              <a
+                class="nav-link"
+                href="colors.html"
+                data-ap-tooltip
+                title="الألوان"
+              >
+                <i class="bi bi-palette2"></i>
+                <span class="ap-sidebar-label">الألوان</span>
+              </a>
 
-        </section>
+              <a
+                class="nav-link"
+                href="typography.html"
+                data-ap-tooltip
+                title="الخطوط"
+              >
+                <i class="bi bi-type"></i>
+                <span class="ap-sidebar-label">الخطوط</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="buttons.html"
+                data-ap-tooltip
+                title="الأزرار"
+              >
+                <i class="bi bi-toggle-on"></i>
+                <span class="ap-sidebar-label">الأزرار</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="tables.html"
+                data-ap-tooltip
+                title="الجداول"
+              >
+                <i class="bi bi-table"></i>
+                <span class="ap-sidebar-label">الجداول</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="forms.html"
+                data-ap-tooltip
+                title="النماذج"
+              >
+                <i class="bi bi-ui-checks-grid"></i>
+                <span class="ap-sidebar-label">النماذج</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="badges.html"
+                data-ap-tooltip
+                title="الشارات"
+              >
+                <i class="bi bi-patch-check"></i>
+                <span class="ap-sidebar-label">الشارات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="cards.html"
+                data-ap-tooltip
+                title="الكروت"
+              >
+                <i class="bi bi-collection"></i>
+                <span class="ap-sidebar-label">الكروت</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="modals.html"
+                data-ap-tooltip
+                title="النوافذ"
+              >
+                <i class="bi bi-window"></i>
+                <span class="ap-sidebar-label">النوافذ</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="pagination.html"
+                data-ap-tooltip
+                title="الصفحات"
+              >
+                <i class="bi bi-list-ol"></i>
+                <span class="ap-sidebar-label">الصفحات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="icons.html"
+                data-ap-tooltip
+                title="الأيقونات"
+              >
+                <i class="bi bi-grid-3x3-gap"></i>
+                <span class="ap-sidebar-label">الأيقونات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="alerts.html"
+                data-ap-tooltip
+                title="التنبيهات"
+              >
+                <i class="bi bi-bell"></i>
+                <span class="ap-sidebar-label">التنبيهات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="blank.html"
+                data-ap-tooltip
+                title="صفحة فارغة"
+              >
+                <i class="bi bi-file-earmark"></i>
+                <span class="ap-sidebar-label">صفحة فارغة</span>
+              </a>
+            </nav>
+          </aside>
+          <!-- Content -->
+
+          <section class="ap-admin-main">
+            <div class="ap-card p-3 mb-3">
+              <div class="ap-page-header d-flex">
+                <div>
+                  <h1 class="h4 mb-1">النوافذ</h1>
+                  <div class="ap-muted">Modals + Offcanvas أمثلة أساسية.</div>
+                </div>
+                <div class="ap-toolbar ms-auto">
+                  <a class="btn btn-outline-primary btn-sm" href="blank.html">
+                    <i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modals Examples -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أمثلة Modals</h5>
+              <div class="d-flex flex-wrap gap-2">
+                <button
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  <i class="bi bi-window me-1"></i>Modal عادي
+                </button>
+                <button
+                  class="btn btn-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#largeModal"
+                >
+                  <i class="bi bi-arrows-fullscreen me-1"></i>Modal كبير
+                </button>
+                <button
+                  class="btn btn-info"
+                  data-bs-toggle="modal"
+                  data-bs-target="#smallModal"
+                >
+                  <i class="bi bi-arrows-angle-contract me-1"></i>Modal صغير
+                </button>
+                <button
+                  class="btn btn-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#formModal"
+                >
+                  <i class="bi bi-ui-checks me-1"></i>Modal مع Form
+                </button>
+                <button
+                  class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#alertModal"
+                >
+                  <i class="bi bi-exclamation-triangle me-1"></i>تنبيه حذف
+                </button>
+              </div>
+            </div>
+
+            <!-- Offcanvas Examples -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أمثلة Offcanvas</h5>
+              <div class="d-flex flex-wrap gap-2">
+                <button
+                  class="btn btn-primary"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasRight"
+                >
+                  <i class="bi bi-layout-sidebar-reverse me-1"></i>من اليمين
+                </button>
+                <button
+                  class="btn btn-success"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasLeft"
+                >
+                  <i class="bi bi-layout-sidebar me-1"></i>من اليسار
+                </button>
+                <button
+                  class="btn btn-info"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasTop"
+                >
+                  <i class="bi bi-arrow-down me-1"></i>من الأعلى
+                </button>
+                <button
+                  class="btn btn-warning"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasBottom"
+                >
+                  <i class="bi bi-arrow-up me-1"></i>من الأسفل
+                </button>
+                <button
+                  class="btn btn-secondary"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasSettings"
+                >
+                  <i class="bi bi-gear me-1"></i>الإعدادات
+                </button>
+              </div>
+            </div>
+
+            <!-- Toast Examples -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أمثلة Toast Notifications</h5>
+              <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-success" onclick="showToast('success')">
+                  <i class="bi bi-check-circle me-1"></i>نجاح
+                </button>
+                <button class="btn btn-danger" onclick="showToast('error')">
+                  <i class="bi bi-x-circle me-1"></i>خطأ
+                </button>
+                <button class="btn btn-warning" onclick="showToast('warning')">
+                  <i class="bi bi-exclamation-triangle me-1"></i>تحذير
+                </button>
+                <button class="btn btn-info" onclick="showToast('info')">
+                  <i class="bi bi-info-circle me-1"></i>معلومات
+                </button>
+              </div>
+            </div>
+
+            <!-- Interactive Examples -->
+            <div class="ap-card p-3">
+              <h5 class="mb-3">أمثلة تفاعلية</h5>
+              <div class="d-flex flex-wrap gap-2">
+                <button
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#wizardModal"
+                >
+                  <i class="bi bi-arrow-right-circle me-1"></i>Modal متعدد
+                  الخطوات
+                </button>
+              </div>
+            </div>
+
+            <!-- Toast Container -->
+            <div
+              class="toast-container position-fixed top-0 end-0 p-3"
+              id="toastContainer"
+            ></div>
+
+            <!-- Modal: Default -->
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">عنوان النافذة</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p class="mb-0">محتوى بسيط داخل Modal بنفس الستايل.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      إغلاق
+                    </button>
+                    <button type="button" class="btn btn-primary">حفظ</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal: Large -->
+            <div
+              class="modal fade"
+              id="largeModal"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">نافذة كبيرة</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      هذا مثال على نافذة كبيرة الحجم تستخدم للمحتوى الذي يحتاج
+                      مساحة أكبر.
+                    </p>
+                    <p class="mb-0">
+                      يمكن استخدامها لعرض جداول أو نماذج معقدة أو معلومات
+                      تفصيلية.
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      إغلاق
+                    </button>
+                    <button type="button" class="btn btn-success">
+                      متابعة
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal: Small -->
+            <div
+              class="modal fade"
+              id="smallModal"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">نافذة صغيرة</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p class="mb-0">نافذة صغيرة للرسائل القصيرة.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-info btn-sm"
+                      data-bs-dismiss="modal"
+                    >
+                      موافق
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal: Form -->
+            <div
+              class="modal fade"
+              id="formModal"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">إضافة مستخدم جديد</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="userName" class="form-label"
+                          >اسم المستخدم</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="userName"
+                          placeholder="أدخل الاسم"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="userEmail" class="form-label"
+                          >البريد الإلكتروني</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="userEmail"
+                          placeholder="example@domain.com"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="userRole" class="form-label"
+                          >الدور الوظيفي</label
+                        >
+                        <select class="form-select" id="userRole">
+                          <option selected>اختر...</option>
+                          <option value="1">مدير</option>
+                          <option value="2">موظف</option>
+                          <option value="3">مستخدم</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      إلغاء
+                    </button>
+                    <button type="button" class="btn btn-warning">إضافة</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal: Alert/Delete Confirmation -->
+            <div
+              class="modal fade"
+              id="alertModal"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">
+                      <i class="bi bi-exclamation-triangle me-2"></i>تأكيد الحذف
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close btn-close-white"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>هل أنت متأكد من رغبتك في حذف هذا العنصر؟</p>
+                    <p class="mb-0 text-danger fw-bold">
+                      هذا الإجراء لا يمكن التراجع عنه!
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      إلغاء
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                      <i class="bi bi-trash me-1"></i>حذف نهائي
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Offcanvas: Right -->
+            <div
+              class="offcanvas offcanvas-end"
+              tabindex="-1"
+              id="offcanvasRight"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Offcanvas من اليمين</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <p>هذا مثال على Offcanvas يظهر من الجهة اليمنى.</p>
+                <p>يمكن استخدامه لعرض قوائم جانبية أو معلومات إضافية.</p>
+              </div>
+            </div>
+
+            <!-- Offcanvas: Left -->
+            <div
+              class="offcanvas offcanvas-start"
+              tabindex="-1"
+              id="offcanvasLeft"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Offcanvas من اليسار</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <p>هذا مثال على Offcanvas يظهر من الجهة اليسرى.</p>
+                <p>مفيد للقوائم الجانبية في التطبيقات.</p>
+              </div>
+            </div>
+
+            <!-- Offcanvas: Top -->
+            <div
+              class="offcanvas offcanvas-top"
+              tabindex="-1"
+              id="offcanvasTop"
+              style="height: 300px"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Offcanvas من الأعلى</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <p>هذا مثال على Offcanvas يظهر من الأعلى.</p>
+                <p>يمكن استخدامه لعرض إشعارات أو رسائل هامة.</p>
+              </div>
+            </div>
+
+            <!-- Offcanvas: Bottom -->
+            <div
+              class="offcanvas offcanvas-bottom"
+              tabindex="-1"
+              id="offcanvasBottom"
+              style="height: 300px"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Offcanvas من الأسفل</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <p>هذا مثال على Offcanvas يظهر من الأسفل.</p>
+                <p>شائع في تطبيقات الموبايل لعرض خيارات إضافية.</p>
+              </div>
+            </div>
+
+            <!-- Offcanvas: Settings -->
+            <div
+              class="offcanvas offcanvas-end"
+              tabindex="-1"
+              id="offcanvasSettings"
+            >
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title">
+                  <i class="bi bi-gear me-2"></i>الإعدادات
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="offcanvas-body">
+                <h6 class="mb-3">إعدادات العرض</h6>
+                <div class="form-check form-switch mb-3">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="darkMode"
+                  />
+                  <label class="form-check-label" for="darkMode"
+                    >الوضع الليلي</label
+                  >
+                </div>
+                <div class="form-check form-switch mb-3">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="notifications"
+                    checked
+                  />
+                  <label class="form-check-label" for="notifications"
+                    >الإشعارات</label
+                  >
+                </div>
+                <div class="form-check form-switch mb-3">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="autoSave"
+                  />
+                  <label class="form-check-label" for="autoSave"
+                    >الحفظ التلقائي</label
+                  >
+                </div>
+                <hr />
+                <h6 class="mb-3">اللغة</h6>
+                <select class="form-select mb-3">
+                  <option selected>العربية</option>
+                  <option>English</option>
+                  <option>Français</option>
+                </select>
+                <button class="btn btn-primary w-100">حفظ الإعدادات</button>
+              </div>
+            </div>
+
+            <!-- Modal: Wizard (Multi-step) -->
+            <div
+              class="modal fade"
+              id="wizardModal"
+              tabindex="-1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">معالج إنشاء مشروع جديد</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Progress Indicator -->
+                    <div class="mb-4">
+                      <div class="d-flex justify-content-between mb-2">
+                        <small class="text-muted"
+                          >الخطوة <span id="currentStep">1</span> من 3</small
+                        >
+                      </div>
+                      <div class="progress" style="height: 4px">
+                        <div
+                          class="progress-bar"
+                          id="wizardProgress"
+                          role="progressbar"
+                          style="width: 33.33%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div class="wizard-step" id="step1">
+                      <h6 class="mb-3">الخطوة 1: معلومات المشروع</h6>
+                      <div class="mb-3">
+                        <label for="projectName" class="form-label"
+                          >اسم المشروع</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="projectName"
+                          placeholder="أدخل اسم المشروع"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="projectDesc" class="form-label"
+                          >الوصف</label
+                        >
+                        <textarea
+                          class="form-control"
+                          id="projectDesc"
+                          rows="3"
+                          placeholder="وصف مختصر للمشروع"
+                        ></textarea>
+                      </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="wizard-step d-none" id="step2">
+                      <h6 class="mb-3">الخطوة 2: إعدادات المشروع</h6>
+                      <div class="mb-3">
+                        <label for="projectType" class="form-label"
+                          >نوع المشروع</label
+                        >
+                        <select class="form-select" id="projectType">
+                          <option selected>اختر نوع المشروع</option>
+                          <option value="web">تطبيق ويب</option>
+                          <option value="mobile">تطبيق موبايل</option>
+                          <option value="desktop">تطبيق سطح المكتب</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">المميزات</label>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="feature1"
+                            checked
+                          />
+                          <label class="form-check-label" for="feature1"
+                            >نظام المستخدمين</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="feature2"
+                          />
+                          <label class="form-check-label" for="feature2"
+                            >قاعدة البيانات</label
+                          >
+                        </div>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="feature3"
+                          />
+                          <label class="form-check-label" for="feature3"
+                            >واجهة برمجية API</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="wizard-step d-none" id="step3">
+                      <h6 class="mb-3">الخطوة 3: مراجعة وتأكيد</h6>
+                      <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        يرجى مراجعة البيانات قبل الإنشاء.
+                      </div>
+                      <table class="table table-sm">
+                        <tbody>
+                          <tr>
+                            <th style="width: 40%">اسم المشروع:</th>
+                            <td id="reviewProjectName">-</td>
+                          </tr>
+                          <tr>
+                            <th>الوصف:</th>
+                            <td id="reviewProjectDesc">-</td>
+                          </tr>
+                          <tr>
+                            <th>النوع:</th>
+                            <td id="reviewProjectType">-</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      id="prevBtn"
+                      onclick="changeStep(-1)"
+                      style="display: none"
+                    >
+                      <i class="bi bi-arrow-right me-1"></i>السابق
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      id="nextBtn"
+                      onclick="changeStep(1)"
+                    >
+                      التالي<i class="bi bi-arrow-left ms-1"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-success d-none"
+                      id="finishBtn"
+                      onclick="finishWizard()"
+                    >
+                      <i class="bi bi-check-circle me-1"></i>إنشاء المشروع
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- END Content -->
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+    <!-- Footer -->
 
-  
-<footer class="py-3 ap-admin-footer">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-      <div>© [Year] منصة بيان — لوحة التحكم</div>
-      <div class="ap-muted">UI Template (HTML/CSS/Bootstrap)</div>
-    </div>
-  </div>
-</footer>
+    <footer class="py-3 ap-admin-footer">
+      <div class="container-fluid">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+          <div>
+            جميع الحقوق محفوظة لمركز التطبيقات الالكترونية بجامعه قنا لسنه 2025
+          </div>
+        </div>
+      </div>
+    </footer>
 
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script>
-    // Replace year placeholder quickly
-    document.querySelectorAll("footer [data-year]").forEach(el => el.textContent = new Date().getFullYear());
-  </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
 </html>

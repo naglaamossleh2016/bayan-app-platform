@@ -1,252 +1,1321 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>الكروت | لوحة تحكم بيان</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>الكروت | لوحة تحكم بيان</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet"/>
-  <link href="assets/css/style.css" rel="stylesheet"/>
-</head>
-<body class="ap-admin">
-  
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-fluid">
-    <div class="d-flex align-items-center gap-2">
-      <!-- Mobile: open offcanvas -->
-      <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#apOffcanvasNav" aria-controls="apOffcanvasNav">
-        <i class="bi bi-list"></i>
-      </button>
-
-      <!-- Desktop: collapse sidebar -->
-      <button id="apSidebarToggle" class="btn btn-outline-light d-none d-lg-inline-flex" type="button" aria-label="Toggle sidebar">
-        <i class="bi bi-layout-sidebar-inset"></i>
-      </button>
-
-      <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="index.html">
-        <span class="ap-logo-wrap ap-logo-sm">
-          <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
-        </span>
-        <span>لوحة التحكم</span>
-      </a>
-    </div>
-
-    <div class="d-flex align-items-center gap-3">
-      <span class="navbar-text fw-bold">
-        مرحباً، <span class="fw-bolder">[UserName]</span>
-      </span>
-      <a class="btn btn-primary btn-sm" href="#logout">
-        <i class="bi bi-box-arrow-right ms-1"></i>
-        خروج
-      </a>
-    </div>
-  </div>
-</nav>
-
-
-  
-<div class="offcanvas offcanvas-start" tabindex="-1" id="apOffcanvasNav" aria-labelledby="apOffcanvasNavLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body" data-ap-nav>
-    <nav class="nav flex-column gap-1">
-      
-          <a class="nav-link" href="index.html">
-            <i class="bi bi-speedometer2 ms-2"></i>الرئيسية
-          </a>
-          <a class="nav-link" href="colors.html">
-            <i class="bi bi-palette2 ms-2"></i>الألوان
-          </a>
-          <a class="nav-link" href="typography.html">
-            <i class="bi bi-type ms-2"></i>الخطوط
-          </a>
-          <a class="nav-link" href="buttons.html">
-            <i class="bi bi-toggle-on ms-2"></i>الأزرار
-          </a>
-          <a class="nav-link" href="tables.html">
-            <i class="bi bi-table ms-2"></i>الجداول
-          </a>
-          <a class="nav-link" href="forms.html">
-            <i class="bi bi-ui-checks-grid ms-2"></i>النماذج
-          </a>
-          <a class="nav-link" href="badges.html">
-            <i class="bi bi-patch-check ms-2"></i>الشارات
-          </a>
-          <a class="nav-link" href="cards.html">
-            <i class="bi bi-collection ms-2"></i>الكروت
-          </a>
-          <a class="nav-link" href="modals.html">
-            <i class="bi bi-window ms-2"></i>النوافذ
-          </a>
-          <a class="nav-link" href="pagination.html">
-            <i class="bi bi-list-ol ms-2"></i>الصفحات
-          </a>
-          <a class="nav-link" href="icons.html">
-            <i class="bi bi-grid-3x3-gap ms-2"></i>الأيقونات
-          </a>
-          <a class="nav-link" href="alerts.html">
-            <i class="bi bi-bell ms-2"></i>التنبيهات
-          </a>
-          <a class="nav-link" href="blank.html">
-            <i class="bi bi-file-earmark ms-2"></i>صفحة فارغة
-          </a><hr class="my-2">
-      <a class="nav-link" href="#logout"><i class="bi bi-box-arrow-right ms-2"></i>تسجيل الخروج</a>
-    
-    </nav>
-  </div>
-</div>
-
-
-  <main class="ap-admin">
-    <div class="container-fluid">
-      <div class="ap-admin-shell">
-        <!-- Desktop sidebar -->
-        <aside class="ap-admin-aside" data-ap-nav>
-          <nav class="ap-sidebar nav flex-column gap-1">
-            <div class="ap-sidebar-group-title">القائمة</div>
-
-          <a class="nav-link" href="index.html" data-ap-tooltip title="الرئيسية">
-            <i class="bi bi-speedometer2"></i>
-            <span class="ap-sidebar-label">الرئيسية</span>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="ap-admin">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <!-- Right side (RTL): Brand + Desktop collapse/expand -->
+        <div class="d-flex align-items-center gap-5">
+          <a
+            class="navbar-brand d-flex align-items-center gap-2 m-0"
+            href="index.html"
+          >
+            <span class="ap-logo-wrap ap-logo-sm">
+              <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
+            </span>
+            <span class="ap-brand-title">لوحة التحكم</span>
           </a>
 
-          <a class="nav-link" href="colors.html" data-ap-tooltip title="الألوان">
-            <i class="bi bi-palette2"></i>
-            <span class="ap-sidebar-label">الألوان</span>
-          </a>
+          <!-- Desktop only: collapse/expand sidebar (right after title) -->
+          <button
+            id="apSidebarToggle"
+            class="btn btn-outline-light ap-nav-toggle d-none d-lg-inline-flex"
+            type="button"
+            aria-label="تصغير/توسيع القائمة"
+            title="تصغير/توسيع القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
 
-          <a class="nav-link" href="typography.html" data-ap-tooltip title="الخطوط">
-            <i class="bi bi-type"></i>
-            <span class="ap-sidebar-label">الخطوط</span>
-          </a>
-
-          <a class="nav-link" href="buttons.html" data-ap-tooltip title="الأزرار">
-            <i class="bi bi-toggle-on"></i>
-            <span class="ap-sidebar-label">الأزرار</span>
-          </a>
-
-          <a class="nav-link" href="tables.html" data-ap-tooltip title="الجداول">
-            <i class="bi bi-table"></i>
-            <span class="ap-sidebar-label">الجداول</span>
-          </a>
-
-          <a class="nav-link" href="forms.html" data-ap-tooltip title="النماذج">
-            <i class="bi bi-ui-checks-grid"></i>
-            <span class="ap-sidebar-label">النماذج</span>
-          </a>
-
-          <a class="nav-link" href="badges.html" data-ap-tooltip title="الشارات">
-            <i class="bi bi-patch-check"></i>
-            <span class="ap-sidebar-label">الشارات</span>
-          </a>
-
-          <a class="nav-link" href="cards.html" data-ap-tooltip title="الكروت">
-            <i class="bi bi-collection"></i>
-            <span class="ap-sidebar-label">الكروت</span>
-          </a>
-
-          <a class="nav-link" href="modals.html" data-ap-tooltip title="النوافذ">
-            <i class="bi bi-window"></i>
-            <span class="ap-sidebar-label">النوافذ</span>
-          </a>
-
-          <a class="nav-link" href="pagination.html" data-ap-tooltip title="الصفحات">
-            <i class="bi bi-list-ol"></i>
-            <span class="ap-sidebar-label">الصفحات</span>
-          </a>
-
-          <a class="nav-link" href="icons.html" data-ap-tooltip title="الأيقونات">
-            <i class="bi bi-grid-3x3-gap"></i>
-            <span class="ap-sidebar-label">الأيقونات</span>
-          </a>
-
-          <a class="nav-link" href="alerts.html" data-ap-tooltip title="التنبيهات">
-            <i class="bi bi-bell"></i>
-            <span class="ap-sidebar-label">التنبيهات</span>
-          </a>
-
-          <a class="nav-link" href="blank.html" data-ap-tooltip title="صفحة فارغة">
-            <i class="bi bi-file-earmark"></i>
-            <span class="ap-sidebar-label">صفحة فارغة</span>
-          </a>
-<hr class="my-2">
-
-      <a class="nav-link" href="#logout" data-ap-tooltip title="تسجيل الخروج">
-        <i class="bi bi-box-arrow-right"></i>
-        <span class="ap-sidebar-label">تسجيل الخروج</span>
-      </a>
-          </nav>
-        </aside>
-
-        <section class="ap-admin-main">
-          <div class="ap-card p-3 mb-3">
-            <div class="ap-page-header">
-              <div>
-                <h1 class="h4 mb-1">الكروت</h1>
-                <div class="ap-muted">أشكال Cards/Sections بنفس shadow والـborder.</div>
-              </div>
-              <div class="ap-toolbar">
-                <a class="btn btn-outline-primary btn-sm" href="blank.html"><i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة</a>
-              </div>
-            </div>
+        <!-- Left side (RTL): Desktop user + Mobile offcanvas toggle -->
+        <div class="d-flex align-items-center gap-3">
+          <!-- Desktop only -->
+          <div class="d-none d-lg-flex align-items-center gap-3">
+            <span class="navbar-text fw-bold">
+              مرحباً، <span class="fw-bolder">[UserName]</span>
+            </span>
+            <a class="btn btn-primary btn-sm" href="#logout">
+              <i class="bi bi-box-arrow-right me-1"></i>خروج
+            </a>
           </div>
 
-          
-<div class="row g-3">
-  <div class="col-12 col-lg-6">
-    <div class="ap-card p-3 h-100">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h2 class="h6 mb-0">Card بعنوان + Actions</h2>
-        <div class="ap-toolbar">
-          <button class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil ms-1"></i>تعديل</button>
+          <!-- Mobile only: offcanvas toggle (far left) -->
+          <button
+            class="btn btn-outline-light ap-nav-toggle d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#apOffcanvasNav"
+            aria-controls="apOffcanvasNav"
+            aria-label="فتح القائمة"
+            title="القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
         </div>
       </div>
-      <p class="mb-0 ap-muted">مثال كارت لاستخدامه في تفاصيل أو إعدادات.</p>
-    </div>
-  </div>
-  <div class="col-12 col-lg-6">
-    <div class="ap-inline-form">
-      <h2 class="h6">Inline Form</h2>
-      <div class="row g-2">
-        <div class="col-12 col-md-6">
-          <input class="form-control" placeholder="بحث..."/>
+    </nav>
+    <!-- Mobile offcanvas menu -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="apOffcanvasNav"
+      aria-labelledby="apOffcanvasNavLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body" data-ap-nav>
+        <div class="ap-offcanvas-user mb-3">
+          <div class="ap-offcanvas-hello mb-2">
+            مرحباً، <span class="fw-bolder">[UserName]</span>
+          </div>
+          <a class="btn btn-primary btn-sm" href="#logout">
+            <i class="bi bi-box-arrow-right me-1"></i>تسجيل الخروج
+          </a>
         </div>
-        <div class="col-12 col-md-6">
-          <button class="btn btn-primary w-100"><i class="bi bi-search ms-1"></i>بحث</button>
-        </div>
+
+        <nav class="nav flex-column gap-1">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-speedometer2 me-2"></i>الرئيسية
+          </a>
+          <a class="nav-link" href="colors.html">
+            <i class="bi bi-palette2 me-2"></i>الألوان
+          </a>
+          <a class="nav-link" href="typography.html">
+            <i class="bi bi-type me-2"></i>الخطوط
+          </a>
+          <a class="nav-link" href="buttons.html">
+            <i class="bi bi-toggle-on me-2"></i>الأزرار
+          </a>
+          <a class="nav-link" href="tables.html">
+            <i class="bi bi-table me-2"></i>الجداول
+          </a>
+          <a class="nav-link" href="forms.html">
+            <i class="bi bi-ui-checks-grid me-2"></i>النماذج
+          </a>
+          <a class="nav-link" href="badges.html">
+            <i class="bi bi-patch-check me-2"></i>الشارات
+          </a>
+          <a class="nav-link" href="cards.html">
+            <i class="bi bi-collection me-2"></i>الكروت
+          </a>
+          <a class="nav-link" href="modals.html">
+            <i class="bi bi-window me-2"></i>النوافذ
+          </a>
+          <a class="nav-link" href="pagination.html">
+            <i class="bi bi-list-ol me-2"></i>الصفحات
+          </a>
+          <a class="nav-link" href="icons.html">
+            <i class="bi bi-grid-3x3-gap me-2"></i>الأيقونات
+          </a>
+          <a class="nav-link" href="alerts.html">
+            <i class="bi bi-bell me-2"></i>التنبيهات
+          </a>
+          <a class="nav-link" href="blank.html">
+            <i class="bi bi-file-earmark me-2"></i>صفحة فارغة
+          </a>
+        </nav>
       </div>
     </div>
-  </div>
-</div>
 
+    <main class="ap-admin">
+      <div class="container-fluid">
+        <div class="ap-admin-shell">
+          <!-- Sidebar -->
+          <aside class="ap-admin-aside" data-ap-nav>
+            <nav class="ap-sidebar nav flex-column gap-1">
+              <div class="ap-sidebar-top">
+                <div class="ap-sidebar-app-title">القائمة</div>
+              </div>
+              <hr class="ap-sidebar-hr" />
 
-        </section>
+              <a
+                class="nav-link"
+                href="index.html"
+                data-ap-tooltip
+                title="الرئيسية"
+              >
+                <i class="bi bi-speedometer2"></i>
+                <span class="ap-sidebar-label">الرئيسية</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="colors.html"
+                data-ap-tooltip
+                title="الألوان"
+              >
+                <i class="bi bi-palette2"></i>
+                <span class="ap-sidebar-label">الألوان</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="typography.html"
+                data-ap-tooltip
+                title="الخطوط"
+              >
+                <i class="bi bi-type"></i>
+                <span class="ap-sidebar-label">الخطوط</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="buttons.html"
+                data-ap-tooltip
+                title="الأزرار"
+              >
+                <i class="bi bi-toggle-on"></i>
+                <span class="ap-sidebar-label">الأزرار</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="tables.html"
+                data-ap-tooltip
+                title="الجداول"
+              >
+                <i class="bi bi-table"></i>
+                <span class="ap-sidebar-label">الجداول</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="forms.html"
+                data-ap-tooltip
+                title="النماذج"
+              >
+                <i class="bi bi-ui-checks-grid"></i>
+                <span class="ap-sidebar-label">النماذج</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="badges.html"
+                data-ap-tooltip
+                title="الشارات"
+              >
+                <i class="bi bi-patch-check"></i>
+                <span class="ap-sidebar-label">الشارات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="cards.html"
+                data-ap-tooltip
+                title="الكروت"
+              >
+                <i class="bi bi-collection"></i>
+                <span class="ap-sidebar-label">الكروت</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="modals.html"
+                data-ap-tooltip
+                title="النوافذ"
+              >
+                <i class="bi bi-window"></i>
+                <span class="ap-sidebar-label">النوافذ</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="pagination.html"
+                data-ap-tooltip
+                title="الصفحات"
+              >
+                <i class="bi bi-list-ol"></i>
+                <span class="ap-sidebar-label">الصفحات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="icons.html"
+                data-ap-tooltip
+                title="الأيقونات"
+              >
+                <i class="bi bi-grid-3x3-gap"></i>
+                <span class="ap-sidebar-label">الأيقونات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="alerts.html"
+                data-ap-tooltip
+                title="التنبيهات"
+              >
+                <i class="bi bi-bell"></i>
+                <span class="ap-sidebar-label">التنبيهات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="blank.html"
+                data-ap-tooltip
+                title="صفحة فارغة"
+              >
+                <i class="bi bi-file-earmark"></i>
+                <span class="ap-sidebar-label">صفحة فارغة</span>
+              </a>
+            </nav>
+          </aside>
+          <!-- Content -->
+
+          <section class="ap-admin-main">
+            <div class="ap-card p-3 mb-3">
+              <div class="ap-page-header">
+                <div>
+                  <h1 class="h4 mb-1">الكروت</h1>
+                  <div class="ap-muted">
+                    Cards/Sections بنفس shadow والـborder.
+                  </div>
+                </div>
+                <div class="ap-toolbar ms-auto">
+                  <a class="btn btn-outline-primary btn-sm" href="blank.html">
+                    <i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت الإحصائيات</h2>
+              <div class="row g-3">
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="ap-card p-3 text-center">
+                    <i
+                      class="bi bi-people-fill text-primary"
+                      style="font-size: 2.5rem"
+                    ></i>
+                    <h3 class="h2 mt-2 mb-0">1,250</h3>
+                    <p class="ap-muted mb-0">إجمالي المستخدمين</p>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="ap-card p-3 text-center">
+                    <i
+                      class="bi bi-cart-fill text-success"
+                      style="font-size: 2.5rem"
+                    ></i>
+                    <h3 class="h2 mt-2 mb-0">340</h3>
+                    <p class="ap-muted mb-0">الطلبات الجديدة</p>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="ap-card p-3 text-center">
+                    <i
+                      class="bi bi-graph-up-arrow text-warning"
+                      style="font-size: 2.5rem"
+                    ></i>
+                    <h3 class="h2 mt-2 mb-0">75%</h3>
+                    <p class="ap-muted mb-0">نسبة النمو</p>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="ap-card p-3 text-center">
+                    <i
+                      class="bi bi-currency-dollar text-danger"
+                      style="font-size: 2.5rem"
+                    ></i>
+                    <h3 class="h2 mt-2 mb-0">25,450</h3>
+                    <p class="ap-muted mb-0">إجمالي المبيعات</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Image Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت بصور</h2>
+              <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card h-100">
+                    <div class="ratio ratio-16x9 bg-secondary">
+                      <div
+                        class="d-flex align-items-center justify-content-center text-white"
+                      >
+                        <i class="bi bi-image" style="font-size: 3rem"></i>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h3 class="h5 card-title">عنوان الكارت</h3>
+                      <p class="card-text ap-muted">
+                        وصف مختصر للمحتوى الموجود في هذا الكارت.
+                      </p>
+                      <a href="#" class="btn btn-primary btn-sm">المزيد</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card h-100">
+                    <div class="ratio ratio-16x9 bg-secondary">
+                      <div
+                        class="d-flex align-items-center justify-content-center text-white"
+                      >
+                        <i class="bi bi-camera" style="font-size: 3rem"></i>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h3 class="h5 card-title">كارت آخر</h3>
+                      <p class="card-text ap-muted">
+                        محتوى نصي يوضح تفاصيل إضافية.
+                      </p>
+                      <a href="#" class="btn btn-outline-primary btn-sm">عرض</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card h-100">
+                    <div class="ratio ratio-16x9 bg-secondary">
+                      <div
+                        class="d-flex align-items-center justify-content-center text-white"
+                      >
+                        <i class="bi bi-film" style="font-size: 3rem"></i>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h3 class="h5 card-title">كارت ثالث</h3>
+                      <p class="card-text ap-muted">معلومات مفيدة للمستخدم.</p>
+                      <a href="#" class="btn btn-success btn-sm">تفعيل</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Icon Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت بأيقونات كبيرة</h2>
+              <div class="row g-3">
+                <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="ap-card p-4 text-center h-100">
+                    <div class="mb-3">
+                      <i
+                        class="bi bi-shield-check text-success"
+                        style="font-size: 4rem"
+                      ></i>
+                    </div>
+                    <h3 class="h5">أمان محسّن</h3>
+                    <p class="ap-muted mb-0">حماية بيانات قوية ومتقدمة</p>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="ap-card p-4 text-center h-100">
+                    <div class="mb-3">
+                      <i
+                        class="bi bi-speedometer2 text-primary"
+                        style="font-size: 4rem"
+                      ></i>
+                    </div>
+                    <h3 class="h5">أداء سريع</h3>
+                    <p class="ap-muted mb-0">استجابة فورية وسرعة عالية</p>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="ap-card p-4 text-center h-100">
+                    <div class="mb-3">
+                      <i
+                        class="bi bi-headset text-warning"
+                        style="font-size: 4rem"
+                      ></i>
+                    </div>
+                    <h3 class="h5">دعم فني 24/7</h3>
+                    <p class="ap-muted mb-0">فريق جاهز لخدمتك طوال الوقت</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت الأسعار</h2>
+              <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="ap-card p-4 h-100 text-center">
+                    <h3 class="h5 text-muted">الأساسية</h3>
+                    <div class="my-3">
+                      <span class="h2">150</span>
+                      <span class="text-muted">ج.م/شهر</span>
+                    </div>
+                    <ul class="list-unstyled text-start mb-4">
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >ميزة واحدة
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >دعم فني محدود
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >مساحة 5 جيجا
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-x-circle-fill text-muted me-2"></i
+                        >تقارير متقدمة
+                      </li>
+                    </ul>
+                    <button class="btn btn-outline-primary w-100">
+                      اشتراك
+                    </button>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div
+                    class="ap-card p-4 h-100 text-center border border-primary border-2"
+                  >
+                    <span class="badge bg-primary mb-2">الأكثر شعبية</span>
+                    <h3 class="h5 text-primary">المتقدمة</h3>
+                    <div class="my-3">
+                      <span class="h2">300</span>
+                      <span class="text-muted">ج.م/شهر</span>
+                    </div>
+                    <ul class="list-unstyled text-start mb-4">
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >كل المميزات الأساسية
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >دعم فني كامل
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >مساحة 50 جيجا
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >تقارير متقدمة
+                      </li>
+                    </ul>
+                    <button class="btn btn-primary w-100">اشتراك</button>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="ap-card p-4 h-100 text-center">
+                    <h3 class="h5 text-muted">للشركات</h3>
+                    <div class="my-3">
+                      <span class="h2">500</span>
+                      <span class="text-muted">ج.م/شهر</span>
+                    </div>
+                    <ul class="list-unstyled text-start mb-4">
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >كل المميزات
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >دعم فني مخصص
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >مساحة غير محدودة
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i
+                        >تقارير وتحليلات
+                      </li>
+                    </ul>
+                    <button class="btn btn-outline-primary w-100">
+                      اشتراك
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت الملفات الشخصية</h2>
+              <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="ap-card p-3 text-center h-100">
+                    <div class="mb-3">
+                      <div
+                        class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px; font-size: 2rem"
+                      >
+                        <i class="bi bi-person-fill"></i>
+                      </div>
+                    </div>
+                    <h3 class="h5 mb-1">أحمد محمد</h3>
+                    <p class="text-muted small mb-3">مطور برمجيات</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                      <a href="#" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-envelope"></i>
+                      </a>
+                      <a href="#" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-telephone"></i>
+                      </a>
+                      <a href="#" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-chat"></i>
+                      </a>
+                    </div>
+                    <button class="btn btn-primary btn-sm w-100">
+                      عرض الملف الشخصي
+                    </button>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="ap-card p-3 text-center h-100">
+                    <div class="mb-3">
+                      <div
+                        class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px; font-size: 2rem"
+                      >
+                        <i class="bi bi-person-fill"></i>
+                      </div>
+                    </div>
+                    <h3 class="h5 mb-1">نجلاء أبوبكر</h3>
+                    <p class="text-muted small mb-3">مصممة واجهات</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                      <a href="#" class="btn btn-outline-success btn-sm">
+                        <i class="bi bi-envelope"></i>
+                      </a>
+                      <a href="#" class="btn btn-outline-success btn-sm">
+                        <i class="bi bi-telephone"></i>
+                      </a>
+                      <a href="#" class="btn btn-outline-success btn-sm">
+                        <i class="bi bi-chat"></i>
+                      </a>
+                    </div>
+                    <button class="btn btn-success btn-sm w-100">
+                      عرض الملف الشخصي
+                    </button>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="ap-card p-3 text-center h-100">
+                    <div class="mb-3">
+                      <div
+                        class="bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px; font-size: 2rem"
+                      >
+                        <i class="bi bi-person-fill"></i>
+                      </div>
+                    </div>
+                    <h3 class="h5 mb-1">عبير عمارة</h3>
+                    <p class="text-muted small mb-3">مدير مشاريع</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                      <a href="#" class="btn btn-outline-warning btn-sm">
+                        <i class="bi bi-envelope"></i>
+                      </a>
+                      <a href="#" class="btn btn-outline-warning btn-sm">
+                        <i class="bi bi-telephone"></i>
+                      </a>
+                      <a href="#" class="btn btn-outline-warning btn-sm">
+                        <i class="bi bi-chat"></i>
+                      </a>
+                    </div>
+                    <button class="btn btn-warning btn-sm w-100">
+                      عرض الملف الشخصي
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت المنتجات</h2>
+              <div class="row g-3">
+                <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="card h-100">
+                    <div class="ratio ratio-1x1 bg-light">
+                      <div
+                        class="d-flex align-items-center justify-content-center"
+                      >
+                        <i
+                          class="bi bi-box-seam text-muted"
+                          style="font-size: 4rem"
+                        ></i>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <span class="badge bg-success mb-2">متوفر</span>
+                      <h3 class="h6 card-title">منتج رقم 1</h3>
+                      <p class="card-text ap-muted small">
+                        وصف قصير للمنتج وأهم ميزاته.
+                      </p>
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <span class="h5 mb-0 text-primary">250 ج.م</span>
+                        <button class="btn btn-primary btn-sm">
+                          <i class="bi bi-cart-plus ms-1"></i>إضافة
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="card h-100">
+                    <div class="ratio ratio-1x1 bg-light">
+                      <div
+                        class="d-flex align-items-center justify-content-center"
+                      >
+                        <i
+                          class="bi bi-gift text-muted"
+                          style="font-size: 4rem"
+                        ></i>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <span class="badge bg-danger mb-2">عرض خاص</span>
+                      <h3 class="h6 card-title">منتج رقم 2</h3>
+                      <p class="card-text ap-muted small">
+                        منتج مميز بسعر مخفض.
+                      </p>
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div>
+                          <span class="h5 mb-0 text-primary">180 ج.م</span>
+                          <span
+                            class="text-muted text-decoration-line-through small me-2"
+                            >250 ج.م</span
+                          >
+                        </div>
+                        <button class="btn btn-primary btn-sm">
+                          <i class="bi bi-cart-plus ms-1"></i>إضافة
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="card h-100">
+                    <div class="ratio ratio-1x1 bg-light">
+                      <div
+                        class="d-flex align-items-center justify-content-center"
+                      >
+                        <i
+                          class="bi bi-star text-muted"
+                          style="font-size: 4rem"
+                        ></i>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <span class="badge bg-warning mb-2">الأكثر مبيعاً</span>
+                      <h3 class="h6 card-title">منتج رقم 3</h3>
+                      <p class="card-text ap-muted small">
+                        منتج مفضل لدى العملاء.
+                      </p>
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <span class="h5 mb-0 text-primary">320 ج.م</span>
+                        <button class="btn btn-primary btn-sm">
+                          <i class="bi bi-cart-plus ms-1"></i>إضافة
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت الجدول الزمني</h2>
+              <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                  <div class="ap-card p-3">
+                    <div class="d-flex gap-3">
+                      <div class="text-center" style="min-width: 60px">
+                        <div class="fw-bold text-primary">15</div>
+                        <div class="small text-muted">يناير</div>
+                      </div>
+                      <div class="flex-grow-1">
+                        <h3 class="h6 mb-2">إطلاق المشروع</h3>
+                        <p class="ap-muted small mb-2">
+                          بداية العمل على المشروع الجديد بفريق متكامل.
+                        </p>
+                        <span class="badge bg-primary">مكتمل</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="ap-card p-3">
+                    <div class="d-flex gap-3">
+                      <div class="text-center" style="min-width: 60px">
+                        <div class="fw-bold text-warning">28</div>
+                        <div class="small text-muted">فبراير</div>
+                      </div>
+                      <div class="flex-grow-1">
+                        <h3 class="h6 mb-2">مرحلة التطوير</h3>
+                        <p class="ap-muted small mb-2">
+                          تطوير الميزات الأساسية وإجراء الاختبارات.
+                        </p>
+                        <span class="badge bg-warning">جاري العمل</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="ap-card p-3">
+                    <div class="d-flex gap-3">
+                      <div class="text-center" style="min-width: 60px">
+                        <div class="fw-bold text-muted">10</div>
+                        <div class="small text-muted">مارس</div>
+                      </div>
+                      <div class="flex-grow-1">
+                        <h3 class="h6 mb-2">الإطلاق التجريبي</h3>
+                        <p class="ap-muted small mb-2">
+                          إطلاق نسخة تجريبية للمستخدمين.
+                        </p>
+                        <span class="badge bg-secondary">قادم</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="ap-card p-3">
+                    <div class="d-flex gap-3">
+                      <div class="text-center" style="min-width: 60px">
+                        <div class="fw-bold text-muted">25</div>
+                        <div class="small text-muted">مارس</div>
+                      </div>
+                      <div class="flex-grow-1">
+                        <h3 class="h6 mb-2">الإطلاق الرسمي</h3>
+                        <p class="ap-muted small mb-2">
+                          إطلاق النسخة النهائية للجميع.
+                        </p>
+                        <span class="badge bg-secondary">قادم</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Color Variant Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت بألوان مختلفة</h2>
+              <div class="row g-3">
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="card text-white bg-primary h-100">
+                    <div class="card-body">
+                      <h3 class="h5 card-title">أساسي</h3>
+                      <p class="card-text opacity-75">
+                        كارت بلون أساسي مع نص أبيض.
+                      </p>
+                      <button class="btn btn-light btn-sm">عرض</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="card text-white bg-success h-100">
+                    <div class="card-body">
+                      <h3 class="h5 card-title">نجاح</h3>
+                      <p class="card-text opacity-75">
+                        كارت بلون أخضر للعمليات الناجحة.
+                      </p>
+                      <button class="btn btn-light btn-sm">عرض</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="card text-white bg-warning h-100">
+                    <div class="card-body">
+                      <h3 class="h5 card-title">تحذير</h3>
+                      <p class="card-text opacity-75">
+                        كارت بلون أصفر للتنبيهات.
+                      </p>
+                      <button class="btn btn-light btn-sm">عرض</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                  <div class="card text-white bg-danger h-100">
+                    <div class="card-body">
+                      <h3 class="h5 card-title">خطر</h3>
+                      <p class="card-text opacity-75">
+                        كارت بلون أحمر للأخطاء الهامة.
+                      </p>
+                      <button class="btn btn-light btn-sm">عرض</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cards with Lists -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت بقوائم</h2>
+              <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="ap-card h-100">
+                    <div class="p-3 border-bottom">
+                      <h3 class="h6 mb-0">قائمة المهام</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li
+                        class="list-group-item d-flex align-items-center gap-2"
+                      >
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <span>مهمة مكتملة</span>
+                      </li>
+                      <li
+                        class="list-group-item d-flex align-items-center gap-2"
+                      >
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <span>مراجعة الكود</span>
+                      </li>
+                      <li
+                        class="list-group-item d-flex align-items-center gap-2"
+                      >
+                        <i class="bi bi-circle text-muted"></i>
+                        <span>مهمة قادمة</span>
+                      </li>
+                      <li
+                        class="list-group-item d-flex align-items-center gap-2"
+                      >
+                        <i class="bi bi-circle text-muted"></i>
+                        <span>كتابة التوثيق</span>
+                      </li>
+                    </ul>
+                    <div class="p-3 border-top">
+                      <button class="btn btn-outline-primary btn-sm w-100">
+                        عرض الكل
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="ap-card h-100">
+                    <div class="p-3 border-bottom">
+                      <h3 class="h6 mb-0">الإشعارات</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                        <div class="d-flex gap-2">
+                          <i class="bi bi-bell-fill text-primary"></i>
+                          <div class="flex-grow-1">
+                            <div class="fw-bold small">إشعار جديد</div>
+                            <div class="small text-muted">منذ 5 دقائق</div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="d-flex gap-2">
+                          <i class="bi bi-envelope-fill text-success"></i>
+                          <div class="flex-grow-1">
+                            <div class="fw-bold small">رسالة جديدة</div>
+                            <div class="small text-muted">منذ 15 دقيقة</div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="d-flex gap-2">
+                          <i
+                            class="bi bi-exclamation-triangle-fill text-warning"
+                          ></i>
+                          <div class="flex-grow-1">
+                            <div class="fw-bold small">تحذير</div>
+                            <div class="small text-muted">منذ ساعة</div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="p-3 border-top">
+                      <button class="btn btn-outline-primary btn-sm w-100">
+                        مسح الكل
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="ap-card h-100">
+                    <div class="p-3 border-bottom">
+                      <h3 class="h6 mb-0">آخر الأنشطة</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                        <div class="small">
+                          <span class="fw-bold">أحمد</span> أضاف تعليق
+                        </div>
+                        <div class="small text-muted">منذ دقيقتين</div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="small">
+                          <span class="fw-bold">نجلاء</span> حدّثت الملف
+                        </div>
+                        <div class="small text-muted">منذ 10 دقائق</div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="small">
+                          <span class="fw-bold">عبير</span> أنشأت مهمة جديدة
+                        </div>
+                        <div class="small text-muted">منذ 30 دقيقة</div>
+                      </li>
+                    </ul>
+                    <div class="p-3 border-top">
+                      <button class="btn btn-outline-primary btn-sm w-100">
+                        عرض المزيد
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Horizontal Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت أفقية</h2>
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <div class="ratio ratio-16x9 bg-secondary h-100">
+                          <div
+                            class="d-flex align-items-center justify-content-center text-white"
+                          >
+                            <i
+                              class="bi bi-newspaper"
+                              style="font-size: 3rem"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h3 class="h5 card-title">مقال مميز</h3>
+                          <p class="card-text">
+                            هذا نص تجريبي لمقال أو محتوى يتم عرضه في كارت أفقي.
+                            الكارت الأفقي مفيد عندما تريد عرض صورة بجانب المحتوى
+                            النصي.
+                          </p>
+                          <p class="card-text">
+                            <small class="text-muted"
+                              >آخر تحديث منذ 3 دقائق</small
+                            >
+                          </p>
+                          <button class="btn btn-primary btn-sm">
+                            قراءة المزيد
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="card">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <div class="ratio ratio-16x9 bg-primary h-100">
+                          <div
+                            class="d-flex align-items-center justify-content-center text-white"
+                          >
+                            <i
+                              class="bi bi-play-circle"
+                              style="font-size: 3rem"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h3 class="h5 card-title">فيديو تعليمي</h3>
+                          <p class="card-text">
+                            شاهد هذا الفيديو التعليمي لتتعلم المزيد عن كيفية
+                            استخدام النظام والاستفادة من جميع الميزات المتاحة.
+                          </p>
+                          <p class="card-text">
+                            <small class="text-muted">المدة: 15 دقيقة</small>
+                          </p>
+                          <button class="btn btn-success btn-sm">
+                            <i class="bi bi-play-fill ms-1"></i>تشغيل
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Collapsible Cards -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت قابلة للطي</h2>
+              <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                  <div class="ap-card">
+                    <div class="p-3 border-bottom">
+                      <button
+                        class="btn btn-link text-decoration-none p-0 w-100 text-end d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapse1"
+                        aria-expanded="true"
+                        aria-controls="collapse1"
+                      >
+                        <i class="bi bi-chevron-down"></i>
+                        <span class="fw-bold">السؤال الأول؟</span>
+                      </button>
+                    </div>
+                    <div class="collapse show" id="collapse1">
+                      <div class="p-3">
+                        <p class="mb-0">
+                          هذا هو المحتوى المخفي الذي يظهر عند النقر على العنوان.
+                          يمكنك وضع أي محتوى هنا مثل نصوص، صور، أو روابط.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="ap-card">
+                    <div class="p-3 border-bottom">
+                      <button
+                        class="btn btn-link text-decoration-none p-0 w-100 text-end d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapse2"
+                        aria-expanded="false"
+                        aria-controls="collapse2"
+                      >
+                        <i class="bi bi-chevron-down"></i>
+                        <span class="fw-bold">السؤال الثاني؟</span>
+                      </button>
+                    </div>
+                    <div class="collapse" id="collapse2">
+                      <div class="p-3">
+                        <p class="mb-0">
+                          محتوى السؤال الثاني. هذا الكارت مطوي افتراضياً ويمكن
+                          فتحه بالنقر على العنوان.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="ap-card">
+                    <div class="p-3 border-bottom">
+                      <button
+                        class="btn btn-link text-decoration-none p-0 w-100 text-end d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapse3"
+                        aria-expanded="false"
+                        aria-controls="collapse3"
+                      >
+                        <i class="bi bi-chevron-down"></i>
+                        <span class="fw-bold">السؤال الثالث؟</span>
+                      </button>
+                    </div>
+                    <div class="collapse" id="collapse3">
+                      <div class="p-3">
+                        <p class="mb-0">
+                          إجابة السؤال الثالث مع معلومات إضافية ومفيدة للمستخدم.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="ap-card">
+                    <div class="p-3 border-bottom">
+                      <button
+                        class="btn btn-link text-decoration-none p-0 w-100 text-end d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapse4"
+                        aria-expanded="false"
+                        aria-controls="collapse4"
+                      >
+                        <i class="bi bi-chevron-down"></i>
+                        <span class="fw-bold">السؤال الرابع؟</span>
+                      </button>
+                    </div>
+                    <div class="collapse" id="collapse4">
+                      <div class="p-3">
+                        <p class="mb-0">
+                          آخر سؤال مع إجابة شاملة توضح كل التفاصيل المطلوبة.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cards with Tabs -->
+            <div class="ap-card p-3 mb-3">
+              <h2 class="h5 mb-3">كروت بتبويبات</h2>
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="ap-card">
+                    <div class="p-3 border-bottom">
+                      <ul
+                        class="nav nav-tabs card-header-tabs"
+                        id="cardTabs"
+                        role="tablist"
+                      >
+                        <li class="nav-item" role="presentation">
+                          <button
+                            class="nav-link active"
+                            id="tab1-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#tab1"
+                            type="button"
+                            role="tab"
+                            aria-controls="tab1"
+                            aria-selected="true"
+                          >
+                            <i class="bi bi-house-fill ms-1"></i>الرئيسية
+                          </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button
+                            class="nav-link"
+                            id="tab2-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#tab2"
+                            type="button"
+                            role="tab"
+                            aria-controls="tab2"
+                            aria-selected="false"
+                          >
+                            <i class="bi bi-person-fill ms-1"></i>الملف الشخصي
+                          </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button
+                            class="nav-link"
+                            id="tab3-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#tab3"
+                            type="button"
+                            role="tab"
+                            aria-controls="tab3"
+                            aria-selected="false"
+                          >
+                            <i class="bi bi-gear-fill ms-1"></i>الإعدادات
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="tab-content p-3" id="cardTabsContent">
+                      <div
+                        class="tab-pane fade show active"
+                        id="tab1"
+                        role="tabpanel"
+                        aria-labelledby="tab1-tab"
+                      >
+                        <h3 class="h6">محتوى تبويب الرئيسية</h3>
+                        <p class="mb-0">
+                          هذا هو محتوى التبويب الأول. يمكنك وضع أي محتوى هنا مثل
+                          نصوص، صور، نماذج، أو جداول.
+                        </p>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="tab2"
+                        role="tabpanel"
+                        aria-labelledby="tab2-tab"
+                      >
+                        <h3 class="h6">محتوى تبويب الملف الشخصي</h3>
+                        <p class="mb-3">
+                          معلومات المستخدم وتفاصيل الملف الشخصي.
+                        </p>
+                        <ul class="list-unstyled">
+                          <li class="mb-2">
+                            <strong>الاسم:</strong> محمد أحمد
+                          </li>
+                          <li class="mb-2">
+                            <strong>البريد:</strong> user@example.com
+                          </li>
+                          <li class="mb-2">
+                            <strong>الهاتف:</strong> 0123456789
+                          </li>
+                        </ul>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="tab3"
+                        role="tabpanel"
+                        aria-labelledby="tab3-tab"
+                      >
+                        <h3 class="h6">محتوى تبويب الإعدادات</h3>
+                        <p>إعدادات الحساب والتفضيلات الشخصية.</p>
+                        <div class="form-check form-switch mb-2">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="setting1"
+                            checked
+                          />
+                          <label class="form-check-label" for="setting1"
+                            >تفعيل الإشعارات</label
+                          >
+                        </div>
+                        <div class="form-check form-switch">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="setting2"
+                          />
+                          <label class="form-check-label" for="setting2"
+                            >الوضع الليلي</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- END Content -->
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+    <!-- Footer -->
 
-  
-<footer class="py-3 ap-admin-footer">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-      <div>© [Year] منصة بيان — لوحة التحكم</div>
-      <div class="ap-muted">UI Template (HTML/CSS/Bootstrap)</div>
-    </div>
-  </div>
-</footer>
+    <footer class="py-3 ap-admin-footer">
+      <div class="container-fluid">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+          <div>
+            جميع الحقوق محفوظة لمركز التطبيقات الالكترونية بجامعه قنا لسنه 2025
+          </div>
+        </div>
+      </div>
+    </footer>
 
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script>
-    // Replace year placeholder quickly
-    document.querySelectorAll("footer [data-year]").forEach(el => el.textContent = new Date().getFullYear());
-  </script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
 </html>

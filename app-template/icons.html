@@ -1,246 +1,1034 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>الأيقونات | لوحة تحكم بيان</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>الأيقونات | لوحة تحكم بيان</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet"/>
-  <link href="assets/css/style.css" rel="stylesheet"/>
-</head>
-<body class="ap-admin">
-  
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-fluid">
-    <div class="d-flex align-items-center gap-2">
-      <!-- Mobile: open offcanvas -->
-      <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#apOffcanvasNav" aria-controls="apOffcanvasNav">
-        <i class="bi bi-list"></i>
-      </button>
-
-      <!-- Desktop: collapse sidebar -->
-      <button id="apSidebarToggle" class="btn btn-outline-light d-none d-lg-inline-flex" type="button" aria-label="Toggle sidebar">
-        <i class="bi bi-layout-sidebar-inset"></i>
-      </button>
-
-      <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="index.html">
-        <span class="ap-logo-wrap ap-logo-sm">
-          <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
-        </span>
-        <span>لوحة التحكم</span>
-      </a>
-    </div>
-
-    <div class="d-flex align-items-center gap-3">
-      <span class="navbar-text fw-bold">
-        مرحباً، <span class="fw-bolder">[UserName]</span>
-      </span>
-      <a class="btn btn-primary btn-sm" href="#logout">
-        <i class="bi bi-box-arrow-right ms-1"></i>
-        خروج
-      </a>
-    </div>
-  </div>
-</nav>
-
-
-  
-<div class="offcanvas offcanvas-start" tabindex="-1" id="apOffcanvasNav" aria-labelledby="apOffcanvasNavLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body" data-ap-nav>
-    <nav class="nav flex-column gap-1">
-      
-          <a class="nav-link" href="index.html">
-            <i class="bi bi-speedometer2 ms-2"></i>الرئيسية
-          </a>
-          <a class="nav-link" href="colors.html">
-            <i class="bi bi-palette2 ms-2"></i>الألوان
-          </a>
-          <a class="nav-link" href="typography.html">
-            <i class="bi bi-type ms-2"></i>الخطوط
-          </a>
-          <a class="nav-link" href="buttons.html">
-            <i class="bi bi-toggle-on ms-2"></i>الأزرار
-          </a>
-          <a class="nav-link" href="tables.html">
-            <i class="bi bi-table ms-2"></i>الجداول
-          </a>
-          <a class="nav-link" href="forms.html">
-            <i class="bi bi-ui-checks-grid ms-2"></i>النماذج
-          </a>
-          <a class="nav-link" href="badges.html">
-            <i class="bi bi-patch-check ms-2"></i>الشارات
-          </a>
-          <a class="nav-link" href="cards.html">
-            <i class="bi bi-collection ms-2"></i>الكروت
-          </a>
-          <a class="nav-link" href="modals.html">
-            <i class="bi bi-window ms-2"></i>النوافذ
-          </a>
-          <a class="nav-link" href="pagination.html">
-            <i class="bi bi-list-ol ms-2"></i>الصفحات
-          </a>
-          <a class="nav-link" href="icons.html">
-            <i class="bi bi-grid-3x3-gap ms-2"></i>الأيقونات
-          </a>
-          <a class="nav-link" href="alerts.html">
-            <i class="bi bi-bell ms-2"></i>التنبيهات
-          </a>
-          <a class="nav-link" href="blank.html">
-            <i class="bi bi-file-earmark ms-2"></i>صفحة فارغة
-          </a><hr class="my-2">
-      <a class="nav-link" href="#logout"><i class="bi bi-box-arrow-right ms-2"></i>تسجيل الخروج</a>
-    
-    </nav>
-  </div>
-</div>
-
-
-  <main class="ap-admin">
-    <div class="container-fluid">
-      <div class="ap-admin-shell">
-        <!-- Desktop sidebar -->
-        <aside class="ap-admin-aside" data-ap-nav>
-          <nav class="ap-sidebar nav flex-column gap-1">
-            <div class="ap-sidebar-group-title">القائمة</div>
-
-          <a class="nav-link" href="index.html" data-ap-tooltip title="الرئيسية">
-            <i class="bi bi-speedometer2"></i>
-            <span class="ap-sidebar-label">الرئيسية</span>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="ap-admin">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <!-- Right side (RTL): Brand + Desktop collapse/expand -->
+        <div class="d-flex align-items-center gap-5">
+          <a
+            class="navbar-brand d-flex align-items-center gap-2 m-0"
+            href="index.html"
+          >
+            <span class="ap-logo-wrap ap-logo-sm">
+              <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
+            </span>
+            <span class="ap-brand-title">لوحة التحكم</span>
           </a>
 
-          <a class="nav-link" href="colors.html" data-ap-tooltip title="الألوان">
-            <i class="bi bi-palette2"></i>
-            <span class="ap-sidebar-label">الألوان</span>
-          </a>
+          <!-- Desktop only: collapse/expand sidebar (right after title) -->
+          <button
+            id="apSidebarToggle"
+            class="btn btn-outline-light ap-nav-toggle d-none d-lg-inline-flex"
+            type="button"
+            aria-label="تصغير/توسيع القائمة"
+            title="تصغير/توسيع القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
 
-          <a class="nav-link" href="typography.html" data-ap-tooltip title="الخطوط">
-            <i class="bi bi-type"></i>
-            <span class="ap-sidebar-label">الخطوط</span>
-          </a>
-
-          <a class="nav-link" href="buttons.html" data-ap-tooltip title="الأزرار">
-            <i class="bi bi-toggle-on"></i>
-            <span class="ap-sidebar-label">الأزرار</span>
-          </a>
-
-          <a class="nav-link" href="tables.html" data-ap-tooltip title="الجداول">
-            <i class="bi bi-table"></i>
-            <span class="ap-sidebar-label">الجداول</span>
-          </a>
-
-          <a class="nav-link" href="forms.html" data-ap-tooltip title="النماذج">
-            <i class="bi bi-ui-checks-grid"></i>
-            <span class="ap-sidebar-label">النماذج</span>
-          </a>
-
-          <a class="nav-link" href="badges.html" data-ap-tooltip title="الشارات">
-            <i class="bi bi-patch-check"></i>
-            <span class="ap-sidebar-label">الشارات</span>
-          </a>
-
-          <a class="nav-link" href="cards.html" data-ap-tooltip title="الكروت">
-            <i class="bi bi-collection"></i>
-            <span class="ap-sidebar-label">الكروت</span>
-          </a>
-
-          <a class="nav-link" href="modals.html" data-ap-tooltip title="النوافذ">
-            <i class="bi bi-window"></i>
-            <span class="ap-sidebar-label">النوافذ</span>
-          </a>
-
-          <a class="nav-link" href="pagination.html" data-ap-tooltip title="الصفحات">
-            <i class="bi bi-list-ol"></i>
-            <span class="ap-sidebar-label">الصفحات</span>
-          </a>
-
-          <a class="nav-link" href="icons.html" data-ap-tooltip title="الأيقونات">
-            <i class="bi bi-grid-3x3-gap"></i>
-            <span class="ap-sidebar-label">الأيقونات</span>
-          </a>
-
-          <a class="nav-link" href="alerts.html" data-ap-tooltip title="التنبيهات">
-            <i class="bi bi-bell"></i>
-            <span class="ap-sidebar-label">التنبيهات</span>
-          </a>
-
-          <a class="nav-link" href="blank.html" data-ap-tooltip title="صفحة فارغة">
-            <i class="bi bi-file-earmark"></i>
-            <span class="ap-sidebar-label">صفحة فارغة</span>
-          </a>
-<hr class="my-2">
-
-      <a class="nav-link" href="#logout" data-ap-tooltip title="تسجيل الخروج">
-        <i class="bi bi-box-arrow-right"></i>
-        <span class="ap-sidebar-label">تسجيل الخروج</span>
-      </a>
-          </nav>
-        </aside>
-
-        <section class="ap-admin-main">
-          <div class="ap-card p-3 mb-3">
-            <div class="ap-page-header">
-              <div>
-                <h1 class="h4 mb-1">الأيقونات</h1>
-                <div class="ap-muted">Bootstrap Icons أمثلة (أحجام + استخدام داخل أزرار).</div>
-              </div>
-              <div class="ap-toolbar">
-                <a class="btn btn-outline-primary btn-sm" href="blank.html"><i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة</a>
-              </div>
-            </div>
+        <!-- Left side (RTL): Desktop user + Mobile offcanvas toggle -->
+        <div class="d-flex align-items-center gap-3">
+          <!-- Desktop only -->
+          <div class="d-none d-lg-flex align-items-center gap-3">
+            <span class="navbar-text fw-bold">
+              مرحباً، <span class="fw-bolder">[UserName]</span>
+            </span>
+            <a class="btn btn-primary btn-sm" href="#logout">
+              <i class="bi bi-box-arrow-right me-1"></i>خروج
+            </a>
           </div>
 
-          
-<div class="ap-card p-3 mb-3">
-  <h2 class="h6 mb-2">Grid</h2>
-  <div class="row g-2 text-center">
-    <div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-house fs-3"></i><div class="small ap-muted">bi-house</div></div></div>
-<div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-gear fs-3"></i><div class="small ap-muted">bi-gear</div></div></div>
-<div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-people fs-3"></i><div class="small ap-muted">bi-people</div></div></div>
-<div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-bell fs-3"></i><div class="small ap-muted">bi-bell</div></div></div>
-<div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-table fs-3"></i><div class="small ap-muted">bi-table</div></div></div>
-<div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-palette2 fs-3"></i><div class="small ap-muted">bi-palette2</div></div></div>
-<div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-type fs-3"></i><div class="small ap-muted">bi-type</div></div></div>
-<div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-window fs-3"></i><div class="small ap-muted">bi-window</div></div></div>
-<div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-patch-check fs-3"></i><div class="small ap-muted">bi-patch-check</div></div></div>
-<div class="col-4 col-md-2"><div class="ap-card p-2"><i class="bi bi-file-earmark fs-3"></i><div class="small ap-muted">bi-file-earmark</div></div></div>
-  </div>
-</div>
+          <!-- Mobile only: offcanvas toggle (far left) -->
+          <button
+            class="btn btn-outline-light ap-nav-toggle d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#apOffcanvasNav"
+            aria-controls="apOffcanvasNav"
+            aria-label="فتح القائمة"
+            title="القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Mobile offcanvas menu -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="apOffcanvasNav"
+      aria-labelledby="apOffcanvasNavLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body" data-ap-nav>
+        <div class="ap-offcanvas-user mb-3">
+          <div class="ap-offcanvas-hello mb-2">
+            مرحباً، <span class="fw-bolder">[UserName]</span>
+          </div>
+          <a class="btn btn-primary btn-sm" href="#logout">
+            <i class="bi bi-box-arrow-right me-1"></i>تسجيل الخروج
+          </a>
+        </div>
 
-<div class="ap-card p-3">
-  <h2 class="h6 mb-2">داخل زر</h2>
-  <button class="btn btn-outline-primary"><i class="bi bi-download ms-1"></i>تحميل</button>
-</div>
-
-
-        </section>
+        <nav class="nav flex-column gap-1">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-speedometer2 me-2"></i>الرئيسية
+          </a>
+          <a class="nav-link" href="colors.html">
+            <i class="bi bi-palette2 me-2"></i>الألوان
+          </a>
+          <a class="nav-link" href="typography.html">
+            <i class="bi bi-type me-2"></i>الخطوط
+          </a>
+          <a class="nav-link" href="buttons.html">
+            <i class="bi bi-toggle-on me-2"></i>الأزرار
+          </a>
+          <a class="nav-link" href="tables.html">
+            <i class="bi bi-table me-2"></i>الجداول
+          </a>
+          <a class="nav-link" href="forms.html">
+            <i class="bi bi-ui-checks-grid me-2"></i>النماذج
+          </a>
+          <a class="nav-link" href="badges.html">
+            <i class="bi bi-patch-check me-2"></i>الشارات
+          </a>
+          <a class="nav-link" href="cards.html">
+            <i class="bi bi-collection me-2"></i>الكروت
+          </a>
+          <a class="nav-link" href="modals.html">
+            <i class="bi bi-window me-2"></i>النوافذ
+          </a>
+          <a class="nav-link" href="pagination.html">
+            <i class="bi bi-list-ol me-2"></i>الصفحات
+          </a>
+          <a class="nav-link" href="icons.html">
+            <i class="bi bi-grid-3x3-gap me-2"></i>الأيقونات
+          </a>
+          <a class="nav-link" href="alerts.html">
+            <i class="bi bi-bell me-2"></i>التنبيهات
+          </a>
+          <a class="nav-link" href="blank.html">
+            <i class="bi bi-file-earmark me-2"></i>صفحة فارغة
+          </a>
+        </nav>
       </div>
     </div>
-  </main>
 
-  
-<footer class="py-3 ap-admin-footer">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-      <div>© [Year] منصة بيان — لوحة التحكم</div>
-      <div class="ap-muted">UI Template (HTML/CSS/Bootstrap)</div>
-    </div>
-  </div>
-</footer>
+    <main class="ap-admin">
+      <div class="container-fluid">
+        <div class="ap-admin-shell">
+          <!-- Sidebar -->
+          <aside class="ap-admin-aside" data-ap-nav>
+            <nav class="ap-sidebar nav flex-column gap-1">
+              <div class="ap-sidebar-top">
+                <div class="ap-sidebar-app-title">القائمة</div>
+              </div>
+              <hr class="ap-sidebar-hr" />
 
+              <a
+                class="nav-link"
+                href="index.html"
+                data-ap-tooltip
+                title="الرئيسية"
+              >
+                <i class="bi bi-speedometer2"></i>
+                <span class="ap-sidebar-label">الرئيسية</span>
+              </a>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script>
-    // Replace year placeholder quickly
-    document.querySelectorAll("footer [data-year]").forEach(el => el.textContent = new Date().getFullYear());
-  </script>
-</body>
+              <a
+                class="nav-link"
+                href="colors.html"
+                data-ap-tooltip
+                title="الألوان"
+              >
+                <i class="bi bi-palette2"></i>
+                <span class="ap-sidebar-label">الألوان</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="typography.html"
+                data-ap-tooltip
+                title="الخطوط"
+              >
+                <i class="bi bi-type"></i>
+                <span class="ap-sidebar-label">الخطوط</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="buttons.html"
+                data-ap-tooltip
+                title="الأزرار"
+              >
+                <i class="bi bi-toggle-on"></i>
+                <span class="ap-sidebar-label">الأزرار</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="tables.html"
+                data-ap-tooltip
+                title="الجداول"
+              >
+                <i class="bi bi-table"></i>
+                <span class="ap-sidebar-label">الجداول</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="forms.html"
+                data-ap-tooltip
+                title="النماذج"
+              >
+                <i class="bi bi-ui-checks-grid"></i>
+                <span class="ap-sidebar-label">النماذج</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="badges.html"
+                data-ap-tooltip
+                title="الشارات"
+              >
+                <i class="bi bi-patch-check"></i>
+                <span class="ap-sidebar-label">الشارات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="cards.html"
+                data-ap-tooltip
+                title="الكروت"
+              >
+                <i class="bi bi-collection"></i>
+                <span class="ap-sidebar-label">الكروت</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="modals.html"
+                data-ap-tooltip
+                title="النوافذ"
+              >
+                <i class="bi bi-window"></i>
+                <span class="ap-sidebar-label">النوافذ</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="pagination.html"
+                data-ap-tooltip
+                title="الصفحات"
+              >
+                <i class="bi bi-list-ol"></i>
+                <span class="ap-sidebar-label">الصفحات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="icons.html"
+                data-ap-tooltip
+                title="الأيقونات"
+              >
+                <i class="bi bi-grid-3x3-gap"></i>
+                <span class="ap-sidebar-label">الأيقونات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="alerts.html"
+                data-ap-tooltip
+                title="التنبيهات"
+              >
+                <i class="bi bi-bell"></i>
+                <span class="ap-sidebar-label">التنبيهات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="blank.html"
+                data-ap-tooltip
+                title="صفحة فارغة"
+              >
+                <i class="bi bi-file-earmark"></i>
+                <span class="ap-sidebar-label">صفحة فارغة</span>
+              </a>
+            </nav>
+          </aside>
+          <!-- Content -->
+
+          <section class="ap-admin-main">
+            <div class="ap-card p-3 mb-3">
+              <div class="ap-page-header d-flex">
+                <div>
+                  <h1 class="h4 mb-1">الأيقونات</h1>
+                  <div class="ap-muted">
+                    مكتبة Bootstrap Icons الشاملة -
+                    <a href="https://icons.getbootstrap.com/" target="_blank" rel="noopener noreferrer">
+                      تصفح المزيد من الأيقونات <i class="bi bi-box-arrow-up-left ms-1"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="ap-toolbar ms-auto">
+                  <a class="btn btn-outline-primary btn-sm" href="blank.html">
+                    <i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Icon Sizes -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أحجام الأيقونات</h5>
+              <div class="d-flex align-items-end gap-3 flex-wrap">
+                <div class="text-center">
+                  <i class="bi bi-star-fill" style="font-size: 1rem"></i>
+                  <div class="small ap-muted mt-1">صغير (1rem)</div>
+                </div>
+                <div class="text-center">
+                  <i class="bi bi-star-fill" style="font-size: 1.5rem"></i>
+                  <div class="small ap-muted mt-1">متوسط (1.5rem)</div>
+                </div>
+                <div class="text-center">
+                  <i class="bi bi-star-fill" style="font-size: 2rem"></i>
+                  <div class="small ap-muted mt-1">كبير (2rem)</div>
+                </div>
+                <div class="text-center">
+                  <i class="bi bi-star-fill" style="font-size: 3rem"></i>
+                  <div class="small ap-muted mt-1">كبير جداً (3rem)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Colored Icons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات ملونة</h5>
+              <div class="d-flex gap-3 flex-wrap align-items-center">
+                <i class="bi bi-check-circle-fill text-success fs-2"></i>
+                <i class="bi bi-x-circle-fill text-danger fs-2"></i>
+                <i
+                  class="bi bi-exclamation-triangle-fill text-warning fs-2"
+                ></i>
+                <i class="bi bi-info-circle-fill text-info fs-2"></i>
+                <i class="bi bi-star-fill text-primary fs-2"></i>
+                <i class="bi bi-heart-fill text-danger fs-2"></i>
+              </div>
+            </div>
+
+            <!-- Icons with Badge -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات مع شارات</h5>
+              <div class="d-flex gap-4 flex-wrap">
+                <div class="position-relative">
+                  <i class="bi bi-bell-fill fs-2"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                  >
+                    5
+                  </span>
+                </div>
+                <div class="position-relative">
+                  <i class="bi bi-envelope-fill fs-2"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary"
+                  >
+                    12
+                  </span>
+                </div>
+                <div class="position-relative">
+                  <i class="bi bi-cart-fill fs-2"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+                  >
+                    3
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Icons with Circular Background -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات بخلفيات دائرية</h5>
+              <div class="d-flex gap-3 flex-wrap">
+                <div
+                  class="bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center"
+                  style="width: 50px; height: 50px"
+                >
+                  <i class="bi bi-check-lg fs-4"></i>
+                </div>
+                <div
+                  class="bg-danger bg-opacity-10 text-danger rounded-circle d-flex align-items-center justify-content-center"
+                  style="width: 50px; height: 50px"
+                >
+                  <i class="bi bi-x-lg fs-4"></i>
+                </div>
+                <div
+                  class="bg-warning bg-opacity-10 text-warning rounded-circle d-flex align-items-center justify-content-center"
+                  style="width: 50px; height: 50px"
+                >
+                  <i class="bi bi-exclamation-lg fs-4"></i>
+                </div>
+                <div
+                  class="bg-info bg-opacity-10 text-info rounded-circle d-flex align-items-center justify-content-center"
+                  style="width: 50px; height: 50px"
+                >
+                  <i class="bi bi-info-lg fs-4"></i>
+                </div>
+                <div
+                  class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center"
+                  style="width: 50px; height: 50px"
+                >
+                  <i class="bi bi-star-fill fs-5"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spinning/Animated Icons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات متحركة</h5>
+              <div class="d-flex gap-3 flex-wrap align-items-center">
+                <i
+                  class="bi bi-arrow-clockwise fs-2"
+                  style="animation: spin 2s linear infinite"
+                ></i>
+                <i
+                  class="bi bi-hourglass-split fs-2"
+                  style="animation: pulse 1.5s ease-in-out infinite"
+                ></i>
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">جاري التحميل...</span>
+                </div>
+                <div class="spinner-grow text-success" role="status">
+                  <span class="visually-hidden">جاري التحميل...</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Icons in Buttons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات في الأزرار</h5>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn btn-primary">
+                  <i class="bi bi-plus-circle me-1"></i>إضافة جديد
+                </button>
+                <button class="btn btn-success">
+                  <i class="bi bi-check-circle me-1"></i>حفظ
+                </button>
+                <button class="btn btn-danger">
+                  <i class="bi bi-trash me-1"></i>حذف
+                </button>
+                <button class="btn btn-warning">
+                  <i class="bi bi-pencil me-1"></i>تعديل
+                </button>
+                <button class="btn btn-info">
+                  <i class="bi bi-download me-1"></i>تحميل
+                </button>
+                <button class="btn btn-secondary">
+                  <i class="bi bi-search me-1"></i>بحث
+                </button>
+              </div>
+            </div>
+
+            <!-- Navigation Icons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات التنقل</h5>
+              <div id="navigationIcons" class="row g-2 text-center icon-grid">
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-house"
+                  onclick="copyIconName('bi-house')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-house fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-house</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-speedometer2"
+                  onclick="copyIconName('bi-speedometer2')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-speedometer2 fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-speedometer2</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-grid"
+                  onclick="copyIconName('bi-grid')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-grid fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-grid</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-list"
+                  onclick="copyIconName('bi-list')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-list fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-list</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-menu-button-wide"
+                  onclick="copyIconName('bi-menu-button-wide')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-menu-button-wide fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-menu-button-wide</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-gear"
+                  onclick="copyIconName('bi-gear')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-gear fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-gear</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Icons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات الإجراءات</h5>
+              <div id="actionIcons" class="row g-2 text-center icon-grid">
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-plus-circle"
+                  onclick="copyIconName('bi-plus-circle')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-plus-circle fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-plus-circle</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-pencil"
+                  onclick="copyIconName('bi-pencil')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-pencil fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-pencil</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-trash"
+                  onclick="copyIconName('bi-trash')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-trash fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-trash</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-save"
+                  onclick="copyIconName('bi-save')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-save fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-save</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-x-circle"
+                  onclick="copyIconName('bi-x-circle')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-x-circle fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-x-circle</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-check-circle"
+                  onclick="copyIconName('bi-check-circle')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-check-circle fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-check-circle</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- File Icons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات الملفات</h5>
+              <div id="fileIcons" class="row g-2 text-center icon-grid">
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-file-earmark"
+                  onclick="copyIconName('bi-file-earmark')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-file-earmark fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-file-earmark</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-folder"
+                  onclick="copyIconName('bi-folder')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-folder fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-folder</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-download"
+                  onclick="copyIconName('bi-download')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-download fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-download</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-upload"
+                  onclick="copyIconName('bi-upload')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-upload fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-upload</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-cloud-upload"
+                  onclick="copyIconName('bi-cloud-upload')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-cloud-upload fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-cloud-upload</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-file-pdf"
+                  onclick="copyIconName('bi-file-pdf')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-file-pdf fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-file-pdf</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Communication Icons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات التواصل</h5>
+              <div id="commIcons" class="row g-2 text-center icon-grid">
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-envelope"
+                  onclick="copyIconName('bi-envelope')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-envelope fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-envelope</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-telephone"
+                  onclick="copyIconName('bi-telephone')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-telephone fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-telephone</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-chat-dots"
+                  onclick="copyIconName('bi-chat-dots')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-chat-dots fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-chat-dots</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-send"
+                  onclick="copyIconName('bi-send')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-send fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-send</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-bell"
+                  onclick="copyIconName('bi-bell')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-bell fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-bell</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-megaphone"
+                  onclick="copyIconName('bi-megaphone')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-megaphone fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-megaphone</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Status Icons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات الحالة</h5>
+              <div id="statusIcons" class="row g-2 text-center icon-grid">
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-check-circle-fill"
+                  onclick="copyIconName('bi-check-circle-fill')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i
+                      class="bi bi-check-circle-fill text-success fs-2 mb-2"
+                    ></i>
+                    <div class="small ap-muted">bi-check-circle-fill</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-x-circle-fill"
+                  onclick="copyIconName('bi-x-circle-fill')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-x-circle-fill text-danger fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-x-circle-fill</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-exclamation-triangle-fill"
+                  onclick="copyIconName('bi-exclamation-triangle-fill')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i
+                      class="bi bi-exclamation-triangle-fill text-warning fs-2 mb-2"
+                    ></i>
+                    <div class="small ap-muted">
+                      bi-exclamation-triangle-fill
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-info-circle-fill"
+                  onclick="copyIconName('bi-info-circle-fill')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-info-circle-fill text-info fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-info-circle-fill</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-clock"
+                  onclick="copyIconName('bi-clock')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-clock fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-clock</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-hourglass-split"
+                  onclick="copyIconName('bi-hourglass-split')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-hourglass-split fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-hourglass-split</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Media Icons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات الوسائط</h5>
+              <div id="mediaIcons" class="row g-2 text-center icon-grid">
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-image"
+                  onclick="copyIconName('bi-image')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-image fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-image</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-camera"
+                  onclick="copyIconName('bi-camera')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-camera fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-camera</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-play-circle"
+                  onclick="copyIconName('bi-play-circle')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-play-circle fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-play-circle</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-music-note"
+                  onclick="copyIconName('bi-music-note')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-music-note fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-music-note</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-volume-up"
+                  onclick="copyIconName('bi-volume-up')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-volume-up fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-volume-up</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-film"
+                  onclick="copyIconName('bi-film')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-film fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-film</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- User Icons -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أيقونات المستخدمين</h5>
+              <div id="userIcons" class="row g-2 text-center icon-grid">
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-person"
+                  onclick="copyIconName('bi-person')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-person fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-person</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-people"
+                  onclick="copyIconName('bi-people')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-people fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-people</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-person-circle"
+                  onclick="copyIconName('bi-person-circle')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-person-circle fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-person-circle</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-person-check"
+                  onclick="copyIconName('bi-person-check')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-person-check fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-person-check</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-person-plus"
+                  onclick="copyIconName('bi-person-plus')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-person-plus fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-person-plus</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-shield-check"
+                  onclick="copyIconName('bi-shield-check')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-shield-check fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-shield-check</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social & E-commerce Icons -->
+            <div class="ap-card p-3">
+              <h5 class="mb-3">
+                أيقونات التجارة الإلكترونية والتواصل الاجتماعي
+              </h5>
+              <div id="socialIcons" class="row g-2 text-center icon-grid">
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-cart"
+                  onclick="copyIconName('bi-cart')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-cart fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-cart</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-credit-card"
+                  onclick="copyIconName('bi-credit-card')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-credit-card fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-credit-card</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-bag"
+                  onclick="copyIconName('bi-bag')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-bag fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-bag</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-star"
+                  onclick="copyIconName('bi-star')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-star fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-star</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-heart"
+                  onclick="copyIconName('bi-heart')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-heart fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-heart</div>
+                  </div>
+                </div>
+                <div
+                  class="col-6 col-sm-4 col-md-3 col-lg-2 icon-item"
+                  data-icon="bi-share"
+                  onclick="copyIconName('bi-share')"
+                >
+                  <div class="ap-card p-3 h-100 cursor-pointer">
+                    <i class="bi bi-share fs-2 mb-2"></i>
+                    <div class="small ap-muted">bi-share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Toast Container for Copy Notification -->
+            <div
+              class="toast-container position-fixed top-0 end-0 p-3"
+              id="iconToastContainer"
+            ></div>
+          </section>
+          <!-- END Content -->
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+
+    <footer class="py-3 ap-admin-footer">
+      <div class="container-fluid">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+          <div>
+            جميع الحقوق محفوظة لمركز التطبيقات الالكترونية بجامعه قنا لسنه 2025
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
 </html>

@@ -20,6 +20,9 @@
   --ap-primary-hover: #c9961f;
   --ap-primary-active: #b6861b;
 
+  --ap-link: rgb(104 80 20);
+  --ap-link-hover: rgb(12, 18, 52);
+
   /* Neutrals */
   --ap-bg: #f6f8fd;
   --ap-surface: #ffffff;
@@ -51,8 +54,8 @@
   /* Bootstrap overrides */
   --bs-primary: var(--ap-primary);
   --bs-primary-rgb: 222, 172, 49;
-  --bs-link-color: #2b6cb0;
-  --bs-link-hover-color: #1f4f86;
+  --bs-link-color: #19324c;
+  --bs-link-hover-color: #deac31;
 }
 
 /* =========================================================
@@ -110,6 +113,10 @@ h6 {
 
 .ap-muted {
   color: var(--ap-muted) !important;
+}
+a {
+  color: var(--ap-link);
+  text-decoration: none;
 }
 
 /* =========================================================
@@ -262,6 +269,15 @@ h6 {
 /* =========================================================
    8) Forms
 ========================================================= */
+/* Enhanced form controls with border-radius and box-shadow */
+.form-control,
+.form-select,
+textarea.form-control {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.15);
+}
+
 .form-control:focus,
 .form-select:focus {
   border-color: rgba(222, 172, 49, 0.65);
@@ -355,48 +371,6 @@ h6 {
 }
 
 /* =========================================================
-   10) Auth (Login Background)
-========================================================= */
-.ap-auth-bg {
-  min-height: 100vh;
-  background: radial-gradient(
-      900px 520px at 78% 18%,
-      rgba(222, 172, 49, 0.26),
-      transparent 62%
-    ),
-    radial-gradient(
-      950px 540px at 25% 88%,
-      rgba(222, 172, 49, 0.22),
-      transparent 64%
-    ),
-    radial-gradient(
-      760px 420px at 16% 22%,
-      rgba(25, 50, 76, 0.22),
-      transparent 60%
-    ),
-    linear-gradient(160deg, #071226, #0b1f36 55%, #071226);
-}
-
-.ap-auth-card {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.75);
-}
-
-/* =========================================================
-   11) Modals
-========================================================= */
-.modal-header {
-  background-color: var(--ap-thead-bg) !important;
-  justify-content: space-between;
-}
-
-.modal-header .btn-close {
-  background-color: #6f5618 !important;
-  color: var(--ap-bg) !important;
-}
-
-/* =========================================================
    12) Offcanvas
 ========================================================= */
 .offcanvas {
@@ -469,485 +443,20 @@ h6 {
 footer {
   background-color: var(--ap-footer-bg) !important;
   color: var(--ap-footer-ink);
+  font-size: 0.875em;
 }
 
 /* =========================================================
-   15) App Avatar
-========================================================= */
-.ap-app-avatar {
-  width: var(--ap-avatar-size);
-  height: var(--ap-avatar-size);
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-
-  border-radius: var(--ap-pill-radius);
-  background: radial-gradient(
-      120% 120% at 30% 25%,
-      rgba(255, 255, 255, 0.85),
-      transparent 55%
-    ),
-    var(--ap-avatar-bg);
-  border: 1px solid var(--ap-avatar-ring);
-  box-shadow: var(--ap-avatar-shadow);
-}
-
-.ap-app-avatar.has-image {
-  border-radius: 0;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-  overflow: visible;
-}
-
-.ap-app-avatar-img {
-  width: var(--ap-avatar-size);
-  height: var(--ap-avatar-size);
-  object-fit: contain;
-  display: block;
-  background: transparent;
-  padding: 0;
-}
-
-.ap-app-avatar-initials {
-  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  font-weight: 900;
-  font-size: 0.95rem;
-  line-height: 1;
-  letter-spacing: 0.6px;
-  color: var(--ap-avatar-ink) !important;
-  display: grid;
-  place-items: center;
-}
-
-.ap-app-avatar.has-image .ap-app-avatar-initials {
-  display: none;
-}
-
-/* =========================================================
-   16) Access Mode UI (Add/Edit App)
-========================================================= */
-.ap-mode-card {
-  display: block;
-  padding: 0.85rem 0.9rem;
-  border-radius: 14px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: #fff;
-  cursor: pointer;
-  transition: 0.15s ease-in-out;
-  height: 100%;
-}
-
-.ap-mode-card i {
-  font-size: 1.1rem;
-  color: var(--ap-navbar);
-}
-
-.btn-check:checked + .ap-mode-card {
-  border-color: rgb(222 172 49);
-  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.08);
-  background: rgb(222 172 49 / 9%);
-}
-
-.ap-links-box,
-.ap-mode-help {
-  padding: 0.9rem;
-  border-radius: 14px;
-  border: 1px dashed rgba(25, 50, 76, 0.28);
-  background: rgba(222, 172, 49, 0.08);
-}
-
-/* =========================================================
-   17) Page Helpers (Breadcrumbs / Toolbars / Sections)
-========================================================= */
-.ap-section {
-  scroll-margin-top: 92px;
-}
-
-.ap-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.65rem;
-  border-radius: var(--ap-pill-radius);
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: #fff;
-  font-weight: 800;
-  font-size: 0.85rem;
-}
-
-.ap-swatch {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-}
-
-.ap-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  font-size: 0.85rem;
-}
-
-/* Page header utilities */
-.ap-page-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.ap-breadcrumb-lite {
-  font-size: 0.9rem;
-  color: var(--ap-muted);
-}
-
-.ap-breadcrumb-lite a {
-  color: var(--ap-navbar);
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.ap-breadcrumb-lite a:hover {
-  text-decoration: underline;
-  text-underline-offset: 6px;
-}
-
-.ap-toolbar {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.ap-inline-form {
-  border-radius: 14px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: #fff;
-  padding: 0.9rem;
-}
-
-.ap-divider {
-  border-top: 1px solid rgba(15, 23, 42, 0.1);
-  margin: 1rem 0;
-}
-
-/* =========================================================
-   18) Role Permissions UI (Tabs + App Details)
-========================================================= */
-.ap-tabs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.ap-tab-radio {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.ap-tab-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 12px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: #fff;
-  font-weight: 800;
-  cursor: pointer;
-  user-select: none;
-}
-
-.ap-tab-label:hover {
-  background: rgba(25, 50, 76, 0.04);
-}
-
-#tabPlatform:checked + label[for="tabPlatform"],
-#tabApps:checked + label[for="tabApps"] {
-  background: rgba(222, 172, 49, 0.14);
-  border-color: rgba(222, 172, 49, 0.55);
-  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.06);
-}
-
-.ap-tab-panels {
-  margin-top: 0.75rem;
-}
-
-.ap-tab-panel {
-  display: none;
-}
-
-#tabPlatform:checked ~ .ap-tab-panels #panelPlatform {
-  display: block;
-}
-
-#tabApps:checked ~ .ap-tab-panels #panelApps {
-  display: block;
-}
-
-/* Group header controls */
-.ap-group-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.5rem;
-}
-
-.ap-group-actions {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-/* Apps accordion (details) */
-.ap-app-accordion details {
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 10px 22px rgba(2, 6, 23, 0.04);
-  overflow: hidden;
-}
-
-.ap-app-accordion details + details {
-  margin-top: 0.75rem;
-}
-
-.ap-app-accordion summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 0.85rem 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  user-select: none;
-}
-
-.ap-app-accordion summary::-webkit-details-marker {
-  display: none;
-}
-
-.ap-app-title {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  flex-wrap: wrap;
-}
-
-.ap-app-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.ap-app-chevron {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-weight: 800;
-  color: rgba(15, 23, 42, 0.7);
-}
-
-.ap-app-chevron i {
-  transition: 0.15s ease-in-out;
-}
-
-details[open] .ap-app-chevron i {
-  transform: rotate(180deg);
-}
-
-.ap-app-body {
-  border-top: 1px solid rgba(15, 23, 42, 0.08);
-  padding: 0.9rem;
-}
-
-/* =========================================================
-   19) Actions: button text visibility rules
-========================================================= */
-/* Default: show button text */
-.ap-btn-text {
-  display: inline;
-}
-
-/* Desktop safety: keep action buttons readable */
-@media (min-width: 577px) {
-  .table td.text-nowrap .btn,
-  .table td.text-nowrap .btn.btn-sm {
-    font-size: 0.875rem !important;
-  }
-}
-
-/* Small screens: icons-only + tighter paddings */
-@media (max-width: 576px) {
-  .ap-actions .ap-btn-text {
-    display: none;
-  }
-
-  .ap-actions .btn,
-  .ap-actions .btn.btn-sm {
-    padding: 0.35rem 0.55rem;
-  }
-
-  .ap-actions .btn i {
-    margin: 0 !important;
-  }
-}
-
-/* =========================================================
-   20) Responsive Tables -> Card Layout (<= lg)
-========================================================= */
-/* Shared stack rules for both tables */
-@media (max-width: 991.98px) {
-  .ap-table-stack,
-  .ap-pages-stack {
-    border: 0;
-    background: transparent;
-  }
-
-  .ap-table-stack thead,
-  .ap-pages-stack thead {
-    display: none;
-  }
-
-  .ap-table-stack tbody tr,
-  .ap-pages-stack tbody tr {
-    display: block;
-    background: #fff;
-    border: 1px solid var(--ap-border);
-    border-radius: 14px;
-    box-shadow: var(--ap-shadow);
-    padding: 0.9rem;
-    margin-bottom: 0.9rem;
-  }
-
-  .ap-table-stack tbody td,
-  .ap-pages-stack tbody td {
-    display: grid;
-    grid-template-columns: 7.5rem 1fr;
-    gap: 0.6rem;
-    align-items: start;
-    padding: 0.45rem 0;
-    border: 0;
-    white-space: normal !important;
-  }
-
-  .ap-table-stack tbody td::before,
-  .ap-pages-stack tbody td::before {
-    content: attr(data-label);
-    font-weight: 800;
-    color: var(--ap-muted);
-    line-height: 1.4;
-  }
-
-  /* Actions cell: full width (no label) */
-  .ap-table-stack tbody td[data-label="إجراءات"],
-  .ap-pages-stack tbody td[data-label="إجراءات"] {
-    display: block;
-    padding-top: 0.75rem;
-    border-top: 1px solid rgba(15, 23, 42, 0.08);
-    margin-top: 0.75rem;
-  }
-
-  .ap-table-stack tbody td[data-label="إجراءات"]::before,
-  .ap-pages-stack tbody td[data-label="إجراءات"]::before {
-    display: none;
-  }
-
-  .ap-table-stack tbody td[data-label="إجراءات"] .ap-actions,
-  .ap-pages-stack tbody td[data-label="إجراءات"] .ap-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  /* Apps table only: Name cell full width (no label) */
-  .ap-table-stack tbody td[data-label="الاسم"] {
-    display: block;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    margin-bottom: 0.75rem;
-  }
-
-  .ap-table-stack tbody td[data-label="الاسم"]::before {
-    display: none;
-  }
-
-  /* URL inside name */
-  .ap-table-stack .text-truncate {
-    max-width: 100% !important;
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
-  }
-}
-
-/* =========================================================
-   21) Responsive (Mobile tweaks)
+   21) Responsive (Mobile tweaks) - keep brand 1rem
 ========================================================= */
 @media (max-width: 576px) {
-  /* Navbar brand size */
   .navbar-brand {
     font-size: 1rem;
   }
-
-  /* Tabs: full width buttons */
-  .ap-tab-label {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Details chevron alignment */
-  .ap-app-chevron {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Prevent horizontal scroll from table min-width */
-  .table-responsive > .table {
-    width: 100%;
-    min-width: 0 !important;
-    table-layout: fixed;
-  }
-
-  .table th,
-  .table td {
-    min-width: 0 !important;
-    white-space: normal !important;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-
-  .table td.text-nowrap {
-    white-space: normal !important;
-  }
-
-  /* Optional: make small action buttons perfectly square */
-  .table .btn.btn-sm {
-    width: 38px;
-    height: 38px;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .table .btn.btn-sm i {
-    margin: 0 !important;
-    font-size: 1rem;
-  }
 }
 
 /* =========================================================
-   22) Admin Layout Additions (Bayan Admin)
+   Bayan Admin additions (layout + matching Bayan sidebar)
 ========================================================= */
 :root {
   --ap-header-h: 90px;
@@ -955,11 +464,7 @@ details[open] .ap-app-chevron i {
   --ap-sidebar-collapsed-w: 78px;
 }
 
-/* Admin shell */
-.ap-admin {
-  width: 100%;
-}
-
+/* Shell */
 .ap-admin-shell {
   display: flex;
   gap: 1rem;
@@ -969,42 +474,97 @@ details[open] .ap-app-chevron i {
 .ap-admin-aside {
   width: var(--ap-sidebar-w);
   flex: 0 0 var(--ap-sidebar-w);
+  padding-bottom: 1rem; /* space before footer */
 }
 
 .ap-admin-main {
   min-width: 0;
   flex: 1;
+  padding-bottom: 1rem;
 }
 
-/* Sticky sidebar under fixed navbar */
+/* Sidebar container (ONE scroll: no internal scroll) */
 .ap-admin-aside .ap-sidebar {
   position: sticky;
   top: var(--ap-header-h);
-  height: calc(100vh - var(--ap-header-h));
-  overflow-y: auto;
-  padding: 0.9rem;
-}
 
-/* Sidebar card look */
-.ap-admin-aside .ap-sidebar {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+
+  padding: 0.9rem;
   border-radius: 16px;
   background: #fff;
   border: 1px solid var(--ap-border);
   box-shadow: var(--ap-shadow);
+  margin-bottom: 1rem;
 }
 
-/* Nav link layout (icon + label) */
+/* Prevent wrapping into columns */
+.ap-admin-aside .ap-sidebar.nav,
+.offcanvas [data-ap-nav] .nav {
+  flex-wrap: nowrap !important;
+  align-content: flex-start;
+}
+
+/* Sidebar header like Bayan */
+.ap-sidebar-top {
+  /* text-align: center; */
+  padding: 0.4rem 0.25rem 0.25rem;
+}
+
+.ap-sidebar-app-title {
+  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  color: var(--ap-ink);
+  line-height: 1.4;
+}
+
+.ap-sidebar-app-subtitle {
+  color: var(--ap-muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-top: 0.15rem;
+}
+
+.ap-sidebar-hr {
+  border-top: 1px solid rgba(15, 23, 42, 0.18);
+  margin: 0.9rem 0 0.8rem;
+}
+
+.ap-sidebar-group-title {
+  font-weight: 900;
+  color: var(--ap-ink);
+  font-size: 1rem;
+  padding: 0.25rem 0.55rem 0.6rem;
+  margin-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.18);
+}
+
+/* Sidebar nav look like Bayan */
 .ap-sidebar .nav-link {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  /* padding: 0.7rem 0.85rem; */
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 1rem;
 }
 
+/* Icons: darker gold (approved) */
 .ap-sidebar .nav-link i {
   font-size: 1.15rem;
   width: 1.4rem;
   display: inline-flex;
   justify-content: center;
+  color: #9a7312;
+}
+
+.ap-sidebar .nav-link:hover i,
+.ap-sidebar .nav-link.active i {
+  color: #b6861b;
 }
 
 /* Collapsed (desktop) */
@@ -1014,6 +574,8 @@ body.ap-sidebar-collapsed .ap-admin-aside {
 }
 
 body.ap-sidebar-collapsed .ap-sidebar .ap-sidebar-label,
+body.ap-sidebar-collapsed .ap-sidebar .ap-sidebar-top,
+body.ap-sidebar-collapsed .ap-sidebar .ap-sidebar-hr,
 body.ap-sidebar-collapsed .ap-sidebar .ap-sidebar-group-title {
   display: none !important;
 }
@@ -1028,20 +590,7 @@ body.ap-sidebar-collapsed .ap-sidebar .nav-link i {
   width: auto;
 }
 
-/* Group title */
-.ap-sidebar-group-title {
-  font-weight: 900;
-  color: var(--ap-muted);
-  font-size: 0.85rem;
-  padding: 0.35rem 0.55rem;
-}
-
-/* Content padding */
-.ap-admin-main > .container-fluid {
-  padding-inline: 1rem;
-}
-
-/* Responsive: switch to offcanvas on <= lg */
+/* Responsive: hide desktop aside */
 @media (max-width: 991.98px) {
   .ap-admin-shell {
     display: block;
@@ -1049,18 +598,293 @@ body.ap-sidebar-collapsed .ap-sidebar .nav-link i {
   .ap-admin-aside {
     display: none;
   }
-  .ap-admin-main > .container-fluid {
-    padding-inline: 0.75rem;
+}
+
+/* Navbar hamburger (after title) */
+.ap-nav-toggle {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.navbar .ap-nav-toggle {
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar .ap-nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.navbar .ap-nav-toggle i {
+  font-size: 1.25rem;
+}
+
+/* Offcanvas user box */
+.ap-offcanvas-user {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 0.75rem;
+}
+
+.ap-offcanvas-user .ap-offcanvas-hello {
+  font-weight: 800;
+}
+.ap-offcanvas-user .btn {
+  width: 100%;
+}
+
+/* Keep page header toolbar on the left in RTL (even when wrapping) */
+.ap-page-header .ap-toolbar {
+  margin-inline-start: auto;
+  align-self: flex-end;
+}
+
+/* =========================================================
+   RESPONSIVE TABLES
+========================================================= */
+
+/* Small helper text for table descriptions */
+.ap-mini-note {
+  font-size: 0.85rem;
+}
+
+/* --- MOBILE: Cards Layout (screens < 768px) --- */
+@media (max-width: 767px) {
+  .table-responsive table {
+    border: 0;
+  }
+
+  .table-responsive thead {
+    display: none; /* Hide header - labels shown inline */
+  }
+
+  /* Each row becomes a card */
+  .table-responsive tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    background: #fff;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  }
+
+  /* Each cell shows label + value */
+  .table-responsive tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    text-align: right !important;
+    position: static !important;
+  }
+
+  /* Label before value */
+  .table-responsive tbody td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-left: 1rem;
+    flex-shrink: 0;
+    color: rgba(15, 23, 42, 0.7);
+  }
+
+  /* Separator line before last cell (actions) */
+  .table-responsive tbody td:last-child {
+    border-top: 1px solid rgba(15, 23, 42, 0.1) !important;
+    padding-top: 0.75rem !important;
+    margin-top: 0.5rem;
+  }
+
+  /* Actions cell: left-aligned buttons */
+  .table-responsive tbody td.ap-actions {
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  .table-responsive tbody td.ap-actions:before {
+    content: none; /* No label for actions */
+  }
+
+  /* Disable sticky on mobile */
+  .ap-sticky-col th:first-child,
+  .ap-sticky-col td:first-child {
+    position: static !important;
+  }
+
+  /* Zebra colors for mobile cards */
+  .ap-table-zebra tbody tr:nth-of-type(odd) {
+    background: rgba(15, 23, 42, 0.04) !important;
+  }
+
+  .ap-table-zebra tbody tr:nth-of-type(even) {
+    background: rgba(222, 172, 49, 0.1) !important;
   }
 }
 
-/* Footer spacing */
-.ap-admin-footer {
-  margin-top: 1.25rem;
+/* --- DESKTOP: Table Variants (screens >= 768px) --- */
+
+/* Compact: smaller padding & font */
+.ap-table-compact th,
+.ap-table-compact td {
+  padding: 0.35rem 0.75rem !important;
+  font-size: 0.9rem;
 }
-/* منع لف عناصر السايدبار لعمودين */
-.ap-admin-aside .ap-sidebar.nav,
-.offcanvas [data-ap-nav] .nav {
-  flex-wrap: nowrap !important;
-  align-content: flex-start;
+
+/* Zebra: alternating row colors */
+@media (min-width: 768px) {
+  .ap-table-zebra tbody tr:nth-of-type(odd),
+  .ap-table-zebra tbody tr:nth-of-type(odd) td {
+    background-color: rgba(15, 23, 42, 0.06) !important; /* Gray */
+  }
+
+  .ap-table-zebra tbody tr:nth-of-type(even),
+  .ap-table-zebra tbody tr:nth-of-type(even) td {
+    background-color: rgba(222, 172, 49, 0.12) !important; /* Gold */
+  }
+}
+
+/* Cards: each row as separate card */
+@media (min-width: 768px) {
+  .ap-table-cards {
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  .ap-table-cards thead {
+    display: none; /* No header */
+  }
+
+  .ap-table-cards tbody {
+    display: block;
+  }
+
+  .ap-table-cards tbody tr {
+    display: block;
+    border: 1px solid var(--ap-border);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    background: var(--ap-surface);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    padding: 0.5rem;
+  }
+
+  .ap-table-cards tbody tr td {
+    display: block;
+    border: 0 !important;
+    padding: 0.5rem 1rem !important;
+    background: transparent !important;
+  }
+}
+
+/* =========================================================
+   FORMS - Range Slider Navy Color
+========================================================= */
+
+/* Navy colored range slider */
+.ap-range-navy {
+  --value: 50%; /* Default value, updated by JS */
+}
+
+.ap-range-navy::-webkit-slider-thumb {
+  background: var(--ap-navbar);
+  cursor: pointer;
+}
+
+.ap-range-navy::-moz-range-thumb {
+  background: var(--ap-navbar);
+  cursor: pointer;
+}
+
+/* Webkit (Chrome, Safari, Edge) - gradient track */
+.ap-range-navy::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to left,
+    var(--ap-navbar) 0%,
+    var(--ap-navbar) var(--value),
+    #dee2e6 var(--value),
+    #dee2e6 100%
+  );
+  height: 8px;
+  border-radius: 4px;
+}
+
+/* Firefox - track and progress */
+.ap-range-navy::-moz-range-track {
+  background: #dee2e6;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.ap-range-navy::-moz-range-progress {
+  background: var(--ap-navbar);
+  height: 8px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   PAGINATION - Gap between items
+========================================================= */
+
+/* Add gap between pagination items */
+.pagination {
+  gap: 0.375rem; /* 6px gap between items */
+}
+
+/* Ensure page items don't have default margins */
+.pagination .page-item {
+  margin: 0;
+}
+
+/* Optional: Add more gap for large pagination */
+.pagination-lg {
+  gap: 0.5rem; /* 8px gap for large */
+}
+
+/* Optional: Smaller gap for small pagination */
+.pagination-sm {
+  gap: 0.25rem; /* 4px gap for small */
+}
+
+/* =========================================================
+   ICONS PAGE - Animations and Styles
+========================================================= */
+
+/* Spinning animation for icons */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulse animation for icons */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Cursor pointer for clickable icons */
+.cursor-pointer {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cursor-pointer:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
 }

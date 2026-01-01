@@ -1,284 +1,523 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>الألوان | لوحة تحكم بيان</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>الألوان | لوحة تحكم بيان</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet"/>
-  <link href="assets/css/style.css" rel="stylesheet"/>
-</head>
-<body class="ap-admin">
-  
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-fluid">
-    <div class="d-flex align-items-center gap-2">
-      <!-- Mobile: open offcanvas -->
-      <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#apOffcanvasNav" aria-controls="apOffcanvasNav">
-        <i class="bi bi-list"></i>
-      </button>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
 
-      <!-- Desktop: collapse sidebar -->
-      <button id="apSidebarToggle" class="btn btn-outline-light d-none d-lg-inline-flex" type="button" aria-label="Toggle sidebar">
-        <i class="bi bi-layout-sidebar-inset"></i>
-      </button>
+    <!-- Tiny helper for HEX inline color square -->
+    <style>
+      .ap-hex-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+      .ap-hex-box {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        border: 1px solid rgba(15, 23, 42, 0.14);
+        display: inline-block;
+        flex: 0 0 auto;
+      }
+    </style>
+  </head>
 
-      <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="index.html">
-        <span class="ap-logo-wrap ap-logo-sm">
-          <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
-        </span>
-        <span>لوحة التحكم</span>
-      </a>
-    </div>
-
-    <div class="d-flex align-items-center gap-3">
-      <span class="navbar-text fw-bold">
-        مرحباً، <span class="fw-bolder">[UserName]</span>
-      </span>
-      <a class="btn btn-primary btn-sm" href="#logout">
-        <i class="bi bi-box-arrow-right ms-1"></i>
-        خروج
-      </a>
-    </div>
-  </div>
-</nav>
-
-
-  
-<div class="offcanvas offcanvas-start" tabindex="-1" id="apOffcanvasNav" aria-labelledby="apOffcanvasNavLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body" data-ap-nav>
-    <nav class="nav flex-column gap-1">
-      
-          <a class="nav-link" href="index.html">
-            <i class="bi bi-speedometer2 ms-2"></i>الرئيسية
-          </a>
-          <a class="nav-link" href="colors.html">
-            <i class="bi bi-palette2 ms-2"></i>الألوان
-          </a>
-          <a class="nav-link" href="typography.html">
-            <i class="bi bi-type ms-2"></i>الخطوط
-          </a>
-          <a class="nav-link" href="buttons.html">
-            <i class="bi bi-toggle-on ms-2"></i>الأزرار
-          </a>
-          <a class="nav-link" href="tables.html">
-            <i class="bi bi-table ms-2"></i>الجداول
-          </a>
-          <a class="nav-link" href="forms.html">
-            <i class="bi bi-ui-checks-grid ms-2"></i>النماذج
-          </a>
-          <a class="nav-link" href="badges.html">
-            <i class="bi bi-patch-check ms-2"></i>الشارات
-          </a>
-          <a class="nav-link" href="cards.html">
-            <i class="bi bi-collection ms-2"></i>الكروت
-          </a>
-          <a class="nav-link" href="modals.html">
-            <i class="bi bi-window ms-2"></i>النوافذ
-          </a>
-          <a class="nav-link" href="pagination.html">
-            <i class="bi bi-list-ol ms-2"></i>الصفحات
-          </a>
-          <a class="nav-link" href="icons.html">
-            <i class="bi bi-grid-3x3-gap ms-2"></i>الأيقونات
-          </a>
-          <a class="nav-link" href="alerts.html">
-            <i class="bi bi-bell ms-2"></i>التنبيهات
-          </a>
-          <a class="nav-link" href="blank.html">
-            <i class="bi bi-file-earmark ms-2"></i>صفحة فارغة
-          </a><hr class="my-2">
-      <a class="nav-link" href="#logout"><i class="bi bi-box-arrow-right ms-2"></i>تسجيل الخروج</a>
-    
-    </nav>
-  </div>
-</div>
-
-
-  <main class="ap-admin">
-    <div class="container-fluid">
-      <div class="ap-admin-shell">
-        <!-- Desktop sidebar -->
-        <aside class="ap-admin-aside" data-ap-nav>
-          <nav class="ap-sidebar nav flex-column gap-1">
-            <div class="ap-sidebar-group-title">القائمة</div>
-
-          <a class="nav-link" href="index.html" data-ap-tooltip title="الرئيسية">
-            <i class="bi bi-speedometer2"></i>
-            <span class="ap-sidebar-label">الرئيسية</span>
+  <body class="ap-admin">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <!-- Right side (RTL): Brand + Desktop collapse/expand -->
+        <div class="d-flex align-items-center gap-5">
+          <a
+            class="navbar-brand d-flex align-items-center gap-2 m-0"
+            href="index.html"
+          >
+            <span class="ap-logo-wrap ap-logo-sm">
+              <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
+            </span>
+            <span class="ap-brand-title">لوحة التحكم</span>
           </a>
 
-          <a class="nav-link" href="colors.html" data-ap-tooltip title="الألوان">
-            <i class="bi bi-palette2"></i>
-            <span class="ap-sidebar-label">الألوان</span>
-          </a>
+          <!-- Desktop only: collapse/expand sidebar (right after title) -->
+          <button
+            id="apSidebarToggle"
+            class="btn btn-outline-light ap-nav-toggle d-none d-lg-inline-flex"
+            type="button"
+            aria-label="تصغير/توسيع القائمة"
+            title="تصغير/توسيع القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
 
-          <a class="nav-link" href="typography.html" data-ap-tooltip title="الخطوط">
-            <i class="bi bi-type"></i>
-            <span class="ap-sidebar-label">الخطوط</span>
-          </a>
-
-          <a class="nav-link" href="buttons.html" data-ap-tooltip title="الأزرار">
-            <i class="bi bi-toggle-on"></i>
-            <span class="ap-sidebar-label">الأزرار</span>
-          </a>
-
-          <a class="nav-link" href="tables.html" data-ap-tooltip title="الجداول">
-            <i class="bi bi-table"></i>
-            <span class="ap-sidebar-label">الجداول</span>
-          </a>
-
-          <a class="nav-link" href="forms.html" data-ap-tooltip title="النماذج">
-            <i class="bi bi-ui-checks-grid"></i>
-            <span class="ap-sidebar-label">النماذج</span>
-          </a>
-
-          <a class="nav-link" href="badges.html" data-ap-tooltip title="الشارات">
-            <i class="bi bi-patch-check"></i>
-            <span class="ap-sidebar-label">الشارات</span>
-          </a>
-
-          <a class="nav-link" href="cards.html" data-ap-tooltip title="الكروت">
-            <i class="bi bi-collection"></i>
-            <span class="ap-sidebar-label">الكروت</span>
-          </a>
-
-          <a class="nav-link" href="modals.html" data-ap-tooltip title="النوافذ">
-            <i class="bi bi-window"></i>
-            <span class="ap-sidebar-label">النوافذ</span>
-          </a>
-
-          <a class="nav-link" href="pagination.html" data-ap-tooltip title="الصفحات">
-            <i class="bi bi-list-ol"></i>
-            <span class="ap-sidebar-label">الصفحات</span>
-          </a>
-
-          <a class="nav-link" href="icons.html" data-ap-tooltip title="الأيقونات">
-            <i class="bi bi-grid-3x3-gap"></i>
-            <span class="ap-sidebar-label">الأيقونات</span>
-          </a>
-
-          <a class="nav-link" href="alerts.html" data-ap-tooltip title="التنبيهات">
-            <i class="bi bi-bell"></i>
-            <span class="ap-sidebar-label">التنبيهات</span>
-          </a>
-
-          <a class="nav-link" href="blank.html" data-ap-tooltip title="صفحة فارغة">
-            <i class="bi bi-file-earmark"></i>
-            <span class="ap-sidebar-label">صفحة فارغة</span>
-          </a>
-<hr class="my-2">
-
-      <a class="nav-link" href="#logout" data-ap-tooltip title="تسجيل الخروج">
-        <i class="bi bi-box-arrow-right"></i>
-        <span class="ap-sidebar-label">تسجيل الخروج</span>
-      </a>
-          </nav>
-        </aside>
-
-        <section class="ap-admin-main">
-          <div class="ap-card p-3 mb-3">
-            <div class="ap-page-header">
-              <div>
-                <h1 class="h4 mb-1">الألوان</h1>
-                <div class="ap-muted">Tokens الأساسية المستخدمة في Bayan Theme + Swatches.</div>
-              </div>
-              <div class="ap-toolbar">
-                <a class="btn btn-outline-primary btn-sm" href="blank.html"><i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة</a>
-              </div>
-            </div>
+        <!-- Left side (RTL): Desktop user + Mobile offcanvas toggle -->
+        <div class="d-flex align-items-center gap-3">
+          <!-- Desktop only -->
+          <div class="d-none d-lg-flex align-items-center gap-3">
+            <span class="navbar-text fw-bold">
+              مرحباً، <span class="fw-bolder">[UserName]</span>
+            </span>
+            <a class="btn btn-primary btn-sm" href="#logout">
+              <i class="bi bi-box-arrow-right me-1"></i>خروج
+            </a>
           </div>
 
-          
-<div class="ap-card p-3">
-  <div class="row g-3">
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="d-flex align-items-center gap-3">
-        <div class="ap-swatch" style="background: var(--ap-navbar)"></div>
-        <div>
-          <div class="fw-bold">Navbar</div>
-          <div class="ap-code">--ap-navbar</div>
+          <!-- Mobile only: offcanvas toggle (far left) -->
+          <button
+            class="btn btn-outline-light ap-nav-toggle d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#apOffcanvasNav"
+            aria-controls="apOffcanvasNav"
+            aria-label="فتح القائمة"
+            title="القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
         </div>
       </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="d-flex align-items-center gap-3">
-        <div class="ap-swatch" style="background: var(--ap-primary)"></div>
-        <div>
-          <div class="fw-bold">Primary</div>
-          <div class="ap-code">--ap-primary</div>
-        </div>
+    </nav>
+    <!-- Mobile offcanvas menu -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="apOffcanvasNav"
+      aria-labelledby="apOffcanvasNavLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
       </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="d-flex align-items-center gap-3">
-        <div class="ap-swatch" style="background: var(--ap-bg)"></div>
-        <div>
-          <div class="fw-bold">Background</div>
-          <div class="ap-code">--ap-bg</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="d-flex align-items-center gap-3">
-        <div class="ap-swatch" style="background: var(--ap-surface)"></div>
-        <div>
-          <div class="fw-bold">Surface</div>
-          <div class="ap-code">--ap-surface</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="d-flex align-items-center gap-3">
-        <div class="ap-swatch" style="background: #64748b"></div>
-        <div>
-          <div class="fw-bold">Muted</div>
-          <div class="ap-code">--ap-muted</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="d-flex align-items-center gap-3">
-        <div class="ap-swatch" style="background: var(--ap-footer-bg)"></div>
-        <div>
-          <div class="fw-bold">Footer</div>
-          <div class="ap-code">--ap-footer-bg</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
+      <div class="offcanvas-body" data-ap-nav>
+        <div class="ap-offcanvas-user mb-3">
+          <div class="ap-offcanvas-hello mb-2">
+            مرحباً، <span class="fw-bolder">[UserName]</span>
+          </div>
+          <a class="btn btn-primary btn-sm" href="#logout">
+            <i class="bi bi-box-arrow-right me-1"></i>تسجيل الخروج
+          </a>
+        </div>
 
-        </section>
+        <nav class="nav flex-column gap-1">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-speedometer2 me-2"></i>الرئيسية
+          </a>
+          <a class="nav-link" href="colors.html">
+            <i class="bi bi-palette2 me-2"></i>الألوان
+          </a>
+          <a class="nav-link" href="typography.html">
+            <i class="bi bi-type me-2"></i>الخطوط
+          </a>
+          <a class="nav-link" href="buttons.html">
+            <i class="bi bi-toggle-on me-2"></i>الأزرار
+          </a>
+          <a class="nav-link" href="tables.html">
+            <i class="bi bi-table me-2"></i>الجداول
+          </a>
+          <a class="nav-link" href="forms.html">
+            <i class="bi bi-ui-checks-grid me-2"></i>النماذج
+          </a>
+          <a class="nav-link" href="badges.html">
+            <i class="bi bi-patch-check me-2"></i>الشارات
+          </a>
+          <a class="nav-link" href="cards.html">
+            <i class="bi bi-collection me-2"></i>الكروت
+          </a>
+          <a class="nav-link" href="modals.html">
+            <i class="bi bi-window me-2"></i>النوافذ
+          </a>
+          <a class="nav-link" href="pagination.html">
+            <i class="bi bi-list-ol me-2"></i>الصفحات
+          </a>
+          <a class="nav-link" href="icons.html">
+            <i class="bi bi-grid-3x3-gap me-2"></i>الأيقونات
+          </a>
+          <a class="nav-link" href="alerts.html">
+            <i class="bi bi-bell me-2"></i>التنبيهات
+          </a>
+          <a class="nav-link" href="blank.html">
+            <i class="bi bi-file-earmark me-2"></i>صفحة فارغة
+          </a>
+        </nav>
       </div>
     </div>
-  </main>
 
-  
-<footer class="py-3 ap-admin-footer">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-      <div>© [Year] منصة بيان — لوحة التحكم</div>
-      <div class="ap-muted">UI Template (HTML/CSS/Bootstrap)</div>
-    </div>
-  </div>
-</footer>
+    <main class="ap-admin">
+      <div class="container-fluid">
+        <div class="ap-admin-shell">
+          <!-- Sidebar -->
+          <aside class="ap-admin-aside" data-ap-nav>
+            <nav class="ap-sidebar nav flex-column gap-1">
+              <div class="ap-sidebar-top">
+                <div class="ap-sidebar-app-title">القائمة</div>
+              </div>
+              <hr class="ap-sidebar-hr" />
 
+              <a
+                class="nav-link"
+                href="index.html"
+                data-ap-tooltip
+                title="الرئيسية"
+              >
+                <i class="bi bi-speedometer2"></i>
+                <span class="ap-sidebar-label">الرئيسية</span>
+              </a>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script>
-    // Replace year placeholder quickly
-    document.querySelectorAll("footer [data-year]").forEach(el => el.textContent = new Date().getFullYear());
-  </script>
-</body>
+              <a
+                class="nav-link"
+                href="colors.html"
+                data-ap-tooltip
+                title="الألوان"
+              >
+                <i class="bi bi-palette2"></i>
+                <span class="ap-sidebar-label">الألوان</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="typography.html"
+                data-ap-tooltip
+                title="الخطوط"
+              >
+                <i class="bi bi-type"></i>
+                <span class="ap-sidebar-label">الخطوط</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="buttons.html"
+                data-ap-tooltip
+                title="الأزرار"
+              >
+                <i class="bi bi-toggle-on"></i>
+                <span class="ap-sidebar-label">الأزرار</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="tables.html"
+                data-ap-tooltip
+                title="الجداول"
+              >
+                <i class="bi bi-table"></i>
+                <span class="ap-sidebar-label">الجداول</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="forms.html"
+                data-ap-tooltip
+                title="النماذج"
+              >
+                <i class="bi bi-ui-checks-grid"></i>
+                <span class="ap-sidebar-label">النماذج</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="badges.html"
+                data-ap-tooltip
+                title="الشارات"
+              >
+                <i class="bi bi-patch-check"></i>
+                <span class="ap-sidebar-label">الشارات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="cards.html"
+                data-ap-tooltip
+                title="الكروت"
+              >
+                <i class="bi bi-collection"></i>
+                <span class="ap-sidebar-label">الكروت</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="modals.html"
+                data-ap-tooltip
+                title="النوافذ"
+              >
+                <i class="bi bi-window"></i>
+                <span class="ap-sidebar-label">النوافذ</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="pagination.html"
+                data-ap-tooltip
+                title="الصفحات"
+              >
+                <i class="bi bi-list-ol"></i>
+                <span class="ap-sidebar-label">الصفحات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="icons.html"
+                data-ap-tooltip
+                title="الأيقونات"
+              >
+                <i class="bi bi-grid-3x3-gap"></i>
+                <span class="ap-sidebar-label">الأيقونات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="alerts.html"
+                data-ap-tooltip
+                title="التنبيهات"
+              >
+                <i class="bi bi-bell"></i>
+                <span class="ap-sidebar-label">التنبيهات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="blank.html"
+                data-ap-tooltip
+                title="صفحة فارغة"
+              >
+                <i class="bi bi-file-earmark"></i>
+                <span class="ap-sidebar-label">صفحة فارغة</span>
+              </a>
+            </nav>
+          </aside>
+          <!-- Content -->
+
+          <section class="ap-admin-main">
+            <!-- Page header -->
+            <div class="ap-card p-3 mb-3">
+              <div class="ap-page-header d-flex">
+                <div>
+                  <h1 class="h4 mb-1">الألوان</h1>
+                  <div class="ap-muted">
+                    Tokens الأساسية المستخدمة في Bayan Theme + Swatches.
+                  </div>
+                </div>
+
+                <div class="ap-toolbar ms-auto">
+                  <a class="btn btn-outline-primary btn-sm" href="blank.html">
+                    <i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Brand only (as requested) -->
+            <div class="ap-card p-3 mb-3">
+              <div
+                class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2"
+              >
+                <h2 class="h6 mb-0">
+                  <i class="bi bi-palette2 ms-1"></i>ألوان العلامة (Brand)
+                </h2>
+                <span class="ap-chip">
+                  <i class="bi bi-info-circle ms-1"></i>الألوان الأساسية للهوية
+                </span>
+              </div>
+
+              <div class="row g-3">
+                <!-- Navbar -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="ap-swatch" style="background: #19324c"></div>
+                    <div>
+                      <div class="fw-bold">Navbar</div>
+                      <div class="ap-code">--ap-navbar</div>
+                      <div class="ap-code ap-hex-line">
+                        <span
+                          class="ap-hex-box"
+                          style="background: #19324c"
+                        ></span>
+                        <span>#19324c</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Primary -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="ap-swatch" style="background: #deac31"></div>
+                    <div>
+                      <div class="fw-bold">Primary</div>
+                      <div class="ap-code">--ap-primary</div>
+                      <div class="ap-code ap-hex-line">
+                        <span
+                          class="ap-hex-box"
+                          style="background: #deac31"
+                        ></span>
+                        <span>#deac31</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Primary Hover -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="ap-swatch" style="background: #c9961f"></div>
+                    <div>
+                      <div class="fw-bold">Primary Hover</div>
+                      <div class="ap-code">--ap-primary-hover</div>
+                      <div class="ap-code ap-hex-line">
+                        <span
+                          class="ap-hex-box"
+                          style="background: #c9961f"
+                        ></span>
+                        <span>#c9961f</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Primary Active -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="ap-swatch" style="background: #b6861b"></div>
+                    <div>
+                      <div class="fw-bold">Primary Active</div>
+                      <div class="ap-code">--ap-primary-active</div>
+                      <div class="ap-code ap-hex-line">
+                        <span
+                          class="ap-hex-box"
+                          style="background: #b6861b"
+                        ></span>
+                        <span>#b6861b</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Link -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="ap-swatch" style="background: #2b6cb0"></div>
+                    <div>
+                      <div class="fw-bold">Link</div>
+                      <div class="ap-code">--bs-link-color</div>
+                      <div class="ap-code ap-hex-line">
+                        <span
+                          class="ap-hex-box"
+                          style="background: #2b6cb0"
+                        ></span>
+                        <span>#2b6cb0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Link Hover -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="ap-swatch" style="background: #1f4f86"></div>
+                    <div>
+                      <div class="fw-bold">Link Hover</div>
+                      <div class="ap-code">--bs-link-hover-color</div>
+                      <div class="ap-code ap-hex-line">
+                        <span
+                          class="ap-hex-box"
+                          style="background: #1f4f86"
+                        ></span>
+                        <span>#1f4f86</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sidebar Icons -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="ap-swatch" style="background: #9a7312"></div>
+                    <div>
+                      <div class="fw-bold">Sidebar Icons (Desktop)</div>
+                      <div class="ap-code ap-hex-line">
+                        <span
+                          class="ap-hex-box"
+                          style="background: #9a7312"
+                        ></span>
+                        <span>#9a7312</span>
+                      </div>
+                      <div class="ap-muted small">لون ذهبي غامق للأيقونات</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="ap-swatch" style="background: #b6861b"></div>
+                    <div>
+                      <div class="fw-bold">Sidebar Icons Hover/Active</div>
+                      <div class="ap-code ap-hex-line">
+                        <span
+                          class="ap-hex-box"
+                          style="background: #b6861b"
+                        ></span>
+                        <span>#b6861b</span>
+                      </div>
+                      <div class="ap-muted small">Hover + Active</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ap-divider"></div>
+
+              <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-primary">
+                  <i class="bi bi-star ms-1"></i>Primary
+                </button>
+                <button class="btn btn-outline-primary">
+                  <i class="bi bi-pencil ms-1"></i>Outline
+                </button>
+                <a class="btn btn-link" href="#">
+                  <i class="bi bi-link-45deg ms-1"></i>Link
+                </a>
+              </div>
+            </div>
+          </section>
+          <!-- END Content -->
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+
+    <footer class="py-3 ap-admin-footer">
+      <div class="container-fluid">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+          <div>
+            جميع الحقوق محفوظة لمركز التطبيقات الالكترونية بجامعه قنا لسنه 2025
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
 </html>

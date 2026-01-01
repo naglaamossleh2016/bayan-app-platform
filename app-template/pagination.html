@@ -1,238 +1,671 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>الصفحات | لوحة تحكم بيان</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>الصفحات | لوحة تحكم بيان</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet"/>
-  <link href="assets/css/style.css" rel="stylesheet"/>
-</head>
-<body class="ap-admin">
-  
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-fluid">
-    <div class="d-flex align-items-center gap-2">
-      <!-- Mobile: open offcanvas -->
-      <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#apOffcanvasNav" aria-controls="apOffcanvasNav">
-        <i class="bi bi-list"></i>
-      </button>
-
-      <!-- Desktop: collapse sidebar -->
-      <button id="apSidebarToggle" class="btn btn-outline-light d-none d-lg-inline-flex" type="button" aria-label="Toggle sidebar">
-        <i class="bi bi-layout-sidebar-inset"></i>
-      </button>
-
-      <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="index.html">
-        <span class="ap-logo-wrap ap-logo-sm">
-          <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
-        </span>
-        <span>لوحة التحكم</span>
-      </a>
-    </div>
-
-    <div class="d-flex align-items-center gap-3">
-      <span class="navbar-text fw-bold">
-        مرحباً، <span class="fw-bolder">[UserName]</span>
-      </span>
-      <a class="btn btn-primary btn-sm" href="#logout">
-        <i class="bi bi-box-arrow-right ms-1"></i>
-        خروج
-      </a>
-    </div>
-  </div>
-</nav>
-
-
-  
-<div class="offcanvas offcanvas-start" tabindex="-1" id="apOffcanvasNav" aria-labelledby="apOffcanvasNavLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body" data-ap-nav>
-    <nav class="nav flex-column gap-1">
-      
-          <a class="nav-link" href="index.html">
-            <i class="bi bi-speedometer2 ms-2"></i>الرئيسية
-          </a>
-          <a class="nav-link" href="colors.html">
-            <i class="bi bi-palette2 ms-2"></i>الألوان
-          </a>
-          <a class="nav-link" href="typography.html">
-            <i class="bi bi-type ms-2"></i>الخطوط
-          </a>
-          <a class="nav-link" href="buttons.html">
-            <i class="bi bi-toggle-on ms-2"></i>الأزرار
-          </a>
-          <a class="nav-link" href="tables.html">
-            <i class="bi bi-table ms-2"></i>الجداول
-          </a>
-          <a class="nav-link" href="forms.html">
-            <i class="bi bi-ui-checks-grid ms-2"></i>النماذج
-          </a>
-          <a class="nav-link" href="badges.html">
-            <i class="bi bi-patch-check ms-2"></i>الشارات
-          </a>
-          <a class="nav-link" href="cards.html">
-            <i class="bi bi-collection ms-2"></i>الكروت
-          </a>
-          <a class="nav-link" href="modals.html">
-            <i class="bi bi-window ms-2"></i>النوافذ
-          </a>
-          <a class="nav-link" href="pagination.html">
-            <i class="bi bi-list-ol ms-2"></i>الصفحات
-          </a>
-          <a class="nav-link" href="icons.html">
-            <i class="bi bi-grid-3x3-gap ms-2"></i>الأيقونات
-          </a>
-          <a class="nav-link" href="alerts.html">
-            <i class="bi bi-bell ms-2"></i>التنبيهات
-          </a>
-          <a class="nav-link" href="blank.html">
-            <i class="bi bi-file-earmark ms-2"></i>صفحة فارغة
-          </a><hr class="my-2">
-      <a class="nav-link" href="#logout"><i class="bi bi-box-arrow-right ms-2"></i>تسجيل الخروج</a>
-    
-    </nav>
-  </div>
-</div>
-
-
-  <main class="ap-admin">
-    <div class="container-fluid">
-      <div class="ap-admin-shell">
-        <!-- Desktop sidebar -->
-        <aside class="ap-admin-aside" data-ap-nav>
-          <nav class="ap-sidebar nav flex-column gap-1">
-            <div class="ap-sidebar-group-title">القائمة</div>
-
-          <a class="nav-link" href="index.html" data-ap-tooltip title="الرئيسية">
-            <i class="bi bi-speedometer2"></i>
-            <span class="ap-sidebar-label">الرئيسية</span>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="ap-admin">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <!-- Right side (RTL): Brand + Desktop collapse/expand -->
+        <div class="d-flex align-items-center gap-5">
+          <a
+            class="navbar-brand d-flex align-items-center gap-2 m-0"
+            href="index.html"
+          >
+            <span class="ap-logo-wrap ap-logo-sm">
+              <img class="ap-logo-img" src="assets/img/logo.svg" alt="Bayan" />
+            </span>
+            <span class="ap-brand-title">لوحة التحكم</span>
           </a>
 
-          <a class="nav-link" href="colors.html" data-ap-tooltip title="الألوان">
-            <i class="bi bi-palette2"></i>
-            <span class="ap-sidebar-label">الألوان</span>
-          </a>
+          <!-- Desktop only: collapse/expand sidebar (right after title) -->
+          <button
+            id="apSidebarToggle"
+            class="btn btn-outline-light ap-nav-toggle d-none d-lg-inline-flex"
+            type="button"
+            aria-label="تصغير/توسيع القائمة"
+            title="تصغير/توسيع القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
 
-          <a class="nav-link" href="typography.html" data-ap-tooltip title="الخطوط">
-            <i class="bi bi-type"></i>
-            <span class="ap-sidebar-label">الخطوط</span>
-          </a>
-
-          <a class="nav-link" href="buttons.html" data-ap-tooltip title="الأزرار">
-            <i class="bi bi-toggle-on"></i>
-            <span class="ap-sidebar-label">الأزرار</span>
-          </a>
-
-          <a class="nav-link" href="tables.html" data-ap-tooltip title="الجداول">
-            <i class="bi bi-table"></i>
-            <span class="ap-sidebar-label">الجداول</span>
-          </a>
-
-          <a class="nav-link" href="forms.html" data-ap-tooltip title="النماذج">
-            <i class="bi bi-ui-checks-grid"></i>
-            <span class="ap-sidebar-label">النماذج</span>
-          </a>
-
-          <a class="nav-link" href="badges.html" data-ap-tooltip title="الشارات">
-            <i class="bi bi-patch-check"></i>
-            <span class="ap-sidebar-label">الشارات</span>
-          </a>
-
-          <a class="nav-link" href="cards.html" data-ap-tooltip title="الكروت">
-            <i class="bi bi-collection"></i>
-            <span class="ap-sidebar-label">الكروت</span>
-          </a>
-
-          <a class="nav-link" href="modals.html" data-ap-tooltip title="النوافذ">
-            <i class="bi bi-window"></i>
-            <span class="ap-sidebar-label">النوافذ</span>
-          </a>
-
-          <a class="nav-link" href="pagination.html" data-ap-tooltip title="الصفحات">
-            <i class="bi bi-list-ol"></i>
-            <span class="ap-sidebar-label">الصفحات</span>
-          </a>
-
-          <a class="nav-link" href="icons.html" data-ap-tooltip title="الأيقونات">
-            <i class="bi bi-grid-3x3-gap"></i>
-            <span class="ap-sidebar-label">الأيقونات</span>
-          </a>
-
-          <a class="nav-link" href="alerts.html" data-ap-tooltip title="التنبيهات">
-            <i class="bi bi-bell"></i>
-            <span class="ap-sidebar-label">التنبيهات</span>
-          </a>
-
-          <a class="nav-link" href="blank.html" data-ap-tooltip title="صفحة فارغة">
-            <i class="bi bi-file-earmark"></i>
-            <span class="ap-sidebar-label">صفحة فارغة</span>
-          </a>
-<hr class="my-2">
-
-      <a class="nav-link" href="#logout" data-ap-tooltip title="تسجيل الخروج">
-        <i class="bi bi-box-arrow-right"></i>
-        <span class="ap-sidebar-label">تسجيل الخروج</span>
-      </a>
-          </nav>
-        </aside>
-
-        <section class="ap-admin-main">
-          <div class="ap-card p-3 mb-3">
-            <div class="ap-page-header">
-              <div>
-                <h1 class="h4 mb-1">الصفحات</h1>
-                <div class="ap-muted">Pagination بنفس الستايل الموحد.</div>
-              </div>
-              <div class="ap-toolbar">
-                <a class="btn btn-outline-primary btn-sm" href="blank.html"><i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة</a>
-              </div>
-            </div>
+        <!-- Left side (RTL): Desktop user + Mobile offcanvas toggle -->
+        <div class="d-flex align-items-center gap-3">
+          <!-- Desktop only -->
+          <div class="d-none d-lg-flex align-items-center gap-3">
+            <span class="navbar-text fw-bold">
+              مرحباً، <span class="fw-bolder">[UserName]</span>
+            </span>
+            <a class="btn btn-primary btn-sm" href="#logout">
+              <i class="bi bi-box-arrow-right me-1"></i>خروج
+            </a>
           </div>
 
-          
-<div class="ap-card p-3">
-  <h2 class="h6 mb-3">مثال Pagination</h2>
-  <nav aria-label="Pagination example">
-    <ul class="pagination mb-0">
-      <li class="page-item disabled"><a class="page-link" href="#">السابق</a></li>
-      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">التالي</a></li>
-    </ul>
-  </nav>
-</div>
+          <!-- Mobile only: offcanvas toggle (far left) -->
+          <button
+            class="btn btn-outline-light ap-nav-toggle d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#apOffcanvasNav"
+            aria-controls="apOffcanvasNav"
+            aria-label="فتح القائمة"
+            title="القائمة"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Mobile offcanvas menu -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="apOffcanvasNav"
+      aria-labelledby="apOffcanvasNavLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="apOffcanvasNavLabel">القائمة</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body" data-ap-nav>
+        <div class="ap-offcanvas-user mb-3">
+          <div class="ap-offcanvas-hello mb-2">
+            مرحباً، <span class="fw-bolder">[UserName]</span>
+          </div>
+          <a class="btn btn-primary btn-sm" href="#logout">
+            <i class="bi bi-box-arrow-right me-1"></i>تسجيل الخروج
+          </a>
+        </div>
 
-
-        </section>
+        <nav class="nav flex-column gap-1">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-speedometer2 me-2"></i>الرئيسية
+          </a>
+          <a class="nav-link" href="colors.html">
+            <i class="bi bi-palette2 me-2"></i>الألوان
+          </a>
+          <a class="nav-link" href="typography.html">
+            <i class="bi bi-type me-2"></i>الخطوط
+          </a>
+          <a class="nav-link" href="buttons.html">
+            <i class="bi bi-toggle-on me-2"></i>الأزرار
+          </a>
+          <a class="nav-link" href="tables.html">
+            <i class="bi bi-table me-2"></i>الجداول
+          </a>
+          <a class="nav-link" href="forms.html">
+            <i class="bi bi-ui-checks-grid me-2"></i>النماذج
+          </a>
+          <a class="nav-link" href="badges.html">
+            <i class="bi bi-patch-check me-2"></i>الشارات
+          </a>
+          <a class="nav-link" href="cards.html">
+            <i class="bi bi-collection me-2"></i>الكروت
+          </a>
+          <a class="nav-link" href="modals.html">
+            <i class="bi bi-window me-2"></i>النوافذ
+          </a>
+          <a class="nav-link" href="pagination.html">
+            <i class="bi bi-list-ol me-2"></i>الصفحات
+          </a>
+          <a class="nav-link" href="icons.html">
+            <i class="bi bi-grid-3x3-gap me-2"></i>الأيقونات
+          </a>
+          <a class="nav-link" href="alerts.html">
+            <i class="bi bi-bell me-2"></i>التنبيهات
+          </a>
+          <a class="nav-link" href="blank.html">
+            <i class="bi bi-file-earmark me-2"></i>صفحة فارغة
+          </a>
+        </nav>
       </div>
     </div>
-  </main>
 
-  
-<footer class="py-3 ap-admin-footer">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-      <div>© [Year] منصة بيان — لوحة التحكم</div>
-      <div class="ap-muted">UI Template (HTML/CSS/Bootstrap)</div>
-    </div>
-  </div>
-</footer>
+    <main class="ap-admin">
+      <div class="container-fluid">
+        <div class="ap-admin-shell">
+          <!-- Sidebar -->
+          <aside class="ap-admin-aside" data-ap-nav>
+            <nav class="ap-sidebar nav flex-column gap-1">
+              <div class="ap-sidebar-top">
+                <div class="ap-sidebar-app-title">القائمة</div>
+              </div>
+              <hr class="ap-sidebar-hr" />
 
+              <a
+                class="nav-link"
+                href="index.html"
+                data-ap-tooltip
+                title="الرئيسية"
+              >
+                <i class="bi bi-speedometer2"></i>
+                <span class="ap-sidebar-label">الرئيسية</span>
+              </a>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script>
-    // Replace year placeholder quickly
-    document.querySelectorAll("footer [data-year]").forEach(el => el.textContent = new Date().getFullYear());
-  </script>
-</body>
+              <a
+                class="nav-link"
+                href="colors.html"
+                data-ap-tooltip
+                title="الألوان"
+              >
+                <i class="bi bi-palette2"></i>
+                <span class="ap-sidebar-label">الألوان</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="typography.html"
+                data-ap-tooltip
+                title="الخطوط"
+              >
+                <i class="bi bi-type"></i>
+                <span class="ap-sidebar-label">الخطوط</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="buttons.html"
+                data-ap-tooltip
+                title="الأزرار"
+              >
+                <i class="bi bi-toggle-on"></i>
+                <span class="ap-sidebar-label">الأزرار</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="tables.html"
+                data-ap-tooltip
+                title="الجداول"
+              >
+                <i class="bi bi-table"></i>
+                <span class="ap-sidebar-label">الجداول</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="forms.html"
+                data-ap-tooltip
+                title="النماذج"
+              >
+                <i class="bi bi-ui-checks-grid"></i>
+                <span class="ap-sidebar-label">النماذج</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="badges.html"
+                data-ap-tooltip
+                title="الشارات"
+              >
+                <i class="bi bi-patch-check"></i>
+                <span class="ap-sidebar-label">الشارات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="cards.html"
+                data-ap-tooltip
+                title="الكروت"
+              >
+                <i class="bi bi-collection"></i>
+                <span class="ap-sidebar-label">الكروت</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="modals.html"
+                data-ap-tooltip
+                title="النوافذ"
+              >
+                <i class="bi bi-window"></i>
+                <span class="ap-sidebar-label">النوافذ</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="pagination.html"
+                data-ap-tooltip
+                title="الصفحات"
+              >
+                <i class="bi bi-list-ol"></i>
+                <span class="ap-sidebar-label">الصفحات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="icons.html"
+                data-ap-tooltip
+                title="الأيقونات"
+              >
+                <i class="bi bi-grid-3x3-gap"></i>
+                <span class="ap-sidebar-label">الأيقونات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="alerts.html"
+                data-ap-tooltip
+                title="التنبيهات"
+              >
+                <i class="bi bi-bell"></i>
+                <span class="ap-sidebar-label">التنبيهات</span>
+              </a>
+
+              <a
+                class="nav-link"
+                href="blank.html"
+                data-ap-tooltip
+                title="صفحة فارغة"
+              >
+                <i class="bi bi-file-earmark"></i>
+                <span class="ap-sidebar-label">صفحة فارغة</span>
+              </a>
+            </nav>
+          </aside>
+          <!-- Content -->
+
+          <section class="ap-admin-main">
+            <div class="ap-card p-3 mb-3">
+              <div class="ap-page-header d-flex">
+                <div>
+                  <h1 class="h4 mb-1">الصفحات</h1>
+                  <div class="ap-muted">Pagination بنفس الستايل الموحد.</div>
+                </div>
+                <div class="ap-toolbar ms-auto">
+                  <a class="btn btn-outline-primary btn-sm" href="blank.html">
+                    <i class="bi bi-file-earmark ms-1"></i>افتح الصفحة الفارغة
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pagination Sizes -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أحجام مختلفة</h5>
+
+              <!-- Large -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">كبير (Large)</h6>
+                <nav aria-label="Large pagination">
+                  <ul class="pagination pagination-lg mb-0">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">السابق</a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">التالي</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              <!-- Default -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">عادي (Default)</h6>
+                <nav aria-label="Default pagination">
+                  <ul class="pagination mb-0">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">السابق</a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">التالي</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              <!-- Small -->
+              <div>
+                <h6 class="text-muted mb-2">صغير (Small)</h6>
+                <nav aria-label="Small pagination">
+                  <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">السابق</a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">التالي</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+
+            <!-- Pagination Styles -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">أنماط مختلفة</h5>
+
+              <!-- With Icons -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">مع أيقونات</h6>
+                <nav aria-label="Pagination with icons">
+                  <ul class="pagination mb-0">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">
+                        <i class="bi bi-chevron-double-right"></i>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">
+                        <i class="bi bi-chevron-right"></i>
+                      </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">
+                        <i class="bi bi-chevron-left"></i>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">
+                        <i class="bi bi-chevron-double-left"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              <!-- Rounded -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">دائري (Rounded)</h6>
+                <nav aria-label="Rounded pagination">
+                  <ul class="pagination mb-0">
+                    <li class="page-item disabled">
+                      <a class="page-link rounded-circle me-2" href="#">‹</a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link rounded-circle me-2" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link rounded-circle me-2" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link rounded-circle me-2" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link rounded-circle me-2" href="#">4</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link rounded-circle" href="#">›</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              <!-- Icons Only -->
+              <div>
+                <h6 class="text-muted mb-2">أيقونات فقط</h6>
+                <nav aria-label="Icons only pagination">
+                  <ul class="pagination mb-0">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" aria-label="First">
+                        <i class="bi bi-chevron-bar-right"></i>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <i class="bi bi-chevron-right"></i>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <i class="bi bi-chevron-left"></i>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Last">
+                        <i class="bi bi-chevron-bar-left"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+
+            <!-- Special Cases -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">حالات خاصة</h5>
+
+              <!-- Many Pages with Ellipsis -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">عدد كبير من الصفحات (مع نقاط ...)</h6>
+                <nav aria-label="Pagination with ellipsis">
+                  <ul class="pagination mb-0">
+                    <li class="page-item">
+                      <a class="page-link" href="#">
+                        <i class="bi bi-chevron-right"></i>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">25</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">
+                        <i class="bi bi-chevron-left"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              <!-- Simple (Previous/Next only) -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">بسيط (السابق والتالي فقط)</h6>
+                <nav aria-label="Simple pagination">
+                  <ul class="pagination mb-0">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#">
+                        <i class="bi bi-arrow-right me-1"></i>السابق
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">
+                        التالي<i class="bi bi-arrow-left ms-1"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+              <!-- With Page Info -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">مع معلومات الصفحة</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">عرض 1-10 من 250 عنصر</small>
+                  <nav aria-label="Pagination with info">
+                    <ul class="pagination mb-0">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#">السابق</a>
+                      </li>
+                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">التالي</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+
+              <!-- With Items Per Page -->
+              <div>
+                <h6 class="text-muted mb-2">مع اختيار عدد العناصر</h6>
+                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <label class="mb-0 text-muted small">عدد العناصر:</label>
+                    <select class="form-select form-select-sm" style="width: auto;">
+                      <option value="10" selected>10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                  <nav aria-label="Pagination with items per page">
+                    <ul class="pagination pagination-sm mb-0">
+                      <li class="page-item disabled">
+                        <a class="page-link" href="#">السابق</a>
+                      </li>
+                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">التالي</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            <!-- Breadcrumb Examples -->
+            <div class="ap-card p-3 mb-3">
+              <h5 class="mb-3">مسار التنقل (Breadcrumb)</h5>
+
+              <!-- Basic Breadcrumb -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">أساسي</h6>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="#">المكتبة</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">البيانات</li>
+                  </ol>
+                </nav>
+              </div>
+
+              <!-- Breadcrumb with Icons -->
+              <div class="mb-4">
+                <h6 class="text-muted mb-2">مع أيقونات</h6>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                      <a href="#"><i class="bi bi-house-door me-1"></i>الرئيسية</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a href="#"><i class="bi bi-folder me-1"></i>المشاريع</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a href="#"><i class="bi bi-folder-fill me-1"></i>مشروع بيان</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      <i class="bi bi-file-text me-1"></i>الملفات
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+
+              <!-- Breadcrumb with Background -->
+              <div>
+                <h6 class="text-muted mb-2">مع خلفية</h6>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb bg-light p-3 mb-0">
+                    <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="#">الإعدادات</a></li>
+                    <li class="breadcrumb-item"><a href="#">الحساب</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">الملف الشخصي</li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+
+            <!-- Interactive Example -->
+            <div class="ap-card p-3">
+              <h5 class="mb-3">مثال تفاعلي مع جدول</h5>
+
+              <!-- Table -->
+              <div class="table-responsive mb-3">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>الاسم</th>
+                      <th>البريد الإلكتروني</th>
+                      <th>الدور</th>
+                      <th>الحالة</th>
+                    </tr>
+                  </thead>
+                  <tbody id="paginatedTableBody">
+                    <!-- Will be populated by JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Pagination Controls -->
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <small class="text-muted" id="pageInfo">عرض 1-5 من 50 مستخدم</small>
+                <nav aria-label="Interactive table pagination">
+                  <ul class="pagination mb-0" id="tablePagination">
+                    <!-- Will be populated by JavaScript -->
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </section>
+          <!-- END Content -->
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+
+    <footer class="py-3 ap-admin-footer">
+      <div class="container-fluid">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+          <div>
+            جميع الحقوق محفوظة لمركز التطبيقات الالكترونية بجامعه قنا لسنه 2025
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/site.js"></script>
+  </body>
 </html>
